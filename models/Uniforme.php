@@ -81,16 +81,36 @@ class Uniforme extends \yii\db\ActiveRecord
      */
     public function getTalla()
     {
+        if ($this->tipo_talla=='XXS') {
+            return $this->getTextoTallas();
+        }
+
+        if ($this->tipo_talla=='XS') {
+            return $this->getTextoTallas();
+        }
+
         if ($this->tipo_talla=='S') {
-            return $this->getTextoEdoCivil();
+            return $this->getTextoTallas();
+        }
+
+        if ($this->tipo_talla=='M') {
+            return $this->getTextoTallas();
+        }
+
+        if ($this->tipo_talla=='L') {
+            return $this->getTextoTallas();
+        }
+
+        if ($this->tipo_talla=='XL') {
+            return $this->getTextoTallas();
         }
         
-        if ($this->tipo_talla=='C') {
-            return $this->getTextoEdoCivil();
+        if ($this->tipo_talla=='XXL') {
+            return $this->getTextoTallas();
         }
         
-        if ($this->tipo_talla=='V') {
-            return $this->getTextoEdoCivil();
+        if ($this->tipo_talla=='XXXL') {
+            return $this->getTextoTallas();
         }
     }
 

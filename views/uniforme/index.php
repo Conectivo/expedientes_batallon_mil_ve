@@ -41,25 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Tallas',
                 'attribute' => 'tipo_talla',
                 'value' => function ($model){
-                                if ($model->tipo_talla == 'XXS') {
-                                    return $model->getTextoTallas();
-                                } elseif ($model->tipo_talla == 'XS') {
-                                    return $model->getTextoTallas();
-                                } elseif ($model->tipo_talla == 'S') {
-                                    return $model->getTextoTallas();
-                                } elseif ($model->tipo_talla == 'M') {
-                                    return $model->getTextoTallas();
-                                } elseif ($model->tipo_talla == 'L') {
-                                    return $model->getTextoTallas();
-                                } elseif ($model->tipo_talla == 'XL') {
-                                    return $model->getTextoTallas();
-                                } elseif ($model->tipo_talla == 'XXL') {
-                                    return $model->getTextoTallas();
-                                } elseif ($model->tipo_talla == 'XXL') {
-                                    return $model->getTextoTallas();
-                                } else {
-                                    return $model->getTextoTallas();
-                                }
+                                return $model->getTalla();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'tipo_talla',
                                     $searchModel->getOpcionesTallas(),

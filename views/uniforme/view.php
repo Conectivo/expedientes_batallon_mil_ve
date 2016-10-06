@@ -39,7 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 ),
                 'format'=>'raw',
             ],
-            'tipo_talla',
+            // 'tipo_talla',
+            [
+                'label' => 'Tallas',
+                'attribute' => 'tipo_talla',
+                'value' => $model->getTalla(),
+            ],
             'gorra',
             'calzado',
         ],
