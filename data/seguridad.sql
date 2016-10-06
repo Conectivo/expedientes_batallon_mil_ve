@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-10-2016 a las 22:09:22
+-- Tiempo de generación: 05-10-2016 a las 23:59:04
 -- Versión del servidor: 5.5.52-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.19
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 -- Base de datos: `expedientes`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `auth_assignment`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_assignment` (
+  `item_name` varchar(64) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`item_name`,`user_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Volcado de datos para la tabla `auth_assignment`
 --
@@ -34,6 +48,27 @@ INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 ('LlenarRegistros', 4, 1475621730),
 ('ModificarRegistros', 4, 1475621730),
 ('ModificarRegistros', 5, 1475621745);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `auth_item`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_item` (
+  `name` varchar(64) NOT NULL,
+  `type` int(11) NOT NULL,
+  `description` text,
+  `rule_name` varchar(64) DEFAULT NULL,
+  `data` text,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  `group_code` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`name`),
+  KEY `rule_name` (`rule_name`),
+  KEY `idx-auth_item-type` (`type`),
+  KEY `fk_auth_item_group_code` (`group_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `auth_item`
@@ -283,6 +318,19 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('viewUsers', 2, 'Ver usuarios', NULL, NULL, 1475551145, 1475553373, 'userManagement'),
 ('viewVisitLog', 2, 'Ver registro de visita', NULL, NULL, 1475551145, 1475553543, 'userManagement');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `auth_item_child`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_item_child` (
+  `parent` varchar(64) NOT NULL,
+  `child` varchar(64) NOT NULL,
+  PRIMARY KEY (`parent`,`child`),
+  KEY `child` (`child`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Volcado de datos para la tabla `auth_item_child`
 --
@@ -373,6 +421,20 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('deleteUsers', 'viewUsers'),
 ('editUsers', 'viewUsers');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `auth_item_group`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_item_group` (
+  `code` varchar(64) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Volcado de datos para la tabla `auth_item_group`
 --
@@ -384,6 +446,32 @@ INSERT INTO `auth_item_group` (`code`, `name`, `created_at`, `updated_at`) VALUE
 ('administracionUnidadBatallon', 'Unidad de Batallón', 1475554333, 1475554333),
 ('userCommonPermissions', 'Permiso común de usuario', 1475551146, 1475553057),
 ('userManagement', 'Administración de Usuario', 1475551145, 1475553075);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `auth_rule`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_rule` (
+  `name` varchar(64) NOT NULL,
+  `data` text,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `migration`
+--
+
+CREATE TABLE IF NOT EXISTS `migration` (
+  `version` varchar(180) COLLATE utf8_spanish_ci NOT NULL,
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `migration`
@@ -402,21 +490,28 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m141201_220516_add_email_and_email_confirmed_to_user', 1475551145),
 ('m141207_001649_create_basic_user_permissions', 1475551146);
 
---
--- Volcado de datos para la tabla `oficiales`
---
-
-INSERT INTO `oficiales` (`id`, `jquia`, `nombres`, `apellido`, `cedula`, `situacion`, `email`, `arma`, `cargo`, `direccion`, `telefono`, `direccion_emergencia`, `telefonos_emergencia`) VALUES
-(1, 1, 'Jose David', 'Monsalve Maldonado', 14825496, '3', 'josemonsalve@hotmail.com', 'Sable', 'Cmdte del 208 BALOG', 'AV Libertador San cristobal Tachira', '414-852-3698', 'Prolongacion de la 5ta avenida casa s/n ', '426-722-0384'),
-(2, 2, 'Diego Luis', 'Caballero Garcia', 14522906, '1', 'diegolcaballerog@gmail.com', 'Artilleria', 'My del 208 BALOG', 'Urb. Urdaneta, Vereda 9, Casa 5, Sector Sabaneta', '414-852-3698', 'Av. Sabaneta, Calle 9, Casa 5-1', '426-722-0384');
+-- --------------------------------------------------------
 
 --
--- Volcado de datos para la tabla `persona`
+-- Estructura de tabla para la tabla `user`
 --
 
-INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `lugar_nacimiento`, `fecha_nacimiento`, `direccion`, `sector`, `telefono_movil`, `religion`, `estado_civil`, `modalidad`, `unidad_id`) VALUES
-(23828517, 'Ninoska Desiree', 'Corredor Rodriguez', 4, '1994-12-02', 'Rubio, Estado Tachira', 'Santa Barbara, cerca de la Bomba de Gasolina Tu suerte', '416-886-8656', 1, 'C', 'P', 2),
-(25498875, 'Liz Carol ', 'Garcia Dominguez', 4, '1996-11-10', 'San Cristobal, Estado Tachira', 'Santa Barbara', '416-886-8653', 1, 'S', 'P', 1);
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `auth_key` varchar(32) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `confirmation_token` varchar(255) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `superadmin` smallint(6) DEFAULT '0',
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `registration_ip` varchar(15) DEFAULT NULL,
+  `bind_to_ip` varchar(255) DEFAULT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `email_confirmed` smallint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -428,6 +523,26 @@ INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `confirmation
 (3, 'oficiales', 'SlJV4okzbass_HHDf188J1HKi6dHy79T', '$2y$13$XKEufxrxAPBpHyf/nXyKwO7N.UluXnwaO3R4IbUwTomXGbX9ItoEG', NULL, 1, 0, 1475552874, 1475552874, '127.0.0.1', '', '', 0),
 (4, 'jefe_seccion', 'TtnmiAcOIWhznOhvqVlsh99I65Hq-cbF', '$2y$13$Yo0StOGcHVot1xdM7oQ9W.9Gx1LyNRfP6PZg9..CdEyrNeU.9PhXa', NULL, 1, 0, 1475552890, 1475552890, '127.0.0.1', '', '', 0),
 (5, 'comandante_unidad', 'RFy7AUgSrMGdlLIAQHPKkrcg3AmWSUL8', '$2y$13$Iqy36wRnJAaILg36Hw.mPudtjWuSoJtPpaz8zzml3Pr3g/n4mJOV6', NULL, 1, 0, 1475552903, 1475621636, '127.0.0.1', '', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user_visit_log`
+--
+
+CREATE TABLE IF NOT EXISTS `user_visit_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(255) NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  `language` char(2) NOT NULL,
+  `user_agent` varchar(255) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `visit_time` int(11) NOT NULL,
+  `browser` varchar(30) DEFAULT NULL,
+  `os` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Volcado de datos para la tabla `user_visit_log`
@@ -455,7 +570,39 @@ INSERT INTO `user_visit_log` (`id`, `token`, `ip`, `language`, `user_agent`, `us
 (19, '57f429a910146', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475619241, 'Chrome', 'Linux'),
 (20, '57f433c6938ab', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 3, 1475621830, 'Chrome', 'Linux'),
 (21, '57f5af577600e', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475718999, 'Chrome', 'Linux'),
-(22, '57f5aff41d794', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475719156, 'Chrome', 'Linux');
+(22, '57f5aff41d794', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475719156, 'Chrome', 'Linux'),
+(23, '57f5cb52d2aca', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475726162, 'Chrome', 'Linux');
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `auth_assignment`
+--
+ALTER TABLE `auth_assignment`
+  ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `auth_assignment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `auth_item`
+--
+ALTER TABLE `auth_item`
+  ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_auth_item_group_code` FOREIGN KEY (`group_code`) REFERENCES `auth_item_group` (`code`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `auth_item_child`
+--
+ALTER TABLE `auth_item_child`
+  ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `user_visit_log`
+--
+ALTER TABLE `user_visit_log`
+  ADD CONSTRAINT `user_visit_log_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
