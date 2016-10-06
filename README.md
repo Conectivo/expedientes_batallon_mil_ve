@@ -94,6 +94,20 @@ directamente en la raíz Web.
 http://localhost/tesis/sistema/web/
 ~~~
 
+### Crear Base de datos
+
+Yii no va a crear la base de datos para usted, esto tiene que hacerse manualmente antes de poder acceder a él.
+
+1) Entonces cree en su servidor de MySQL la Base de datos con el nombre `expedientes`.
+
+2) Cree la estructura de la base de datos `expedientes`. En el directorio `data/` hay tres (03) archivos SQL,
+los cuales se debe cargar en la base de datos `expedientes` en el siguiente orden:
+
+   A- `data/venezuela.sql`, contiene la estructura e información de estados, municipios, parroquias y ciudades de Venezuela.
+
+   B- `data/expedientes.sql`, contiene la estructura de este sistema en si mismo.
+
+   C- `data/datos.sql`, contiene la estructura e información de usuarios, grupos de permisos y roles de este sistema en si mismo.
 
 ## CONFIGURACIÓN
 
