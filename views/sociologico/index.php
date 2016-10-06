@@ -41,19 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Grado de instrucción',
                 'attribute' => 'grado',
                 'value' => function ($model){
-                                if ($model->grado == 'IP') {
-                                    return $model->getTextoGrado();
-                                } elseif ($model->grado == 'PB') {
-                                    return $model->getTextoGrado();
-                                } elseif ($model->grado == 'MSG') {
-                                    return $model->getTextoGrado();
-                                } elseif ($model->grado == 'MST') {
-                                    return $model->getTextoGrado();
-                                } elseif ($model->grado == 'UPR') {
-                                    return $model->getTextoGrado();
-                                } else {
-                                    return $model->getTextoGrado();
-                                }
+                                return $model->getGrado();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'grado',
                                     $searchModel->getOpcionesGrado(),
@@ -66,11 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => '¿Posee Vivienda?',
                 'attribute' => 'vivienda',
                 'value' => function ($model){
-                                if ($model->vivienda == 'S') {
-                                    return $model->getTextoVivienda();
-                                } else {
-                                    return $model->getTextoVivienda();
-                                }
+                                return $model->getVivienda();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'vivienda',
                                     $searchModel->getOpcionesVivienda(),

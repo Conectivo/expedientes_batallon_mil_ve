@@ -199,6 +199,54 @@ class Sociologico extends \yii\db\ActiveRecord
     }
 
     /**
+     * Retorna la descripcion del campo [[grado]] para ser mostrado en las vistas
+     *
+     * @return array
+     */
+    public function getGrado()
+    {
+        if ($this->grado=='IP') {
+            return $this->getTextoGrado();
+        }
+
+        if ($this->grado=='PB') {
+            return $this->getTextoGrado();
+        }
+
+        if ($this->grado=='MSG') {
+            return $this->getTextoGrado();
+        }
+
+        if ($this->grado=='MST') {
+            return $this->getTextoGrado();
+        }
+
+        if ($this->grado=='UPR') {
+            return $this->getTextoGrado();
+        }
+
+        if ($this->grado=='UPO') {
+            return $this->getTextoGrado();
+        }
+    }
+
+    /**
+     * Retorna la descripcion del campo [[vivienda]] para ser mostrado en las vistas
+     *
+     * @return array
+     */
+    public function getVivienda()
+    {
+        if ($this->vivienda=='S') {
+            return $this->getTextoVivienda();
+        }
+
+        if ($this->vivienda=='N') {
+            return $this->getTextoVivienda();
+        }
+    }
+
+    /**
      * Retorna un arreglo usado en la lista desplegable para el campo [[grado]]
      *
      * @return array
