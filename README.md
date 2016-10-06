@@ -103,11 +103,11 @@ Yii no va a crear la base de datos para usted, esto tiene que hacerse manualment
 2.- Cree la estructura de la base de datos `expedientes`. En el directorio `data/` hay tres (03) archivos SQL,
 los cuales se debe cargar en la base de datos `expedientes` en el siguiente orden:
 
-    a) `data/venezuela.sql`, contiene la estructura e información de estados, municipios, parroquias y ciudades de Venezuela.
+  2.1) `venezuela.sql`, contiene la estructura e información de estados, municipios, parroquias y ciudades de Venezuela.
 
-    b) `data/expedientes.sql`, contiene la estructura de este sistema en si mismo.
+  2.2) `expedientes.sql`, contiene la estructura de este sistema en si mismo.
 
-    c) `data/datos.sql`, contiene la estructura e información de usuarios, grupos de permisos y roles de este sistema en si mismo.
+  2.3) `datos.sql`, contiene la estructura e información de usuarios, grupos de permisos y roles de este sistema en si mismo.
 
 ## CONFIGURACIÓN
 
