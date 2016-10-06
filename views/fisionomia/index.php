@@ -42,20 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Color Cabello',
                 'attribute' => 'color_cabello',
                 'value' => function ($model){
-                // ['N'=>'Negro','C'=>'Castaño','R'=>'Rubio (Castaño claro)','P'=>'Pelirrojo (Rojo anaranjado)','G'=>'Gris','B'=>'Blanco'],
-                                if ($model->color_cabello == 'N') {
-                                    return $model->getTextoColorCabello();
-                                } elseif ($model->color_cabello == 'C') {
-                                    return $model->getTextoColorCabello();
-                                } elseif ($model->color_cabello == 'R') {
-                                    return $model->getTextoColorCabello();
-                                } elseif ($model->color_cabello == 'P') {
-                                    return $model->getTextoColorCabello();
-                                } elseif ($model->color_cabello == 'G') {
-                                    return $model->getTextoColorCabello();
-                                } else {
-                                    return $model->getTextoColorCabello();
-                                }
+                                return $model->getColorCabello();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'color_cabello',
                                     $searchModel->getOpcionesColorCabello(),
@@ -67,19 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Color Ojos',
                 'attribute' => 'color_ojos',
                 'value' => function ($model){
-                                if ($model->color_ojos == 1) {
-                                    return $model->getTextoColorOjos();
-                                } elseif ($model->color_ojos == 2) {
-                                    return $model->getTextoColorOjos();
-                                } elseif ($model->color_ojos == 3) {
-                                    return $model->getTextoColorOjos();
-                                } elseif ($model->color_ojos == 4) {
-                                    return $model->getTextoColorOjos();
-                                } elseif ($model->color_ojos == 5) {
-                                    return $model->getTextoColorOjos();
-                                } else {
-                                    return $model->getTextoColorOjos();
-                                }
+                                return $model->getColorOjos();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'color_ojos',
                                     $searchModel->getOpcionesColorOjos(),
@@ -92,11 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Cond. Física',
                 'attribute' => 'condicion_fisica',
                 'value' => function ($model){
-                                if ($model->condicion_fisica == 'A') {
-                                    return $model->getTextoCondicionF();
-                                } else {
-                                    return $model->getTextoCondicionF();
-                                }
+                                return $model->getCondicionF();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'condicion_fisica',
                                     $searchModel->getOpcionesCondicion(),
@@ -108,11 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Cond. Intelectual',
                 'attribute' => 'condicion_intelectual',
                 'value' => function ($model){
-                                if ($model->condicion_fisica == 'A') {
-                                    return $model->getTextoCondicionF();
-                                } else {
-                                    return $model->getTextoCondicionF();
-                                }
+                                return $model->getCondicionI();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'condicion_intelectual',
                                     $searchModel->getOpcionesCondicion(),
@@ -126,11 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Tipo Sangre',
                 'attribute' => 'grupo_sanguineo',
                 'value' => function ($model){
-                                if ($model->grupo_sanguineo == 'C') {
-                                    return $model->getTextoGrupoSangre();
-                                } else {
-                                    return $model->getTextoGrupoSangre();
-                                }
+                                return $model->getGrupoSangre();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'grupo_sanguineo',
                                     $searchModel->getOpcionesGrupoSangre(),

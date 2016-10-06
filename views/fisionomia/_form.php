@@ -33,11 +33,13 @@ use app\models\Persona;
     <?= $form->field($model, 'color_piel')->textInput(['maxlength' => true]) ?>
 
     <?php // $form->field($model, 'color_cabello')->textInput(['maxlength' => true]) ?>
+    <?php /* $form->field($model, 'color_cabello')->dropDownList(
+        ['N'=>'Negro', 'C'=>'Castaño', 'R'=>'Rubio (Castaño claro)',
+         'P'=>'Pelirrojo (Rojo anaranjado)', 'G'=>'Gris', 'B'=>'Blanco'],
+        ['prompt'=>'Por favor, seleccioné una opción',]
+    )->label('Color de Cabello'); */ ?>
     <?= $form->field($model, 'color_cabello')->dropDownList(
-        [
-            'N'=>'Negro', 'C'=>'Castaño', 'R'=>'Rubio (Castaño claro)',
-            'P'=>'Pelirrojo (Rojo anaranjado)', 'G'=>'Gris', 'B'=>'Blanco'
-        ],
+        $model->getOpcionesColorCabello(),
         ['prompt'=>'Por favor, seleccioné una opción',]
     )->label('Color de Cabello'); ?>
 

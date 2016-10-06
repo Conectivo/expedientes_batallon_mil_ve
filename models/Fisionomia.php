@@ -120,6 +120,134 @@ class Fisionomia extends \yii\db\ActiveRecord
     }
 
     /**
+     * Retorna la descripcion del campo [[color_cabello]] para ser mostrado en las vistas
+     *
+     * @return array
+     */
+    public function getColorCabello()
+    {
+        if ($this->color_cabello=='N') {
+            return $this->getTextoColorCabello();
+        }
+
+        if ($this->color_cabello=='C') {
+            return $this->getTextoColorCabello();
+        }
+
+        if ($this->color_cabello=='R') {
+            return $this->getTextoColorCabello();
+        }
+
+        if ($this->color_cabello=='P') {
+            return $this->getTextoColorCabello();
+        }
+
+        if ($this->color_cabello=='G') {
+            return $this->getTextoColorCabello();
+        }
+
+        if ($this->color_cabello=='B') {
+            return $this->getTextoColorCabello();
+        }
+    }
+
+    /**
+     * Retorna la descripcion del campo [[color_ojos]] para ser mostrado en las vistas
+     *
+     * @return array
+     */
+    public function getColorOjos()
+    {
+        if ($this->color_ojos==1) {
+            return $this->getTextoColorOjos();
+        }
+
+        if ($this->color_ojos==2) {
+            return $this->getTextoColorOjos();
+        }
+
+        if ($this->color_ojos==3) {
+            return $this->getTextoColorOjos();
+        }
+
+        if ($this->color_ojos==4) {
+            return $this->getTextoColorOjos();
+        }
+
+        if ($this->color_ojos==5) {
+            return $this->getTextoColorOjos();
+        }
+
+        if ($this->color_ojos==6) {
+            return $this->getTextoColorOjos();
+        }
+    }
+
+    /**
+     * Retorna la descripcion del campo [[condicion_fisica]] para ser mostrado en las vistas
+     *
+     * @return array
+     */
+    public function getCondicionF()
+    {
+        if ($this->condicion_fisica=='A') {
+            return $this->getTextoCondicionF();
+        }
+
+        if ($this->condicion_fisica=='N') {
+            return $this->getTextoCondicionF();
+        }
+    }
+
+    /**
+     * Retorna la descripcion del campo [[condicion_intelectual]] para ser mostrado en las vistas
+     *
+     * @return array
+     */
+    public function getCondicionI()
+    {
+        if ($this->condicion_intelectual=='A') {
+            return $this->getTextoCondicionI();
+        }
+
+        if ($this->condicion_intelectual=='N') {
+            return $this->getTextoCondicionI();
+        }
+    }
+
+    /**
+     * Retorna la descripcion del campo [[grupo_sanguineo]] para ser mostrado en las vistas
+     *
+     * @return array
+     */
+    public function getGrupoSangre()
+    {
+        if ($this->grupo_sanguineo==1) {
+            return $this->getTextoGrupoSangre();
+        }
+
+        if ($this->grupo_sanguineo==2) {
+            return $this->getTextoGrupoSangre();
+        }
+
+        if ($this->grupo_sanguineo==3) {
+            return $this->getTextoGrupoSangre();
+        }
+
+        if ($this->grupo_sanguineo==4) {
+            return $this->getTextoGrupoSangre();
+        }
+
+        if ($this->grupo_sanguineo==5) {
+            return $this->getTextoGrupoSangre();
+        }
+
+        if ($this->grupo_sanguineo==6) {
+            return $this->getTextoGrupoSangre();
+        }
+    }
+
+    /**
      * Retorna un arreglo usado en la lista desplegable para el campo [[color_cabello]]
      *
      * @return array

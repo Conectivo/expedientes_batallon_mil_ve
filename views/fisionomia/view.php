@@ -48,13 +48,13 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'color_cabello',
                 'label' => 'Color de Cabello',
-                'value' => $model->getTextoColorCabello(),
+                'value' => $model->getColorCabello(),
             ],
             // 'color_ojos',
             [
                 'attribute' => 'color_ojos',
                 'label' => 'Color de Ojos',
-                'value' => $model->getTextoColorOjos(),
+                'value' => $model->getColorOjos(),
             ],
             // 'contextura',
             [
@@ -65,13 +65,13 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'condicion_fisica',
                 'label' => 'Condición Física',
-                'value' => $model->getTextoCondicionF(),
+                'value' => $model->getCondicionF(),
             ],
             // 'condicion_intelectual',
             [
                 'attribute' => 'condicion_intelectual',
                 'label' => 'Condición Intelectual',
-                'value' => $model->getTextoCondicionI(),
+                'value' => $model->getCondicionI(),
             ],
             // 'estatura',
             [
@@ -89,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'grupo_sanguineo',
                 'label' => 'Grupo Sanguíneo',
-                'value' => $model->getTextoGrupoSangre(),
+                'value' => $model->getGrupoSangre(),
             ],
             // 'senales_particulares',
             [
