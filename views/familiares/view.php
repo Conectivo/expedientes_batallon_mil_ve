@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'sit_padres',
                 'label' => 'Situación de los Padres',
-                'value' => $model->getTextoEstatico(),
+                'value' => $model->getSitPadres(),
             ],
         ],
     ]) ?>

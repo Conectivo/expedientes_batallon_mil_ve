@@ -73,6 +73,22 @@ class Familiares extends \yii\db\ActiveRecord
     }
 
     /**
+     * Retorna la descripcion del campo [[sit_padres]] para ser mostrado en las vistas
+     *
+     * @return array
+     */
+    public function getSitPadres()
+    {
+        if ($this->sit_padres=='V') {
+            return $this->getTextoSitPadres();
+        }
+
+        if ($this->sit_padres=='M') {
+            return $this->getTextoSitPadres();
+        }
+    }
+
+    /**
      * Retorna un arreglo usado en la lista desplegable para el campo [[sit_padres]]
      *
      * @return array
@@ -93,7 +109,7 @@ class Familiares extends \yii\db\ActiveRecord
      * 
      * @return string la propiedad [[sit_padres]] como una cadena de texto para su visualizacion.
      */
-    public function getTextoEstatico()
+    public function getTextoSitPadres()
     {
         $options = $this->getOpcionesSitPadres();
         return isset($options[$this->sit_padres]) ? $options[$this->sit_padres] : '';

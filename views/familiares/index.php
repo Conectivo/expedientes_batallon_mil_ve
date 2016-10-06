@@ -46,11 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'options' => ['width' => '10%'],
                 'attribute' => 'sit_padres',
                 'value' => function ($model){
-                                if ($model->sit_padres == 'V') {
-                                    return $model->getTextoEstatico();
-                                } else {
-                                    return $model->getTextoEstatico();
-                                }
+                                return $model->getSitPadres();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'sit_padres',
                                     $searchModel->getOpcionesSitPadres(),
