@@ -17,13 +17,18 @@ Este proyecto usa las siguientes tecnologías:
 Plantilla de Proyecto Basic de Yii 2 es la mejor plantilla de proyecto [Yii 2](http://www.yiiframework.com/)
 para rápidamente iniciar la creación de proyectos pequeños.
 
-La plantilla contiene las características básicas que incluyen un usuario para inicio de sesión / cierre de sesión y una página de contacto.
+La plantilla contiene las características básicas que incluyen:
+
+* Un (01) usuario para inicio de sesión / cierre de sesión
+
+* Una (01) página de contacto.
+
 Incluye todas las configuraciones de uso común que permitirían que se concentre en la adición de nuevos
 características a su aplicación.
 
-[![La última versión estable](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Número total de descargas](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Estado de creación](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
+[![Ultima versión estable](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![Total de descargas](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![Estatus de construcción](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
 
 ## ESTRUCTURA DE DIRECTORIOS
 
