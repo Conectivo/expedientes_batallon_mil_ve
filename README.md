@@ -1,102 +1,111 @@
-Yii 2 Basic Project Template
-============================
+# Sistema de Expedientes de Militares
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+Este es el repositorio del código para el sistema de Expedientes del Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada "Juan Antonio Paredes".
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
+## Tecnologías usadas
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
+Este proyecto usa las siguientes tecnologías: 
 
-DIRECTORY STRUCTURE
--------------------
+* Yii2 Framework para el desarrollo.
 
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+* Lenguaje de programación PHP.
+
+* Base de datos MySQL.
+
+## Plantilla de Proyecto Basic de Yii 2
+
+Plantilla de Proyecto Basic de Yii 2 es la mejor plantilla de proyecto [Yii 2](http://www.yiiframework.com/)
+para rápidamente iniciar la creación de proyectos pequeños.
+
+La plantilla contiene las características básicas que incluyen un usuario para inicio de sesión / cierre de sesión y una página de contacto.
+Incluye todas las configuraciones de uso común que permitirían que se concentre en la adición de nuevos
+características a su aplicación.
+
+[![La última versión estable](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![Número total de descargas](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![Estado de creación](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
+
+## ESTRUCTURA DE DIRECTORIOS
+
+      assets/             contiene la definición activos (css, js)
+      commands/           contiene comandos de consola (controladores)
+      config/             contiene las configuraciones de la aplicación
+      controllers/        contiene clases de controlador Web
+      mail/               contiene archivos de vista de mensajes de correo electrónico
+      models/             contiene las clases del modelo
+      runtime/            contiene los archivos generados durante el tiempo de ejecución
+      tests/              contiene varias pruebas para la aplicación básica
+      vendor/             contiene los paquetes de terceros que son dependencias
+      views/              contiene archivos de vista de la aplicación Web
+      web/                contiene el script index.php y recursos Web
 
 
 
-REQUIREMENTS
-------------
+## REQUERIMIENTOS
 
-The minimum requirement by this project template that your Web server supports PHP 5.4.0.
+El requisito mínimo por esta plantilla de proyecto de que el servidor Web es compatible con PHP 5.4.0.
 
 
-INSTALLATION
-------------
+## INSTALACIÓN
 
-### Install from an Archive File
+### Instalar a partir de un archivo comprimido
 
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
+Extraer el archivo comprimido descargado de [yiiframework.com](http://www.yiiframework.com/download/) a
+un directorio llamado `basic` que está directamente bajo la raíz Web.
 
-Set cookie validation key in `config/web.php` file to some random secret string:
+Establecer clave de validación de la cookie en el archivo `config/web.php` a alguna cadena secreta al azar:
 
 ```php
 'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+    // !!! insertar una clave secreta en la siguiente (si está vacío) - esto es requerido por la validación de la cookie
     'cookieValidationKey' => '<secret random string goes here>',
 ],
 ```
 
-You can then access the application through the following URL:
+A continuación, puede acceder a la aplicación a través de la siguiente URL:
 
 ~~~
 http://localhost/basic/web/
 ~~~
 
 
-### Install via Composer
+### Instalar vía Composer
 
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
+Si usted no tiene [Composer](http://getcomposer.org/), es posible instalarlo siguiendo las instrucciones
+en [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 
-You can then install this project template using the following command:
+A continuación, puede instalar esta plantilla de proyecto mediante el comando siguiente:
 
 ~~~
 php composer.phar global require "fxp/composer-asset-plugin:~1.1.1"
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
+php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic sistema
 ~~~
 
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
+Ahora usted debería ser capaz de acceder a la aplicación a través de la siguiente URL, suponiendo `sistema` es el directorio
+directamente en la raíz Web.
 
 ~~~
-http://localhost/basic/web/
+http://localhost/tesis/sistema/web/
 ~~~
 
 
-CONFIGURATION
--------------
+## CONFIGURACIÓN
 
-### Database
+### Base de datos
 
-Edit the file `config/db.php` with real data, for example:
+Editar el archivo `config/db.php` con datos reales, por ejemplo:
 
 ```php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+    'dsn' => 'mysql:host=localhost;dbname=expedientes',
     'username' => 'root',
-    'password' => '1234',
+    'password' => 'CLAVE_SI_APLICA',
     'charset' => 'utf8',
 ];
 ```
 
-**NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
+**NOTAS:**
+- Yii no va a crear la base de datos para usted, esto tiene que hacerse manualmente antes de poder acceder a él.
+- Comprobar y editar los otros archivos en el directorio `config/` para personalizar su aplicación según sea necesario.
+- Consulte el README en el directorio `tests` para obtener información específica para pruebas básicas de aplicación.
