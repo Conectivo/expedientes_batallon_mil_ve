@@ -30,6 +30,7 @@ características a su aplicación.
       assets/             contiene la definición activos (css, js)
       commands/           contiene comandos de consola (controladores)
       config/             contiene las configuraciones de la aplicación
+      data/               contiene loas archivos SQL para la base de datos MySQL
       controllers/        contiene clases de controlador Web
       mail/               contiene archivos de vista de mensajes de correo electrónico
       models/             contiene las clases del modelo
