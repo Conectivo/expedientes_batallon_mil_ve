@@ -107,7 +107,7 @@ los cuales se debe cargar en la base de datos `expedientes` en el siguiente orde
 
   2.2) `expedientes.sql`, contiene la estructura de este sistema en si mismo.
 
-  2.3) `datos.sql`, contiene la estructura e información de usuarios, grupos de permisos y roles de este sistema en si mismo.
+  2.3) `seguridad.sql`, contiene la estructura e información de usuarios, grupos de permisos y roles de este sistema en si mismo.
 
 ## CONFIGURACIÓN
 
