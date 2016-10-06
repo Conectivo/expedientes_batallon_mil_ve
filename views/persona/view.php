@@ -1,0 +1,102 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Persona */
+
+$this->title = $model->fullName;
+$this->params['breadcrumbs'][] = ['label' => 'Personal', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="persona-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Actualizar', ['update', 'id' => $model->cedula], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->cedula], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => '¿Está seguro que desea eliminar este elemento?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            // 'cedula',
+            [
+                'attribute' => 'cedula',
+                'label' => 'Cédula',
+            ],
+            // 'nombres',
+            // 'apellidos',
+            [
+                'attribute' => 'fullName',
+                'label' => 'Nombre completo',
+                'value' => $model->fullName,
+            ],
+            // 'lugar_nacimiento',
+            [
+                'attribute' => 'lugar_nacimiento',
+                'label' => 'Lugar de Nacimiento',
+            ],
+            // 'fecha_nacimiento',
+            [
+                'attribute' => 'fecha_nacimiento',
+                'label' => 'Fecha de Nacimiento',
+                // 'format' => ['date', 'php:l, F d, Y']                
+                'format' => ['date', 'php:d-m-Y']
+            ],
+            // 'direccion',
+            [
+                'attribute' => 'direccion',
+                'label' => 'Dirección',
+            ],
+            // 'sector',
+            [
+                'attribute' => 'sector',
+                'label' => 'Sector',
+            ],
+            // 'telefono_movil',
+            [
+                'attribute' => 'telefono_movil',
+                'label' => 'Teléfono Celular',
+            ],
+            // 'religion',
+            [
+                'attribute' => 'religion',
+                'label' => 'Religión',
+                'value' => $model->getReligion(),
+            ],
+            // 'estado_civil',
+            [
+                'attribute' => 'estado_civil',
+                'label' => 'Estado Civil',
+                'value' => $model->getEdoCivil(),
+            ],
+            // 'modalidad',
+            [
+                'attribute' => 'modalidad',
+                'label' => 'Modalidad',
+                'value' => $model->getModalidad(),
+            ],
+            // 'unidad_id',
+            [
+                'attribute' => 'unidad_id',
+                'label' => 'Unidad de Batallón',
+                'value' => Html::a($model->unidad_id,
+                        // http://127.0.0.1/unidad/view?id=1
+                        ['unidad/view','id'=>$model->unidad_id],
+                        ['title'=>'Ver Datos del Unidad de Batallón' ]
+                ),
+                'format'=>'raw',
+            ],
+        ],
+    ]) ?>
+
+</div>

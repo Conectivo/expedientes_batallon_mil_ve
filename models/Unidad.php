@@ -1,0 +1,61 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "unidades".
+ *
+ * @property integer $id
+ * @property string $unidad
+ * @property string $fecha_ingreso
+ *
+ * @property Persona[] $personas
+ */
+class Unidad extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'unidades';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [
+                ['unidad', 'fecha_ingreso'], 'required',
+                'message' => 'Este campo es requerido. Por favor, ingrese un valor.'
+            ],
+            [['fecha_ingreso'], 'safe'],
+            [['unidad'], 'string', 'max' => 50],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            // 'id' => 'ID',
+            'unidad' => 'Nombre de Unidad',
+            'fecha_ingreso' => 'Fecha de Ingreso',
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPersonas()
+    {
+        return $this->hasMany(Persona::className(), ['unidad_id' => 'id']);
+    }
+
+}
