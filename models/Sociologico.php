@@ -231,6 +231,480 @@ class Sociologico extends \yii\db\ActiveRecord
     }
 
     /**
+     * Retorna la descripcion del campo [[profesion]] para ser mostrado en las vistas
+     *
+     * @return array
+     */
+    public function getProfesion()
+    {
+        // TODO evualuar usar funcion de rango de PHP para simplicar este codigo
+        // Fuente http://php.net/manual/es/function.range.php
+        if ($this->profesion==1) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==2) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==3) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==4) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==5) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==6) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==7) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==8) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==9) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==10) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==11) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==12) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==13) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==14) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==15) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==16) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==17) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==18) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==19) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==20) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==21) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==22) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==23) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==24) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==25) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==26) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==27) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==28) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==29) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==30) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==31) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==32) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==33) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==34) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==35) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==36) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==37) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==38) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==39) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==40) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==41) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==42) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==43) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==44) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==45) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==46) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==47) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==48) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==49) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==50) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==51) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==52) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==53) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==54) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==55) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==56) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==57) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==58) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==59) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==60) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==61) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==62) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==63) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==64) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==65) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==66) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==67) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==68) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==69) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==70) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==71) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==72) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==73) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==74) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==75) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==76) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==77) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==78) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==79) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==80) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==81) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==82) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==83) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==84) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==85) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==86) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==87) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==89) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==90) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==91) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==92) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==93) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==94) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==95) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==96) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==97) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==98) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==99) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==100) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==101) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==102) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==103) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==104) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==105) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==106) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==107) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==108) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==109) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==110) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==111) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==112) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==113) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==114) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==115) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==116) {
+            return $this->getTextoProfesion();
+        }
+
+        if ($this->profesion==117) {
+            return $this->getTextoProfesion();
+        }
+    }
+
+    /**
      * Retorna la descripcion del campo [[vivienda]] para ser mostrado en las vistas
      *
      * @return array
@@ -296,7 +770,7 @@ class Sociologico extends \yii\db\ActiveRecord
             self::PROFE_2 => 'Carpintero',
             self::PROFE_3 => 'Plomero o fontanero',
             self::PROFE_4 => 'Electricista',
-            self::PROFE_5 => 'Mec\u00e1nico',
+            self::PROFE_5 => 'Mecánico',
             self::PROFE_6 => 'Herrero',
             self::PROFE_7 => 'Artesano',
             self::PROFE_8 => 'Pintor de obras civiles',
@@ -310,33 +784,33 @@ class Sociologico extends \yii\db\ActiveRecord
             self::PROFE_16 => 'Ingeniero',
             self::PROFE_17 => 'Profesor universitario',
             self::PROFE_18 => 'Corredor de bolsa',
-            self::PROFE_19 => 'M\u00e9dico',
+            self::PROFE_19 => 'Médico',
             self::PROFE_20 => 'Cirujano',
             self::PROFE_21 => 'Enfermera',
             self::PROFE_22 => 'Dentista',
-            self::PROFE_23 => 'Astr\u00f3nomo',
+            self::PROFE_23 => 'Astrónomo',
             self::PROFE_24 => 'Banquero',
-            self::PROFE_25 => 'Bi\u00f3logo',
-            self::PROFE_26 => 'Qu\u00edmico',
+            self::PROFE_25 => 'Biólogo',
+            self::PROFE_26 => 'Químico',
             self::PROFE_27 => 'Consultor',
             self::PROFE_28 => 'Economista',
             self::PROFE_29 => 'Programador',
             self::PROFE_30 => 'Historiador',
             self::PROFE_31 => 'Periodista',
-            self::PROFE_32 => 'Arque\u00f3logo',
+            self::PROFE_32 => 'Arqueólogo',
             self::PROFE_33 => 'Dise\u00f1ador',
             self::PROFE_34 => 'Juez',
-            self::PROFE_35 => 'Matem\u00e1tico',
-            self::PROFE_36 => 'Oftalm\u00f3logo',
+            self::PROFE_35 => 'Matemático',
+            self::PROFE_36 => 'Oftalmólogo',
             self::PROFE_37 => 'Pediatra',
-            self::PROFE_38 => 'Fil\u00f3sofo',
-            self::PROFE_39 => 'F\u00edsico',
+            self::PROFE_38 => 'Filósofo',
+            self::PROFE_39 => 'Físico',
             self::PROFE_40 => 'Psiquiatra',
-            self::PROFE_41 => 'Psic\u00f3logo',
+            self::PROFE_41 => 'Psicólogo',
             self::PROFE_42 => 'Psicoterapeuta',
             self::PROFE_43 => 'Reportero',
             self::PROFE_44 => 'Investigador',
-            self::PROFE_45 => 'Cient\u00edfico',
+            self::PROFE_45 => 'Científico',
             self::PROFE_46 => 'Inspector de impuestos',
             self::PROFE_47 => 'Traductor',
             self::PROFE_48 => 'Escritor',
@@ -346,7 +820,7 @@ class Sociologico extends \yii\db\ActiveRecord
             self::PROFE_52 => 'Carnicero',
             self::PROFE_53 => 'Cajero',
             self::PROFE_54 => 'Detective',
-            self::PROFE_55 => 'Ch\u00f3fer',
+            self::PROFE_55 => 'Chófer',
             self::PROFE_56 => 'Empleado',
             self::PROFE_57 => 'Florista',
             self::PROFE_58 => 'Jardinero',
@@ -359,8 +833,8 @@ class Sociologico extends \yii\db\ActiveRecord
             self::PROFE_65 => 'Soldado',
             self::PROFE_66 => 'Marinero',
             self::PROFE_67 => 'Piloto',
-            self::PROFE_68 => 'Oficial de polic\u00eda',
-            self::PROFE_69 => 'Polic\u00eda',
+            self::PROFE_68 => 'Oficial de policía',
+            self::PROFE_69 => 'Policía',
             self::PROFE_70 => 'Guardia de seguridad',
             self::PROFE_71 => 'Salvavidas',
             self::PROFE_72 => 'Botones de hotel',
@@ -368,19 +842,19 @@ class Sociologico extends \yii\db\ActiveRecord
             self::PROFE_74 => 'Azafata',
             self::PROFE_75 => 'Peluquero',
             self::PROFE_76 => 'Ama de llaves',
-            self::PROFE_77 => 'Gu\u00eda de turistas',
+            self::PROFE_77 => 'Guía de turistas',
             self::PROFE_78 => 'Agente de viajes',
             self::PROFE_79 => 'Mesero',
             self::PROFE_80 => 'Actor',
             self::PROFE_81 => 'Actriz',
             self::PROFE_82 => 'Locutor',
             self::PROFE_83 => 'Artista',
-            self::PROFE_84 => 'Camar\u00f3grafo',
+            self::PROFE_84 => 'Camarógrafo',
             self::PROFE_85 => 'Compositor',
-            self::PROFE_86 => 'Bailar\u00edn',
+            self::PROFE_86 => 'Bailarín',
             self::PROFE_87 => 'Modelo',
-            self::PROFE_88 => 'M\u00fasico',
-            self::PROFE_89 => 'Fot\u00f3grafo',
+            self::PROFE_88 => 'Músico',
+            self::PROFE_89 => 'Fotógrafo',
             self::PROFE_90 => 'Pianista',
             self::PROFE_91 => 'Poeta',
             self::PROFE_92 => 'Editor',
@@ -401,12 +875,12 @@ class Sociologico extends \yii\db\ActiveRecord
             self::PROFE_107 => 'Gerente',
             self::PROFE_108 => 'Recepcionista',
             self::PROFE_109 => 'Telefonista',
-            self::PROFE_110 => 'Astr\u00f3logo',
+            self::PROFE_110 => 'Astrólogo',
             self::PROFE_111 => 'Torero',
             self::PROFE_112 => 'Caricaturista',
             self::PROFE_113 => 'Adivino',
             self::PROFE_114 => 'Monja',
-            self::PROFE_115 => 'Pol\u00edtico',
+            self::PROFE_115 => 'Político',
             self::PROFE_116 => 'Presidente',
             self::PROFE_117 => 'Sacerdote',
         ];

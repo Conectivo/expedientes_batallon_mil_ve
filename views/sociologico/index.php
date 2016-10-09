@@ -48,7 +48,18 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ['class'=>'form-control', 'prompt' => 'Seleccioné una opción']
                             ),
             ],
-            'profesion',
+            // 'profesion',
+            [
+                'header' => 'Grado de instrucción',
+                'attribute' => 'profesion',
+                'value' => function ($model){
+                                return $model->getProfesion();
+                            },
+                'filter' => Html::activeDropDownList($searchModel, 'profesion',
+                                    $searchModel->getOpcionesProfesion(),
+                                    ['class'=>'form-control', 'prompt' => 'Seleccioné una opción']
+                            ),
+            ],
             // 'vivienda',
             [
                 'header' => '¿Posee Vivienda?',

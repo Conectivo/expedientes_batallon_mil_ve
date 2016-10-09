@@ -81,10 +81,10 @@ CREATE TABLE familiares
 
 CREATE TABLE sociologicos
   (
-    cedula_id  INTEGER       unique not null,
-    grado      varchar(20)   not null,
-    profesion  varchar(20)   not null,
-    vivienda   char(1)       not null,
+    cedula_id  INTEGER      unique not null,
+    grado      varchar(4)   not null,
+    profesion  INTEGER      not null,
+    vivienda   char(1)      not null,
 
     primary key(cedula_id),
 

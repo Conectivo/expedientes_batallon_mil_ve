@@ -41,7 +41,11 @@ use app\models\Persona;
         ['prompt'=>'Por favor, seleccioné una opción',]
     )->label('Grado de instrucción'); ?>
 
-    <?= $form->field($model, 'profesion')->textInput(['maxlength' => true]) ?>
+    <?php // $form->field($model, 'profesion')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'profesion')->dropDownList(
+        $model->getOpcionesProfesion(),
+        ['prompt'=>'Por favor, seleccioné una opción',]
+    )->label('Profesión'); ?>
 
     <?php // $form->field($model, 'vivienda')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'vivienda')->dropDownList(
