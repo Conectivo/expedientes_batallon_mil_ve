@@ -10,8 +10,7 @@ $this->title = 'Sistema de expedientes';
         <h1>Cuartel Negro Primero</h1>
         <a href="index.html"
            title='Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada "Juan Antonio Paredes"'>
-            <img id="ejercito" src="images/logo.png"
-                 alt='Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada "Juan Antonio Paredes"' />
+           <?= yii\helpers\Html::img('@web/images/logo.png', ['id'=>'ejercito', 'width'=>'180', 'height'=>'256', 'alt'=>'Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada "Juan Antonio Paredes"']); ?> 
         </a>
         <p class="lead">Sistema de Expedientes del Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada "Juan Antonio Paredes".</p>
 

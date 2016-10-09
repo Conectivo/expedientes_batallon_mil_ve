@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-10-2016 a las 23:59:04
+-- Tiempo de generación: 09-10-2016 a las 14:20:14
 -- Versión del servidor: 5.5.52-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.19
 
@@ -275,7 +275,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('bindUserToIp', 2, 'Casar usuario a IP', NULL, NULL, 1475551145, 1475553526, 'userManagement'),
 ('changeOwnPassword', 2, 'Cambiar propia contraseña', NULL, NULL, 1475551146, 1475553299, 'userCommonPermissions'),
 ('changeUserPassword', 2, 'Cambiar contraseña de usuario', NULL, NULL, 1475551145, 1475553319, 'userManagement'),
-('commonPermission', 2, 'Common permission', NULL, NULL, 1475551143, 1475551143, NULL),
+('commonPermission', 2, 'Permiso común', NULL, NULL, 1475551143, 1476035472, NULL),
 ('ConsultarRegistros', 1, 'Consultar Registros', NULL, NULL, 1475621470, 1475621470, NULL),
 ('createDatosFamiliaresPersonal', 2, 'Crear Datos Familiares de Personal', NULL, NULL, 1475620006, 1475620035, 'administracionPersonal'),
 ('createDatosSociologicosPersonal', 2, 'Crear Datos Sociológicos de Personal', NULL, NULL, 1475620303, 1475620303, 'administracionPersonal'),
@@ -350,6 +350,9 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('viewPersonal', '/persona/index'),
 ('editPersonal', '/persona/update'),
 ('viewPersonal', '/persona/view'),
+('commonPermission', '/site/about'),
+('commonPermission', '/site/contact'),
+('commonPermission', '/site/index'),
 ('createDatosSociologicosPersonal', '/sociologico/create'),
 ('deleteDatosSociologicosPersonal', '/sociologico/delete'),
 ('viewDatosSociologicosPersonal', '/sociologico/index'),
@@ -542,7 +545,7 @@ CREATE TABLE IF NOT EXISTS `user_visit_log` (
   `os` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- Volcado de datos para la tabla `user_visit_log`
@@ -571,7 +574,20 @@ INSERT INTO `user_visit_log` (`id`, `token`, `ip`, `language`, `user_agent`, `us
 (20, '57f433c6938ab', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 3, 1475621830, 'Chrome', 'Linux'),
 (21, '57f5af577600e', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475718999, 'Chrome', 'Linux'),
 (22, '57f5aff41d794', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475719156, 'Chrome', 'Linux'),
-(23, '57f5cb52d2aca', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475726162, 'Chrome', 'Linux');
+(23, '57f5cb52d2aca', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475726162, 'Chrome', 'Linux'),
+(24, '57f5e6a3e213d', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475733155, 'Chrome', 'Linux'),
+(25, '57f5f9994cab9', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1475738009, 'Chrome', 'Linux'),
+(26, '57fa3a3506596', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476016693, 'Chrome', 'Linux'),
+(27, '57fa3a8437821', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476016772, 'Chrome', 'Linux'),
+(28, '57fa3e773dfde', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476017783, 'Chrome', 'Linux'),
+(29, '57fa625ec4fbe', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476026974, 'Chrome', 'Linux'),
+(30, '57fa64b5ca373', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476027573, 'Chrome', 'Linux'),
+(31, '57fa64d71cde7', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476027607, 'Chrome', 'Linux'),
+(32, '57fa650bd1919', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476027659, 'Chrome', 'Linux'),
+(33, '57fa665bf320f', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476027995, 'Chrome', 'Linux'),
+(34, '57fa669b808df', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476028059, 'Chrome', 'Linux'),
+(35, '57fa831d52e53', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476035357, 'Chrome', 'Linux'),
+(36, '57fa836ce2c19', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476035436, 'Chrome', 'Linux');
 
 --
 -- Restricciones para tablas volcadas

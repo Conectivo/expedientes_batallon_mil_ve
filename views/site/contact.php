@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php else: ?>
 
         <p>
-            Atraves de tu mensaje puedes comunicarte con la prestigiosa Unidad 208 BALOG G/B "JUAN ANTONIO PAREDES" o ademas puedes encontrarnos a travez de nuestra ubicacion.
+            A través de tu mensaje puedes comunicarte con la prestigiosa Unidad 208 BALOG G/B "JUAN ANTONIO PAREDES" o además puedes encontrarnos a través de nuestra ubicación.
         </p>
 
         <div class="row">
