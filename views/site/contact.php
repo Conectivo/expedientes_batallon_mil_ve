@@ -17,17 +17,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
         <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
+            Gracias por contactaremos. Nosotros le responderemos lo mas pronto posible.
         </div>
 
         <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
+            Tenga en cuenta que si activa el depurador Yii, usted debe ser capaz de ver 
+            el mensaje de correo electrónico en el panel del depurador.
             <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
+                Debido a que la aplicación se encuentra en el modo de desarrollo, el correo
+                electrónico no se envía, pero guarda como un fichero 
+                <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
+                Por favor configure la propiedad <code>useFileTransport</code> del componente 
+                de aplicación <code>mail</code> a false para habilitar el envío real de email.
             <?php endif; ?>
         </p>
 
@@ -55,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]) ?>
 
                     <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                        <?= Html::submitButton('Enviar', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                     </div>
 
                 <?php ActiveForm::end(); ?>
