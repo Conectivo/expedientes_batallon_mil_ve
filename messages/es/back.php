@@ -17,7 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Confirmation Token' => 'Token de confirmación',
     'Active' => 'Activo',
     'Are you sure you want to delete this user?' => '¿Está seguro que desea eliminar este usuario?',
     'Banned' => 'Bloqueado',
@@ -26,10 +25,11 @@ return [
     'Change own password' => 'Cambiar propia contraseña',
     'Change password' => 'Cambiar contraseña de usuario',
     'Changing password' => 'Cambiando contraseña',
-    'Changing password for user: ' => 'Cambiando contraseña para usuario:',
+    'Changing password for user: ' => 'Cambiando contraseña para usuario: ',
     'Child permissions' => 'Permisos hijos',
     'Child roles' => 'Roles hijos',
     'Code' => 'Código',
+    'Confirmation Token' => 'Token de confirmación',
     'Create' => 'Crear',
     'Created' => 'Creado',
     'Creating permission group' => 'Creación de grupo de permisos',
@@ -48,7 +48,9 @@ return [
     'Editing user: ' => 'Editando usuario:',
     'For example: 123.34.56.78, 168.111.192.12' => 'Por ejemplo: 123.34.56.78, 168.111.192.12',
     'Group' => 'Grupo',
+    'ID' => 'Id',
     'Inactive' => 'Inactivo',
+    'IP' => 'IP',
     'Language' => 'Idioma',
     'Login' => 'Inicio de sesión',
     'Name' => 'Nombre',
@@ -79,6 +81,7 @@ return [
     'Show only selected' => 'Mostrar solo seleccionados',
     'Status' => 'Estatus',
     'Superadmin' => 'Super admin',
+    'Token' => 'Código Token',
     'Too many attempts' => 'Demasiados intentos',
     'Type' => 'Tipo',
     'Updated' => 'Actualizado',

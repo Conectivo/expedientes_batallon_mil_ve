@@ -33,6 +33,7 @@ return [
     'Dec' => 'Dec',
     'Delete' => 'Eliminar',
     'Delete elements?' => '¿Eliminar elementos?',
+    'Editing' => 'Editando',
     'FROM' => 'DESDE',
     'Feb' => 'Feb',
     'Fr' => 'Vie',
@@ -56,5 +57,5 @@ return [
     'Tu' => 'Ma',
     'We' => 'Mi',
     'Yesterday' => 'Ayer',
-    'Editing' => 'Editando',
+    'You have {n, plural, =1{# pet} other{# pets}}' => '',
 ];
