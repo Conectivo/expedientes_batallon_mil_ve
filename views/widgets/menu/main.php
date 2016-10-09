@@ -43,7 +43,7 @@ use webvimark\modules\UserManagement\UserManagementModule;
 
     $menuItems = [
         // Enlace del Menú Inicio
-        ['label' => 'Inicio', 'url' => ['/site/index']],
+        ['label' => 'Inicio', 'url' => ['/index.html']],
         // ['label' => 'Inicio', 'url' => ['/site/index.html']],
     ];
 
