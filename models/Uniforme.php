@@ -49,7 +49,14 @@ class Uniforme extends \yii\db\ActiveRecord
             [['cedula_id', 'gorra', 'calzado'], 'integer'],
             [['tipo_talla'], 'string', 'max' => 4],
             [['cedula_id'], 'unique'],
-            [['cedula_id'], 'exist', 'skipOnError' => true, 'targetClass' => Persona::className(), 'targetAttribute' => ['cedula_id' => 'cedula']],
+            // [
+            //     ['gorra', 'calzado'], 'match', 'pattern' => '/(\d)/',
+            //     'message' => 'Este campo es requerido. Por favor, ingrese un formato numérico, ej. 40 o 6.'
+            // ],
+            [
+                ['cedula_id'], 'exist', 'skipOnError' => true,
+                'targetClass' => Persona::className(), 'targetAttribute' => ['cedula_id' => 'cedula']
+            ],
         ];
     }
 

@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'tipo_talla',
                                     $searchModel->getOpcionesTallas(),
-                                    ['class'=>'form-control', 'prompt' => 'Para filtrar, seleccioné una opción']
+                                    ['class'=>'form-control', 'prompt' => 'Seleccioné una opción']
                             ),
             ],
             'gorra',
