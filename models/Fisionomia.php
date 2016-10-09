@@ -81,13 +81,26 @@ class Fisionomia extends \yii\db\ActiveRecord
             [['cedula_id', 'color_cabello', 'color_ojos', 'condicion_fisica', 'condicion_intelectual', 'grupo_sanguineo'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
             [['cedula_id', 'grupo_sanguineo', 'color_ojos'], 'integer'],
             // [['estatura'], 'safe'],
-            [['estatura'], 'number', 'message' => 'Por favor, ingrese un formato numérico, ej. formato de estatura, como 1.75.'],
-            [['peso'], 'number', 'message' => 'Por favor, ingrese un formato numérico, ej. formato de peso, como 65 o 120.93.'],
+            [
+                ['estatura'], 'number',
+                'message' => 'Por favor, ingrese un formato numérico, ej. formato de estatura, como 1.75.'
+            ],
+            [
+                ['peso'], 'number',
+                'message' => 'Por favor, ingrese un formato numérico, ej. formato de peso, como 65 o 120.93.'
+            ],
+            [
+                ['color_piel', 'contextura', 'senales_particulares'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese solo letras en minúsculas o en capitales.'
+            ],
             [['color_piel', 'contextura'], 'string', 'max' => 20],
             [['senales_particulares'], 'string', 'max' => 50],
             [['color_cabello', 'condicion_fisica', 'condicion_intelectual'], 'string', 'max' => 1],
             [['cedula_id'], 'unique'],
-            [['cedula_id'], 'exist', 'skipOnError' => true, 'targetClass' => Persona::className(), 'targetAttribute' => ['cedula_id' => 'cedula']],
+            [
+                ['cedula_id'], 'exist', 'skipOnError' => true,
+                'targetClass' => Persona::className(), 'targetAttribute' => ['cedula_id' => 'cedula']
+            ],
         ];
     }
 

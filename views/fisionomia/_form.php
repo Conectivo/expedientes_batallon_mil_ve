@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use yii\widgets\MaskedInput;
+//use yii\widgets\MaskedInput;
 use kartik\select2\Select2;
 use app\models\Persona;
 
@@ -75,8 +75,8 @@ use app\models\Persona;
         ['prompt'=>'Por favor, seleccioné una opción',]
     )->label('Condición Intelectual'); ?>
 
-    <?php // $form->field($model, 'estatura')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'estatura')->widget(MaskedInput::className(), [
+    <?= $form->field($model, 'estatura')->textInput(['maxlength' => true]) ?>
+    <?php /* $form->field($model, 'estatura')->widget(MaskedInput::className(), [
         'name' => 'input-33',
         'clientOptions' => [
             'alias' =>  'decimal',
@@ -84,7 +84,7 @@ use app\models\Persona;
             'autoGroup' => true
         ],
         // 'mask' => '9999-999-9999',
-    ]) ?>
+    ]) */ ?>
 
     <?= $form->field($model, 'peso')->textInput() ?>
 
