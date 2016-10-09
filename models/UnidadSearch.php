@@ -19,7 +19,7 @@ class UnidadSearch extends Unidad
     {
         return [
             [['id'], 'integer'],
-            [['unidad', 'fecha_ingreso'], 'safe'],
+            [['unidad'], 'safe'],
         ];
     }
 
@@ -61,11 +61,9 @@ class UnidadSearch extends Unidad
         $query->andFilterWhere([
             'id' => $this->id,
             // 'unidad' => $this->unidad,
-            'fecha_ingreso' => $this->fecha_ingreso,
         ]);
 
         $query->andFilterWhere(['like', 'unidad', $this->unidad]);
-            // ->andFilterWhere(['like', 'fecha_ingreso', $this->fecha_ingreso]);
 
         return $dataProvider;
     }

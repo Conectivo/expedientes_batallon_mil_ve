@@ -135,6 +135,18 @@ $('#persona-municipio_id').on('change', function(e) {
         ['prompt'=>'Por favor, seleccioné una opción',]
     )->label('Modalidad'); ?>
 
+    <?php // $form->field($model, 'fecha_ingreso')->textInput() ?>
+    <?= $form->field($model,'fecha_ingreso')->
+        widget(DatePicker::className(),[
+            'dateFormat' => 'yyyy-MM-dd',
+            'language' => 'es',
+            // 'readonly' => true,
+            'clientOptions' => [
+                'yearRange' => '-115:+0',
+                'changeYear' => true],
+                'options' => ['class' => 'form-control']
+        ])->label('Fecha de Ingreso') ?>
+
     <?php // $form->field($model, 'unidad_id')->textInput() ?>
     <?= $form->field($model, 'unidad_id')->dropDownList(
         ArrayHelper::map(Unidad::find()->all(),'id','unidad'),

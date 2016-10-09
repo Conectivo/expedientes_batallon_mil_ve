@@ -35,6 +35,8 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'estado_civil') ?>
 
+    <?php // echo $form->field($model, 'fecha_ingreso') ?>
+
     <?php // echo $form->field($model, 'unidad_id') ?>
 
     <div class="form-group">

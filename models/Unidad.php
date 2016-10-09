@@ -30,10 +30,9 @@ class Unidad extends \yii\db\ActiveRecord
     {
         return [
             [
-                ['unidad', 'fecha_ingreso'], 'required',
+                ['unidad'], 'required',
                 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'
             ],
-            [['fecha_ingreso'], 'safe'],
             [['unidad'], 'string', 'max' => 50],
         ];
     }

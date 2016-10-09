@@ -85,6 +85,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Modalidad',
                 'value' => $model->getModalidad(),
             ],
+            // 'fecha_ingreso',
+            [
+                'attribute' => 'fecha_ingreso',
+                'label'=>'Fecha de Ingreso',
+                // 'format' => ['date', 'php:l, F d, Y']
+                'format' => ['date', 'php:d-m-Y']
+            ],
             // 'unidad_id',
             [
                 'attribute' => 'unidad_id',

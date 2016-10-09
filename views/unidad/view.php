@@ -34,13 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'unidad',
                 'label'=>'Nombre de Unidad',
             ],
-            // 'fecha_ingreso',
-            [
-                'attribute' => 'fecha_ingreso',
-                'label'=>'Fecha de Ingreso',
-                // 'format' => ['date', 'php:l, F d, Y']                
-                'format' => ['date', 'php:d-m-Y']
-            ],
         ],
     ]) ?>
 

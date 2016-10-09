@@ -1,14 +1,13 @@
 -- ======================================================================
 -- ===   Sql Script for Database : expedientes
 -- ===
--- === Build : 118
+-- === Build : 138
 -- ======================================================================
 
 CREATE TABLE unidades
   (
-    id             INTEGER       unique not null auto_increment,
-    unidad         varchar(50)   not null,
-    fecha_ingreso  date          not null,
+    id      INTEGER       unique not null auto_increment,
+    unidad  varchar(50)   not null,
 
     primary key(id)
   )
@@ -51,6 +50,7 @@ CREATE TABLE persona
     religion          int            not null,
     estado_civil      char(1)        not null,
     modalidad         char(1)        not null,
+    fecha_ingreso     date           not null,
     unidad_id         INTEGER        not null,
 
     primary key(cedula),

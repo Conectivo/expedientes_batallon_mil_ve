@@ -18,6 +18,7 @@ use Yii;
  * @property integer $religion
  * @property string $estado_civil
  * @property string $modalidad
+ * @property string $fecha_ingreso
  * @property integer $unidad_id
  *
  * @property Captador[] $captadors
@@ -77,9 +78,9 @@ class Persona extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cedula', 'nombres', 'apellidos', 'lugar_nacimiento', 'fecha_nacimiento', 'direccion', 'sector', 'telefono_movil'], 'required', 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'],
+            [['cedula', 'nombres', 'apellidos', 'lugar_nacimiento', 'fecha_nacimiento', 'direccion', 'sector', 'telefono_movil', 'fecha_ingreso'], 'required', 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'],
             [['religion', 'estado_civil', 'modalidad', 'unidad_id'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
-            [['fecha_nacimiento'], 'safe'],
+            [['fecha_nacimiento', 'fecha_ingreso'], 'safe'],
             [['religion'], 'integer'],
             [['nombres', 'apellidos'], 'string', 'max' => 20],
             [['direccion', 'sector'], 'string', 'max' => 150],

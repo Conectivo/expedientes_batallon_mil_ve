@@ -79,6 +79,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ['class'=>'form-control', 'prompt' => 'Seleccioné una opción']
                             ),
             ],
+            // 'fecha_ingreso',
+            [
+                'attribute' => 'fecha_ingreso',
+                'label'=>'Fecha de Ingreso',
+                // 'format' => ['date', 'php:l, F d, Y']
+                'format' => ['date', 'php:d-m-Y']
+            ],
             // 'unidad_id',
 
             ['class' => 'yii\grid\ActionColumn'],

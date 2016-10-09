@@ -19,7 +19,7 @@ class PersonaSearch extends Persona
     {
         return [
             [['cedula', 'lugar_nacimiento', 'direccion', 'telefono_movil', 'religion', 'estado_civil', 'unidad_id'], 'integer'],
-            [['nombres', 'apellidos', 'fecha_nacimiento', 'sector', 'modalidad'], 'safe'],
+            [['nombres', 'apellidos', 'fecha_nacimiento', 'sector', 'modalidad', 'fecha_ingreso'], 'safe'],
         ];
     }
 
@@ -67,6 +67,7 @@ class PersonaSearch extends Persona
             'religion' => $this->religion,
             'estado_civil' => $this->estado_civil,
             'modalidad' => $this->modalidad,
+            'fecha_ingreso' => $this->fecha_ingreso,
             'unidad_id' => $this->unidad_id,
         ]);
 
@@ -75,6 +76,7 @@ class PersonaSearch extends Persona
             ->andFilterWhere(['like', 'sector', $this->sector])
             ->andFilterWhere(['like', 'estado_civil', $this->estado_civil])
             ->andFilterWhere(['like', 'modalidad', $this->modalidad]);
+            // ->andFilterWhere(['like', 'fecha_ingreso', $this->fecha_ingreso]);
 
         return $dataProvider;
     }

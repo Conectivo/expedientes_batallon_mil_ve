@@ -19,8 +19,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'unidad') ?>
 
-    <?= $form->field($model, 'fecha_ingreso') ?>
-
     <div class="form-group">
         <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reiniciar', ['class' => 'btn btn-default']) ?>
