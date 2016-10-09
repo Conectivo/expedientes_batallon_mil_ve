@@ -44,7 +44,7 @@ class Estados extends \yii\db\ActiveRecord
         return [
             'id_estado' => 'Id del Estado',
             'estado' => 'Nombre del Estado',
-            'iso_3166-2' => 'Codigo Iso 3166-2',
+            'iso_3166-2' => 'Código ISO 3166-2',
         ];
     }
 
