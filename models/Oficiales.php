@@ -66,13 +66,31 @@ class Oficiales extends \yii\db\ActiveRecord
         return [
             [['jquia', 'situacion'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
             [['nombres', 'apellido', 'cedula', 'arma', 'cargo', 'direccion', 'telefono', 'direccion_emergencia', 'telefonos_emergencia'], 'required', 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'],
-            [['telefono', 'telefonos_emergencia'], 'match', 'pattern' => '/^[4]\d\d?[- .]?\d\d\d[- .]?\d\d\d\d$/', 'message' => 'Este campo es requerido. Por favor, ingrese un formato de numero Teléfonico, como estos 426-771-3573 o 276-762-6182.'],
+            [
+                ['nombres'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese los nombres reales de persona, ej. Leonardo Jóse.'
+            ],
+            [
+                ['apellido'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese los apellidos reales de persona, ej. Caballero Garcia.'
+            ],
+            [
+                ['arma', 'cargo'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese solo letras en minúsculas o en capitales.'
+            ],
+            [
+                ['telefono', 'telefonos_emergencia'], 'match', 'pattern' => '/^(\0)?[0-9]{11,11}$/',
+                'message' => 'Este campo es requerido. Por favor, ingrese un número teléfonico, ej. 04267713573 o 02767626182.'
+            ],
             [['cedula'], 'integer'],
-            [['cedula'], 'match', 'pattern' => '/^\d\d\d\d\d\d\d\d$/', 'message' => 'Este campo es requerido. Por favor, ingrese en formato numérico la Cédula de identidad, como este 14522590.'],
+            [
+                ['cedula'], 'match', 'pattern' => '/^(\0)?[0-9]{8,8}$/',
+                'message' => 'Este campo es requerido. Por favor, ingrese un formato numérico para la cédula de identidad, ej. 14522590.'
+            ],
             [['telefono', 'telefonos_emergencia'], 'string', 'max' => 14],
-            [['jquia', 'nombres', 'apellido', 'arma', 'cargo'], 'string', 'max' => 20],
+            [['jquia', 'nombres', 'apellido', 'arma'], 'string', 'max' => 20],
             [['email'], 'email', 'message' => 'Este campo no es una dirección de correo valida.'],
-            [['email', 'direccion', 'direccion_emergencia'], 'string', 'max' => 50],
+            [['email', 'direccion', 'direccion_emergencia', 'cargo'], 'string', 'max' => 50],
             [['cedula'], 'unique'],
             [['email'], 'unique'],
         ];

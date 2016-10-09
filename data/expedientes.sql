@@ -25,7 +25,7 @@ CREATE TABLE oficiales
     situacion             INTEGER        not null,
     email                 varchar(50)    unique,
     arma                  varchar(20)    not null,
-    cargo                 varchar(20)    not null,
+    cargo                 varchar(50)    not null,
     direccion             varchar(150)   not null,
     telefono              varchar(14)    not null,
     direccion_emergencia  varchar(50)    not null,
