@@ -26,6 +26,7 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        // Configuraciones del componente User
         'user' => [
             'class' => 'webvimark\modules\UserManagement\components\UserConfig',
 

@@ -14,7 +14,7 @@ return [
         // (?=\S*[a-z]): conteniendo al menos un letra en minúscula
         // (?=\S*[A-Z]): y que al menos contenga una letra en mayúscula
         // (?=\S*[\d]): y que al menos contenga un numero
-        // $: anchored a el final de la cadena
+        // $: anclado a el final de la cadena
 
         //'passwordRegexp' => '^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$',
 
