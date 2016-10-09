@@ -1,25 +1,25 @@
 <?php
 return [
-    // Modulo: gestion de usuarios
+    // Modulo: gestión de usuarios
     'user-management' => [
         'class' => 'webvimark\modules\UserManagement\UserManagementModule',
 
+        // Habilitar registro de usuarios
         // 'enableRegistration' => true,
 
-        // Add regexp validation to passwords. Default pattern does not restrict user and can enter any set of characters.
-        // The example below allows user to enter :
-        // any set of characters
-        // (?=\S{8,}): of at least length 8
-        // (?=\S*[a-z]): containing at least one lowercase letter
-        // (?=\S*[A-Z]): and at least one uppercase letter
-        // (?=\S*[\d]): and at least one number
-        // $: anchored to the end of the string
+        // Agregar una validación regexp para las contraseñas. El patrón por defecto no restringe el usuario y puede ingresar cualquier carácter.
+        // El siguiente ejemplo le permite al usuario ingresar :
+        // cualquier conjunto de caracteres
+        // (?=\S{8,}): al menos de un tamaño de 8
+        // (?=\S*[a-z]): conteniendo al menos un letra en minúscula
+        // (?=\S*[A-Z]): y que al menos contenga una letra en mayúscula
+        // (?=\S*[\d]): y que al menos contenga un numero
+        // $: anchored a el final de la cadena
 
         //'passwordRegexp' => '^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$',
 
-
-        // Here you can set your handler to change layout for any controller or action
-        // Tip: you can use this event in any module
+        // Aquí usted puede definir su handler para cambiar el layout para cualquier controlador o acción
+        // Consejo: usted puede usar este evento en cualquier modulo
         'on beforeAction'=>function(yii\base\ActionEvent $event) {
                 if ( $event->action->uniqueId == 'user-management/auth/login' )
                 {
