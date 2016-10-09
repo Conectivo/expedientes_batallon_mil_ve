@@ -66,16 +66,6 @@ return array (
       '@yii/jui' => $vendorDir . '/yiisoft/yii2-jui',
     ),
   ),
-  'insolita/yii2-migration-generator' => 
-  array (
-    'name' => 'insolita/yii2-migration-generator',
-    'version' => '2.2.4.0',
-    'alias' => 
-    array (
-      '@insolita/migrik' => $vendorDir . '/insolita/yii2-migration-generator',
-    ),
-    'bootstrap' => 'insolita\\migrik\\Bootstrap',
-  ),
   'kartik-v/yii2-krajee-base' => 
   array (
     'name' => 'kartik-v/yii2-krajee-base',
@@ -119,6 +109,25 @@ return array (
     'alias' => 
     array (
       '@kartik/select2' => $vendorDir . '/kartik-v/yii2-widget-select2',
+    ),
+  ),
+  'insolita/yii2-migration-generator' => 
+  array (
+    'name' => 'insolita/yii2-migration-generator',
+    'version' => '2.2.5.0',
+    'alias' => 
+    array (
+      '@insolita/migrik' => $vendorDir . '/insolita/yii2-migration-generator',
+    ),
+    'bootstrap' => 'insolita\\migrik\\Bootstrap',
+  ),
+  'beastbytes/yii2-wizard' => 
+  array (
+    'name' => 'beastbytes/yii2-wizard',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@beastbytes/wizard' => $vendorDir . '/beastbytes/yii2-wizard',
     ),
   ),
 );

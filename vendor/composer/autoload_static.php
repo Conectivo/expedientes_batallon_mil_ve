@@ -51,6 +51,10 @@ class ComposerStaticInite7bbc9e18f4d13c4675486b0c8f56260
         array (
             'cebe\\markdown\\' => 14,
         ),
+        'b' => 
+        array (
+            'beastbytes\\wizard\\' => 18,
+        ),
         'F' => 
         array (
             'Faker\\' => 6,
@@ -153,6 +157,10 @@ class ComposerStaticInite7bbc9e18f4d13c4675486b0c8f56260
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'beastbytes\\wizard\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/beastbytes/yii2-wizard',
         ),
         'Faker\\' => 
         array (

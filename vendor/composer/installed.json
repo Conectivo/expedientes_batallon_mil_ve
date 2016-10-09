@@ -1008,54 +1008,6 @@
         ]
     },
     {
-        "name": "insolita/yii2-migration-generator",
-        "version": "2.2.4",
-        "version_normalized": "2.2.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Insolita/yii2-migrik.git",
-            "reference": "d74bef51c251d4fe51b3a560b1260fc8cd510a1a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Insolita/yii2-migrik/zipball/d74bef51c251d4fe51b3a560b1260fc8cd510a1a",
-            "reference": "d74bef51c251d4fe51b3a560b1260fc8cd510a1a",
-            "shasum": ""
-        },
-        "require": {
-            "yiisoft/yii2": "*"
-        },
-        "require-dev": {
-            "yiisoft/yii2-gii": "*"
-        },
-        "time": "2016-09-29 10:49:22",
-        "type": "yii2-extension",
-        "extra": {
-            "bootstrap": "insolita\\migrik\\Bootstrap"
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "insolita\\migrik\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "insolita",
-                "email": "donnainsolita@gmail.com"
-            }
-        ],
-        "description": "Set of gii tools for generating  files for migration by schema of table , phpdoc or table data",
-        "keywords": [
-            "extension",
-            "yii2"
-        ]
-    },
-    {
         "name": "bower-asset/bootstrap3-dialog",
         "version": "v1.35.3",
         "version_normalized": "1.35.3.0",
@@ -1613,18 +1565,66 @@
         "description": "Components for yii 2"
     },
     {
-        "name": "webvimark/module-user-management",
-        "version": "1.0.9",
-        "version_normalized": "1.0.9.0",
+        "name": "insolita/yii2-migration-generator",
+        "version": "2.2.5",
+        "version_normalized": "2.2.5.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/webvimark/user-management.git",
-            "reference": "6a851d840dbec72ec631a49c1efbdd24e1bef911"
+            "url": "https://github.com/Insolita/yii2-migrik.git",
+            "reference": "e4fdd4002213b3409d3905d2ae8e07546b9a8390"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/webvimark/user-management/zipball/6a851d840dbec72ec631a49c1efbdd24e1bef911",
-            "reference": "6a851d840dbec72ec631a49c1efbdd24e1bef911",
+            "url": "https://api.github.com/repos/Insolita/yii2-migrik/zipball/e4fdd4002213b3409d3905d2ae8e07546b9a8390",
+            "reference": "e4fdd4002213b3409d3905d2ae8e07546b9a8390",
+            "shasum": ""
+        },
+        "require": {
+            "yiisoft/yii2": "*"
+        },
+        "require-dev": {
+            "yiisoft/yii2-gii": "*"
+        },
+        "time": "2016-10-04 04:05:50",
+        "type": "yii2-extension",
+        "extra": {
+            "bootstrap": "insolita\\migrik\\Bootstrap"
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "insolita\\migrik\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "insolita",
+                "email": "donnainsolita@gmail.com"
+            }
+        ],
+        "description": "Set of gii tools for generating  files for migration by schema of table , phpdoc or table data",
+        "keywords": [
+            "extension",
+            "yii2"
+        ]
+    },
+    {
+        "name": "webvimark/module-user-management",
+        "version": "1.0.10",
+        "version_normalized": "1.0.10.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/webvimark/user-management.git",
+            "reference": "14b5a5104dfa618b1e09356dcade085b0453ac3a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/webvimark/user-management/zipball/14b5a5104dfa618b1e09356dcade085b0453ac3a",
+            "reference": "14b5a5104dfa618b1e09356dcade085b0453ac3a",
             "shasum": ""
         },
         "require": {
@@ -1636,7 +1636,7 @@
             "webvimark/grid-page-size": "^1.0.0",
             "webvimark/helpers": "^1.0.0"
         },
-        "time": "2016-09-21 09:11:18",
+        "time": "2016-10-06 06:42:43",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1646,5 +1646,50 @@
         },
         "notification-url": "https://packagist.org/downloads/",
         "description": "User with improved RBAC"
+    },
+    {
+        "name": "beastbytes/yii2-wizard",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/beastbytes/yii2-wizard.git",
+            "reference": "ad776a28a0504ee40e36d1aa179c2e9e3c861992"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/beastbytes/yii2-wizard/zipball/ad776a28a0504ee40e36d1aa179c2e9e3c861992",
+            "reference": "ad776a28a0504ee40e36d1aa179c2e9e3c861992",
+            "shasum": ""
+        },
+        "require": {
+            "yiisoft/yii2": "*"
+        },
+        "time": "2015-07-26 20:46:28",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "beastbytes\\wizard\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Chris Yates",
+                "email": "chris.l.yates@gmail.com"
+            }
+        ],
+        "description": "Yii2 extension to handle multi-form wizards",
+        "keywords": [
+            "Behavior",
+            "Forms",
+            "form",
+            "wizard",
+            "yii2"
+        ]
     }
 ]

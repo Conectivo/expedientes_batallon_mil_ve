@@ -30,5 +30,6 @@ return array(
     'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base'),
     'insolita\\migrik\\' => array($vendorDir . '/insolita/yii2-migration-generator'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
+    'beastbytes\\wizard\\' => array($vendorDir . '/beastbytes/yii2-wizard'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );
