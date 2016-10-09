@@ -41,11 +41,26 @@ class Familiares extends \yii\db\ActiveRecord
         return [
             [['cedula_id', 'sit_padres'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
             [['cedula_id', 'nombre_madre', 'nombre_padre', 'nombre_conyugue', 'cantidad_hijos'], 'required', 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'],
+            [
+                ['nombre_madre'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese un nombre real de persona, ej. Miriam Garcia.'
+            ],
+            [
+                ['nombre_padre'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese un nombre real de persona, ej. Leonardo Caballero.'
+            ],
+            [
+                ['nombre_conyugue'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese un nombre real de persona, ej. Desiree Rodriguez.'
+            ],
             [['cedula_id', 'cantidad_hijos'], 'integer'],
             [['nombre_madre', 'nombre_padre', 'nombre_conyugue'], 'string', 'max' => 50],
             [['sit_padres'], 'string', 'max' => 1],
             [['cedula_id'], 'unique'],
-            [['cedula_id'], 'exist', 'skipOnError' => true, 'targetClass' => Persona::className(), 'targetAttribute' => ['cedula_id' => 'cedula']],
+            [
+                ['cedula_id'], 'exist', 'skipOnError' => true,
+                'targetClass' => Persona::className(), 'targetAttribute' => ['cedula_id' => 'cedula']
+            ],
         ];
     }
 
