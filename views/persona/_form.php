@@ -92,30 +92,25 @@ $('#persona-municipio_id').on('change', function(e) {
                 'options' => ['class' => 'form-control']
         ])->label('Fecha de nacimiento') ?>
 
-    <?= $form->field($model, 'direccion')->textInput() ?>
+    <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'sector')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telefono_movil')->textInput() ?>
+    <?= $form->field($model, 'telefono_movil')->textInput(['maxlength' => true]) ?>
 
     <?php // $form->field($model, 'religion')->textInput() ?>
+    <?php /* $form->field($model, 'religion')->dropDownList(
+        ['1'=>'Catolicismo','2'=>'Protestante','3'=>'Movimiento de los Santos de los Últimos Días',
+         '4'=>'Judaísmo','5'=>'Islam','6'=>'Budismo','7'=>'Santería Caribeña','8'=>'Espiritismo',
+         '9'=>'Ateísmo','10'=>'Otra creencia',],
+        ['prompt'=>'Por favor, seleccioné una opción',]
+    )->label('Religión'); */ ?>
     <?= $form->field($model, 'religion')->dropDownList(
-        [
-            '1'=>'Catolicismo',
-            '2'=>'Protestante',
-            '3'=>'Movimiento de los Santos de los Últimos Días',
-            '4'=>'Judaísmo',
-            '5'=>'Islam',
-            '6'=>'Budismo',
-            '7'=>'Santería Caribeña',
-            '8'=>'Espiritismo',
-            '9'=>'Ateísmo',
-            '10'=>'Otra creencia',
-        ],
+        $model->getOpcionesReligion(),
         ['prompt'=>'Por favor, seleccioné una opción',]
     )->label('Religión'); ?>
 
-    <?php // $form->field($model, 'estado_civil')->textInput() ?>
+    <?php // $form->field($model, 'estado_civil')->textInput(['maxlength' => true]) ?>
     <?php /* $form->field($model, 'estado_civil')->dropDownList(
         ['S'=>'Soltero', 'C'=>'Casado', 'V'=>'Viudo'],
         ['prompt'=>'Por favor, seleccioné una opción',]

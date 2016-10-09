@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'fecha_nacimiento',
                 'label'=>'Fecha de Nacimiento',
-                // 'format' => ['date', 'php:l, F d, Y']                
+                // 'format' => ['date', 'php:l, F d, Y']
                 'format' => ['date', 'php:d-m-Y']
             ],
             // 'direccion',

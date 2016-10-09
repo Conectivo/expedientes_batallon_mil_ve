@@ -21,12 +21,11 @@ use Yii;
  * @property string $fecha_ingreso
  * @property integer $unidad_id
  *
- * @property Captador[] $captadors
+ * @property Captador $captador
  * @property Familiares $familiares
  * @property Fisionomia $fisionomia
  * @property Parroquias $lugarNacimiento
  * @property Unidad $unidad
- * @property RasgosFisicos $rasgosFisicos
  * @property Sociologicos $sociologicos
  * @property Tallas $tallas
  */
@@ -87,13 +86,37 @@ class Persona extends \yii\db\ActiveRecord
             [['estado_civil'], 'string', 'max' => 1],
             [['telefono_movil'], 'string', 'max' => 14],
             [['cedula'], 'unique'],
-            [['cedula'], 'match', 'pattern' => '/^\d\d\d\d\d\d\d\d$/', 'message' => 'Este campo es requerido. Por favor, ingrese en formato numérico la Cédula de identidad, como este 14522590.'],
-            [['telefono_movil'], 'match', 'pattern' => '/^[4]\d\d?[- .]?\d\d\d[- .]?\d\d\d\d$/', 'message' => 'Este campo es requerido. Por favor, ingrese un formato de numero Teléfonico, como estos 426-771-3573 o 276-762-6182.'],
-            [['lugar_nacimiento'], 'exist', 'skipOnError' => true, 'targetClass' => Parroquias::className(), 'targetAttribute' => ['lugar_nacimiento' => 'id_parroquia']],
+            [
+                ['cedula'], 'match', 'pattern' => '/^(\0)?[0-9]{8,8}$/',
+                'message' => 'Este campo es requerido. Por favor, ingrese un formato numérico para la cédula de identidad, ej. 14522590.'
+            ],
+            [
+                ['telefono_movil'], 'match', 'pattern' => '/^(\0)?[0-9]{11,11}$/',
+                'message' => 'Este campo es requerido. Por favor, ingrese un número teléfonico, ej. 04267713573 o 02767626182.'
+            ],
+            [
+                ['nombres'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese los nombres reales de persona, ej. Leonardo Jóse.'
+            ],
+            [
+                ['apellidos'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese los apellidos reales de persona, ej. Caballero Garcia.'
+            ],
+            [
+                ['lugar_nacimiento'], 'exist', 'skipOnError' => true,
+                'targetClass' => Parroquias::className(), 'targetAttribute' => ['lugar_nacimiento' => 'id_parroquia']
+            ],
+            [
+                ['sector'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese solo letras en minúsculas o en capitales.'
+            ],
             // [['modalidad'], 'string', 'max' => 1],
             // ['modalidad', 'default', 'value' => self::TIEMPO_COMPLETO],
             ['modalidad', 'in', 'range' => array_keys($this->getOpcionesModalidad())],
-            [['unidad_id'], 'exist', 'skipOnError' => true, 'targetClass' => Unidad::className(), 'targetAttribute' => ['unidad_id' => 'id']],
+            [
+                ['unidad_id'], 'exist', 'skipOnError' => true,
+                'targetClass' => Unidad::className(), 'targetAttribute' => ['unidad_id' => 'id']
+            ],
         ];
     }
 
@@ -106,24 +129,25 @@ class Persona extends \yii\db\ActiveRecord
             'cedula' => 'Cédula',
             'nombres' => 'Nombres',
             'apellidos' => 'Apellidos',
-            'lugar_nacimiento' => 'Lugar de Nacimiento',
-            'fecha_nacimiento' => 'Fecha de Nacimiento',
+            'lugar_nacimiento' => 'Lugar de nacimiento',
+            'fecha_nacimiento' => 'Fecha de nacimiento',
             'direccion' => 'Dirección',
             'sector' => 'Sector',
             'telefono_movil' => 'Teléfono Celular',
             'religion' => 'Religión',
             'estado_civil' => 'Estado Civil',
             'modalidad' => 'Modalidad',
+            'fecha_ingreso' => 'Fecha de ingreso',
             'unidad_id' => 'Unidad de Batallón',
         ];
     }
- 
+
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCaptadors()
+    public function getCaptador()
     {
-        return $this->hasMany(Captador::className(), ['captado' => 'cedula']);
+        return $this->hasOne(Captador::className(), ['captado' => 'cedula']);
     }
 
     /**
