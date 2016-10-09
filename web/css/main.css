@@ -1071,6 +1071,7 @@ ul.social > li > a:hover {
 .accordion-inner {
   border-top: 0;
 }
+/*
 .blog .blog-item {
   background-color: #fff;
   border-radius: 5px;
@@ -1098,6 +1099,7 @@ ul.social > li > a:hover {
 .blog .blog-item .entry-meta > span a {
   color: #999;
 }
+*/
 ul.pagination > li > a {
   border: 0;
 }
