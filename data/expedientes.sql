@@ -123,7 +123,7 @@ CREATE TABLE captador
     cedula           INTEGER       not null,
     nombre_completo  varchar(50)   not null,
     telefono         varchar(14)   not null,
-    captado          INTEGER       not null,
+    captado          INTEGER       unique not null,
 
     primary key(id),
 

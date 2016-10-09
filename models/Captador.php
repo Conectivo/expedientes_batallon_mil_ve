@@ -58,16 +58,21 @@ class Captador extends \yii\db\ActiveRecord
                 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'
             ],
             [
-                ['telefono'], 'match', 'pattern' => '/^[4]\d\d?[- .]?\d\d\d[- .]?\d\d\d\d$/', 
-                'message' => 'Este campo es requerido. Por favor, ingrese un número teléfonico, ej. 426-771-3573 o 276-762-6182.'
+                ['nombre_completo'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
+                'message' => 'Este campo es requerido. Por favor, ingrese un nombre real de persona, ej. Leonardo Caballero.'
             ],
             [
-                ['cedula'], 'match', 'pattern' => '/^\d\d\d\d\d\d\d\d$/',
+                ['telefono'], 'match', 'pattern' => '/^(\0)?[0-9]{11,11}$/',
+                'message' => 'Este campo es requerido. Por favor, ingrese un número teléfonico, ej. 04267713573 o 02767626182.'
+            ],
+            [
+                ['cedula'], 'match', 'pattern' => '/^(\0)?[0-9]{8,8}$/',
                 'message' => 'Este campo es requerido. Por favor, ingrese un número de cédula de identidad, ej. 14522590.'
             ],
             [['jquia', 'cedula', 'captado'], 'integer'],
             [['nombre_completo'], 'string', 'max' => 50],
             [['telefono'], 'string', 'max' => 14],
+            [['captado'], 'unique'],
             [
                 ['captado'], 'exist', 'skipOnError' => true,
                 'targetClass' => Persona::className(),
