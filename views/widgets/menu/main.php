@@ -23,9 +23,20 @@ use webvimark\modules\UserManagement\UserManagementModule;
     ];
 
     if (Yii::$app->user->isGuest) {
+        // Enlace del Menú Entrar
         // $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login']];
         // $menuItems[] = ['label' => 'Entrar', 'url' => ['/user-management/auth/login'], 'visible' => Yii::$app->user->isGuest];
         $menuItems[] = ['label' => 'Entrar', 'url' => ['/user-management/auth/login']];
+
+        // Enlace del Menú Contactos
+        $menuItems[] = [
+            'label' => 'Contactos',
+            'url' => ['/site/contact'],
+
+        ];
+
+        // Enlace del Menú Acerca de
+        $menuItems[] = ['label' => 'Acerca de', 'url' => ['/site/about']];
     } else {
         // Enlace del Menú Registros Comunes
         $menuItems[] = [
