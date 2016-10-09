@@ -7,13 +7,17 @@ $this->title = 'Sistema de expedientes';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>Cuartel Negro Primero</h1>
+        <a href="index.html"
+           title='Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada "Juan Antonio Paredes"'>
+            <img id="ejercito" src="images/logo.png"
+                 alt='Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada "Juan Antonio Paredes"' />
+        </a>
+        <p class="lead">Sistema de Expedientes del Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada "Juan Antonio Paredes".</p>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <!-- <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p> -->
     </div>
-
+<!--
     <div class="body-content">
 
         <div class="row">
@@ -49,6 +53,6 @@ $this->title = 'Sistema de expedientes';
             </div>
         </div>
 
-    </div>
+    </div> -->
 
 </div>
