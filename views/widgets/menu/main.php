@@ -2,31 +2,6 @@
 
 /* @var $this \yii\web\View */
 
-/*
-echo GhostMenu::widget([
-    'encodeLabels'=>false,
-    'activateParents'=>true,
-    'items' => [
-        [
-            'label' => 'Backend routes',
-            'items'=>UserManagementModule::menuItems()
-        ],
-        [
-            'label' => 'Frontend routes',
-            'items'=>[
-                ['label'=>'Login', 'url'=>['/user-management/auth/login']],
-                ['label'=>'Logout', 'url'=>['/user-management/auth/logout']],
-                ['label'=>'Registration', 'url'=>['/user-management/auth/registration']],
-                ['label'=>'Change own password', 'url'=>['/user-management/auth/change-own-password']],
-                ['label'=>'Password recovery', 'url'=>['/user-management/auth/password-recovery']],
-                ['label'=>'E-mail confirmation', 'url'=>['/user-management/auth/confirm-email']],
-            ],
-        ],
-    ],
-]);
-*/
-
-
 // use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -43,8 +18,8 @@ use webvimark\modules\UserManagement\UserManagementModule;
 
     $menuItems = [
         // Enlace del Menú Inicio
+        // ['label' => 'Inicio', 'url' => ['/site/index']],
         ['label' => 'Inicio', 'url' => ['/index.html']],
-        // ['label' => 'Inicio', 'url' => ['/site/index.html']],
     ];
 
     if (Yii::$app->user->isGuest) {
@@ -52,24 +27,63 @@ use webvimark\modules\UserManagement\UserManagementModule;
         // $menuItems[] = ['label' => 'Entrar', 'url' => ['/user-management/auth/login'], 'visible' => Yii::$app->user->isGuest];
         $menuItems[] = ['label' => 'Entrar', 'url' => ['/user-management/auth/login']];
     } else {
-        // Enlace del Menú Oficiales
+        // Enlace del Menú Registros Comunes
         $menuItems[] = [
-            'label' => 'Oficiales',
+            'label' => 'Registros Comunes',
             'items' => [
-                // Listado de Oficiales
-                ['label' => 'Listado', 'url' => ['/oficiales/']],
+                // Enlace del Submenú Unidad de Batallón
+                [
+                    'label' => 'Unidad de Batallón',
+                    'url' => '#',
+                    'items' => [
+                        // Listado de Unidad de Batallón
+                        ['label' => 'Listado', 'url' => ['/unidad/']],
+                        // Crear Unidad de Batallón
+                        ['label' => 'Crear', 'url' => ['/unidad/create']],
+                    ],
+                ],
                 '<li class="divider"></li>',
-                // Crear Oficial
-                ['label' => 'Crear', 'url' => ['/oficiales/create']],
+                // Enlace del Submenú Oficiales
+                [
+                    'label' => 'Oficiales',
+                    'url' => '#',
+                    'items' => [
+                        // Listado de Oficiales
+                        ['label' => 'Listado', 'url' => ['/oficiales/']],
+                        // Crear Oficial
+                        ['label' => 'Crear', 'url' => ['/oficiales/create']],
+                    ],
+                ],
+                '<li class="divider"></li>',
+                // Enlace del Submenú Captadores
+                [
+                    'label' => 'Captadores',
+                    'url' => '#',
+                    'items' => [
+                        // Listado de Captadores
+                        ['label' => 'Listado', 'url' => ['/captador/']],
+                        // Crear Captador
+                        ['label' => 'Crear', 'url' => ['/captador/create']],
+                    ],
+                ],
             ],
         ];
 
-        // Enlace del Menú Personal
+        // Enlace del Menú Expediente
         $menuItems[] = [
-            'label' => 'Personal',
+            'label' => 'Expediente',
             'items' => [
-                ['label' => 'Listado', 'url' => ['/persona/']],
-                ['label' => 'Crear', 'url' => ['/persona/create']],
+                // Enlace del Submenú Datos Básicos
+                [
+                    'label' => 'Datos Básicos',
+                    'url' => '#',
+                    'items' => [
+                        // Listado de Personal
+                        ['label' => 'Listado', 'url' => ['/persona/']],
+                        // Crear Personal
+                        ['label' => 'Crear', 'url' => ['/persona/create']],
+                    ],
+                ],
                 '<li class="divider"></li>',
                 // Enlace del Submenú Datos Familiares
                 // ['label' => 'Datos Familiares', 'url' => ['/familiares/']],
@@ -117,32 +131,6 @@ use webvimark\modules\UserManagement\UserManagementModule;
             ],
         ];
 
-
-        // Enlace del Menú Unidad de Batallón
-        $menuItems[] = [
-            'label' => 'Unidad de Batallón',
-            'items' => [
-                // Listado de Unidad de Batallón
-                ['label' => 'Listado', 'url' => ['/unidad/']],
-                '<li class="divider"></li>',
-                // Crear Unidad de Batallón
-                ['label' => 'Crear', 'url' => ['/unidad/create']],
-            ],
-        ];
-
-        // Enlace del Menú Captador
-        $menuItems[] = [
-            'label' => 'Captador',
-            'items' => [
-                // Listado de Captadores
-                ['label' => 'Listado', 'url' => ['/captador/']],
-                '<li class="divider"></li>',
-                // Crear Captador
-                ['label' => 'Crear', 'url' => ['/captador/create']],
-            ],
-        ];
-
-
         // Enlace del Menú Seguridad
         $menuItems[] = [
             'label' => 'Seguridad',
@@ -166,19 +154,61 @@ use webvimark\modules\UserManagement\UserManagementModule;
                 // ]
         ];
 
-        // Salir
+        // Enlace del Menú Contactos
         $menuItems[] = [
-            'label' => 'Salir' . ' (' . Yii::$app->user->identity->username . ')',
+            'label' => 'Contactos',
+            'url' => ['/site/contact'],
+
+        ];
+
+        // Enlace del Menú Usuario
+        $menuItems[] = [
+            'label' => 'Usuario' . ' (' . Yii::$app->user->identity->username . ')',
             // 'url' => ['/site/logout'],
-            'url' => ['/user-management/auth/logout'],
-            'linkOptions' => ['data-method' => 'post']
+            // 'url' => ['/user-management/auth/logout'],
+            // 'linkOptions' => ['data-method' => 'post'],
+            'items'=>[
+                // ['label'=>'Entrar', 'url'=>['/user-management/auth/login']],
+                // ['label'=>'Registro', 'url'=>['/user-management/auth/registration']],
+                ['label'=>'Cambiar propia contraseña', 'url'=>['/user-management/auth/change-own-password']],
+                // ['label'=>'Recuperar contraseña', 'url'=>['/user-management/auth/password-recovery']],
+                ['label'=>'Correo de confirmación', 'url'=>['/user-management/auth/confirm-email']],
+                [
+                    'label'=>'Salir',
+                    'url'=>['/user-management/auth/logout'],
+                    'linkOptions' => ['data-method' => 'post'],
+                ],
+            ],
         ];
     }
+
+/*
+echo GhostMenu::widget([
+    'encodeLabels'=>false,
+    'activateParents'=>true,
+    'items' => [
+        [
+            'label' => 'Backend routes',
+            'items' => UserManagementModule::menuItems()
+        ],
+        [
+            'label' => 'Frontend routes',
+            'items'=>[
+                ['label'=>'Login', 'url'=>['/user-management/auth/login']],
+                ['label'=>'Logout', 'url'=>['/user-management/auth/logout']],
+                ['label'=>'Registration', 'url'=>['/user-management/auth/registration']],
+                ['label'=>'Change own password', 'url'=>['/user-management/auth/change-own-password']],
+                ['label'=>'Password recovery', 'url'=>['/user-management/auth/password-recovery']],
+                ['label'=>'E-mail confirmation', 'url'=>['/user-management/auth/confirm-email']],
+            ],
+        ],
+    ],
+]);
+*/
 
     echo Nav::widget([
         'options' => [
             'class' => 'navbar-nav navbar-right'
-
         ],
         'items' => $menuItems,
     ]);
