@@ -20,18 +20,18 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
             // Fuente: https://github.com/tiberiucontiu/pwts/blob/ffbca430bda250a06761cee6a6f7f1bd42cefc22/views/location/view.php
             Modal::begin([
-                'header' => '<b>' . 'Eliminar Datos básicos de Persona' . '</b>',
+                'header' => '<b>' . 'Eliminar Datos Básicos de Persona' . '</b>',
                 'footer' =>
                     '<button type="button" class="btn btn-success" data-dismiss="modal">'.'No'.'</button>'
                     .Html::a('Eliminar',
-                        ['delete', 'id'=>$model->cedula],
+                        ['delete', 'id' => $model->cedula],
                         [
                             'class' => 'btn btn-danger',
                             'data' => ['method' => 'post',],
                         ]
                     ),
-                'toggleButton' => ['label' => 'Eliminar', 'class'=>'btn btn-danger'],
-                'size'=>Modal::SIZE_SMALL
+                'toggleButton' => ['label' => 'Eliminar', 'class' => 'btn btn-danger'],
+                'size' => Modal::SIZE_SMALL
             ]);
             echo '¿Está seguro que desea eliminar este elemento?';
             Modal::end();
@@ -101,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'fecha_ingreso',
             [
                 'attribute' => 'fecha_ingreso',
-                'label'=>'Fecha de Ingreso',
+                'label' => 'Fecha de Ingreso',
                 // 'format' => ['date', 'php:l, F d, Y']
                 'format' => ['date', 'php:d-m-Y']
             ],
@@ -111,10 +111,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Unidad de Batallón',
                 'value' => Html::a($model->unidad_id,
                         // http://127.0.0.1/unidad/view?id=1
-                        ['unidad/view','id'=>$model->unidad_id],
-                        ['title'=>'Ver Datos del Unidad de Batallón' ]
+                        ['unidad/view','id' => $model->unidad_id],
+                        ['title' => 'Ver Datos del Unidad de Batallón' ]
                 ),
-                'format'=>'raw',
+                'format' => 'raw',
             ],
         ],
     ]) ?>
