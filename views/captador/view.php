@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -16,13 +17,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => '¿Está seguro que desea eliminar este elemento?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php
+            Modal::begin([
+                'header' => '<b>' . 'Eliminar Datos de Captador' . '</b>',
+                'footer' =>
+                    '<button type="button" class="btn btn-success" data-dismiss="modal">'.'No'.'</button>'
+                    .Html::a('Eliminar',
+                        ['delete', 'id' => $model->id],
+                        [
+                            'class' => 'btn btn-danger',
+                            'data' => ['method' => 'post',],
+                        ],
+                    ),
+                'toggleButton' => ['label' => 'Eliminar', 'class' => 'btn btn-danger'],
+                'size' => Modal::SIZE_SMALL
+            ]);
+            echo '¿Está seguro que desea eliminar este elemento?';
+            Modal::end();
+        ?>
     </p>
 
     <?= DetailView::widget([
@@ -44,10 +56,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'label' => 'Personal Captado',
                 'value' => Html::a($model->captado,
                         // http://127.0.0.1/persona/view?id=25498875
-                        ['persona/view','id'=>$model->captado],
-                        ['title'=>'Ver Datos del Personal' ]
+                        ['persona/view','id' => $model->captado],
+                        ['title' => 'Ver Datos del Personal' ]
                 ),
-                'format'=>'raw',
+                'format' => 'raw',
             ],
         ],
     ]) ?>
