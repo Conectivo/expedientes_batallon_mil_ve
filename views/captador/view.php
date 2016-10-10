@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?php
             Modal::begin([
-                'header' => '<b>' . 'Eliminar Datos de Captador' . '</b>',
+                'header' => '<b>' . 'Eliminar Datos del Captador' . '</b>',
                 'footer' =>
                     '<button type="button" class="btn btn-success" data-dismiss="modal">'.'No'.'</button>'
                     .Html::a('Eliminar',
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'class' => 'btn btn-danger',
                             'data' => ['method' => 'post',],
-                        ],
+                        ]
                     ),
                 'toggleButton' => ['label' => 'Eliminar', 'class' => 'btn btn-danger'],
                 'size' => Modal::SIZE_SMALL
