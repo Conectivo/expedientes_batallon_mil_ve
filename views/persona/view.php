@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -16,13 +17,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Actualizar', ['update', 'id' => $model->cedula], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->cedula], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => '¿Está seguro que desea eliminar este elemento?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php
+            // Fuente: https://github.com/tiberiucontiu/pwts/blob/ffbca430bda250a06761cee6a6f7f1bd42cefc22/views/location/view.php
+            Modal::begin([
+                'header' => '<b>' . 'Eliminar Datos básicos de Persona' . '</b>',
+                'footer' =>
+                    '<button type="button" class="btn btn-success" data-dismiss="modal">'.'No'.'</button>'
+                    .Html::a('Eliminar',
+                        ['delete', 'id'=>$model->cedula],
+                        [
+                            'class' => 'btn btn-danger',
+                            'data' => ['method' => 'post',],
+                        ]
+                    ),
+                'toggleButton' => ['label' => 'Eliminar', 'class'=>'btn btn-danger'],
+                'size'=>Modal::SIZE_SMALL
+            ]);
+            echo '¿Está seguro que desea eliminar este elemento?';
+            Modal::end();
+        ?>
     </p>
 
     <?= DetailView::widget([
