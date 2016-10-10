@@ -1,9 +1,10 @@
 <?php
 
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use kartik\select2\Select2;
+use webvimark\modules\UserManagement\models\User;
 use app\models\Persona;
 
 /* @var $this yii\web\View */
@@ -62,7 +63,15 @@ use app\models\Persona;
     )->label('¿Posee Vivienda?'); ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php
+        if ($model->isNewRecord && User::hasRole('LlenarRegistros'))
+            echo Html::submitButton('<span class="glyphicon glyphicon-plus-sign"></span> ' . 'Crear', ['class' => 'btn btn-success']);
+            echo '&nbsp;';
+
+        if (!$model->isNewRecord && User::hasRole('ModificarRegistros'))
+            echo Html::submitButton('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar', ['class' => 'btn btn-primary']);
+        ?>
+        <?php // Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
