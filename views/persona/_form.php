@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use yii\jui\DatePicker;
 use yii\helpers\Url;
 use yii\web\View;
+use webvimark\modules\UserManagement\models\User;
 use app\models\Unidad;
 
 /* @var $this yii\web\View */
@@ -149,7 +150,15 @@ $('#persona-municipio_id').on('change', function(e) {
     )->label('Unidad asignada') ?> 
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php
+        if ($model->isNewRecord && User::hasRole('LlenarRegistros'))
+            echo Html::submitButton('<span class="glyphicon glyphicon-plus-sign"></span> ' . 'Crear', ['class' => 'btn btn-success']);
+            echo '&nbsp;';
+
+        if (!$model->isNewRecord && User::hasRole('ModificarRegistros'))
+            echo Html::submitButton('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar', ['class' => 'btn btn-primary']);
+        ?>
+        <?php // Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
