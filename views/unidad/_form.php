@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use webvimark\modules\UserManagement\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Unidad */
@@ -16,7 +17,16 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'unidad')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php
+        if ($model->isNewRecord && User::hasRole('LlenarRegistros'))
+            echo Html::submitButton('<span class="glyphicon glyphicon-plus-sign"></span> ' . 'Crear', ['class' => 'btn btn-success']);
+            echo '&nbsp;';
+
+        if (!$model->isNewRecord && User::hasRole('ModificarRegistros'))
+            echo Html::submitButton('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar', ['class' => 'btn btn-primary']);
+        ?>
+		<?php // Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+
     </div>
 
     <?php ActiveForm::end(); ?>
