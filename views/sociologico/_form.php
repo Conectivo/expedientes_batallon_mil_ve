@@ -19,7 +19,7 @@ use app\models\Persona;
     <?php /* $form->field($model, 'cedula_id')->dropDownList(
         ArrayHelper::map(Persona::find()->all(),'cedula','fullName'),
             ['prompt'=>'Por favor, seleccioné una opción']
-    )->label('Persona') */ ?> 
+    )->label('Persona') */ ?>
     <?= $form->field($model, 'cedula_id')->widget(Select2::classname(), [
         'data' => ArrayHelper::map(Persona::find()->all(),'cedula','fullName'), 
         'language' => 'es',
@@ -42,10 +42,18 @@ use app\models\Persona;
     )->label('Grado de instrucción'); ?>
 
     <?php // $form->field($model, 'profesion')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'profesion')->dropDownList(
+    <?php /* $form->field($model, 'profesion')->dropDownList(
         $model->getOpcionesProfesion(),
         ['prompt'=>'Por favor, seleccioné una opción',]
-    )->label('Profesión'); ?>
+    )->label('Profesión'); */ ?>
+    <?= $form->field($model, 'profesion')->widget(Select2::classname(), [
+        'data' => $model->getOpcionesProfesion(),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])->label('Profesión'); ?>
 
     <?php // $form->field($model, 'vivienda')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'vivienda')->dropDownList(

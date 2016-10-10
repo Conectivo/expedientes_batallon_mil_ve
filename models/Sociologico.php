@@ -798,7 +798,7 @@ class Sociologico extends \yii\db\ActiveRecord
             self::PROFE_30 => 'Historiador',
             self::PROFE_31 => 'Periodista',
             self::PROFE_32 => 'Arqueólogo',
-            self::PROFE_33 => 'Dise\u00f1ador',
+            self::PROFE_33 => 'Diseñador',
             self::PROFE_34 => 'Juez',
             self::PROFE_35 => 'Matemático',
             self::PROFE_36 => 'Oftalmólogo',
