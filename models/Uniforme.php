@@ -131,6 +131,7 @@ class Uniforme extends \yii\db\ActiveRecord
         return [
             /* 
             * Definir campos 'valor', de las constantes definidias previamente al inicio de la clase.
+            * Fuente: http://www.asics.com/es/es-es/clothing-size-guide
             */
             self::TALLA_XXS => 'XXS',
             self::TALLA_XS => 'XS',
