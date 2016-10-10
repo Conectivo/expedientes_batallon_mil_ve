@@ -27,7 +27,7 @@ $config = [
     'modules'=>[
         'user-management' => [
             'class' => 'webvimark\modules\UserManagement\UserManagementModule',
-                'controllerNamespace'=>'vendor\webvimark\modules\UserManagement\controllers', // To prevent yii help from crashing
+                'controllerNamespace'=>'vendor\webvimark\modules\UserManagement\controllers', // Para prevenir que el comando yii help se estrelle
         ],
     ],
     'params' => $params,
@@ -41,7 +41,7 @@ $config = [
 ];
 
 if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
+    // ajustes de configuración para entorno de desarrollo 'dev'
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
