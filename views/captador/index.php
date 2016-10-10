@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use webvimark\modules\UserManagement\models\User;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CaptadorSearch */
@@ -16,7 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Captador', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        if (User::hasRole('LlenarRegistros')) {
+            echo Html::a('<span class="glyphicon glyphicon-plus-sign"></span> ' . 'Crear Captador', ['create'], ['class' => 'btn btn-success']);
+        }
+        ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -53,7 +58,47 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=>'raw'
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            // ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return (User::hasRole('ConsultarRegistros')) ?
+                            Html::a(
+                                '<span class="glyphicon glyphicon-eye-open"></span>',
+                                $url, ['title' => 'Ver',]
+                            ) : '';
+                    },
+                    'update' => function ($url, $model) {
+                        return (User::hasRole('ModificarRegistros')) ?
+                            Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                                'title' => 'Actualizar',
+                                ]) : '';
+                    },
+                    'delete' => function ($url, $model) {
+                        return (User::hasRole('EliminarRegistros')) ?
+                            Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, [
+                                'title' => 'Eliminar',
+                                'data-confirm' => '¿Está seguro que desea eliminar este elemento?',
+                                'toggleButton' => ['label' => 'Eliminar', 'class' => 'btn btn-danger'],
+                                ]) : '';
+                    },
+                ],
+                'urlCreator' => function ($action, $model, $key){
+                    if ($action === 'view') {
+                        return Yii::$app->urlManager->createUrl(['/captador/view', 'id'=>$model->id]);
+                    }
+
+                    if ($action === 'update') {
+                        return Yii::$app->urlManager->createUrl(['/captador/update', 'id'=>$model->id]);
+                    }
+
+                    if ($action === 'delete') {
+                        return Yii::$app->urlManager->createUrl(['/captador/delete', 'id'=>$model->id]);
+                    }
+                }
+            ],
         ],
     ]); ?>
 </div>
