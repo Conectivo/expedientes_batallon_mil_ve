@@ -20,18 +20,6 @@ $this->params['breadcrumbs'][] = $this->title;
             Gracias por contactaremos. Nosotros le responderemos lo mas pronto posible.
         </div>
 
-        <p>
-            Tenga en cuenta que si activa el depurador Yii, usted debe ser capaz de ver 
-            el mensaje de correo electrónico en el panel del depurador.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Debido a que la aplicación se encuentra en el modo de desarrollo, el correo
-                electrónico no se envía, pero guarda como un fichero 
-                <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Por favor configure la propiedad <code>useFileTransport</code> del componente 
-                de aplicación <code>mail</code> a false para habilitar el envío real de email.
-            <?php endif; ?>
-        </p>
-
     <?php else: ?>
 
         <p>
@@ -51,9 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?= $form->field($model, 'body')->textArea(['rows' => 6]) ?>
 
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                    <?php /* $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                         'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
+                    ]) */ ?>
+                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(),[
+                        'imageOptions' => [
+                            'id' => 'contactform-verifycode-image',
+                            'alt' => 'Código de verificación'
+                        ],
+                        'template' => $this->render("/site/captcha"),
+                    ]); ?>
 
                     <div class="form-group">
                         <?= Html::submitButton('Enviar', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
