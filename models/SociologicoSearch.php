@@ -47,6 +47,14 @@ class SociologicoSearch extends Sociologico
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'cedula_id' => SORT_ASC
+                ],
+            ],
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);

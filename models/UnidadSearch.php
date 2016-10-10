@@ -47,6 +47,14 @@ class UnidadSearch extends Unidad
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'unidad' => SORT_ASC
+                ],
+            ],
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);

@@ -47,6 +47,16 @@ class PersonaSearch extends Persona
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    // '' => SORT_ASC,
+                    // '' => SORT_DESC
+                    'cedula' => SORT_ASC
+                ],
+            ],
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);

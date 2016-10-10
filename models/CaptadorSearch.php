@@ -47,6 +47,14 @@ class CaptadorSearch extends Captador
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'cedula' => SORT_ASC
+                ],
+            ],
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);
