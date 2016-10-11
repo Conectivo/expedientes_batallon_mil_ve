@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "estados".
+ * Esta es la clase de modelo de la tabla "estados".
  *
  * @property integer $id_estado
  * @property string $estado

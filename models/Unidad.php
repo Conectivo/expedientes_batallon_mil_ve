@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "unidades".
+ * Esta es la clase de modelo de la tabla "unidades".
  *
  * @property integer $id
  * @property string $unidad

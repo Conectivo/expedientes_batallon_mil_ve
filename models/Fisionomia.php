@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "fisionomia".
+ * Esta es la clase de modelo de la tabla "fisionomia".
  *
  * @property integer $cedula_id
  * @property string $color_piel

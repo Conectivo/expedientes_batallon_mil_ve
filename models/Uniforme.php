@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "tallas".
+ * Esta es la clase de modelo de la tabla "tallas".
  *
  * @property integer $cedula_id
  * @property string $tipo_talla

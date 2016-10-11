@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use app\models\Uniforme;
 
 /**
- * UniformeSearch represents the model behind the search form about `app\models\Uniforme`.
+ * UniformeSearch representa el modelo detrás del formulario de búsqueda de `app\models\Uniforme`.
  */
 class UniformeSearch extends Uniforme
 {
@@ -28,12 +28,12 @@ class UniformeSearch extends Uniforme
      */
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
+        // bypass la implementación de scenarios() en la clase padre
         return Model::scenarios();
     }
 
     /**
-     * Creates data provider instance with search query applied
+     * Crea una instancia de proveedor de datos con la consulta de búsqueda aplicada
      *
      * @param array $params
      *
@@ -43,7 +43,7 @@ class UniformeSearch extends Uniforme
     {
         $query = Uniforme::find();
 
-        // add conditions that should always apply here
+        // añadir condiciones que siempre debe aplicarse aquí...
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -60,12 +60,12 @@ class UniformeSearch extends Uniforme
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
+            // descomente la siguiente línea si no desea devolver cualquier registro cuando falla la validación
             // $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
+        // condiciones de filtrado del objeto GridView
         $query->andFilterWhere([
             'cedula_id' => $this->cedula_id,
             'gorra' => $this->gorra,

@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "familiares".
+ * Esta es la clase de modelo de la tabla "familiares".
  *
  * @property integer $cedula_id
  * @property string $nombre_madre

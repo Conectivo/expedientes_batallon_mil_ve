@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "captador".
+ * Esta es la clase de modelo de la tabla "captador".
  *
  * @property integer $id
  * @property integer $jquia

@@ -18,7 +18,7 @@ class ContactForm extends Model
 
 
     /**
-     * @return array the validation rules.
+     * @return array las reglas de validación.
      */
     public function rules()
     {

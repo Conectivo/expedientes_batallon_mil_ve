@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "oficiales".
+ * Esta es la clase de modelo de la tabla "oficiales".
  *
  * @property integer $id
  * @property string $jquia

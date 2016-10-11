@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "parroquias".
+ * Esta es la clase de modelo de la tabla "parroquias".
  *
  * @property integer $id_parroquia
  * @property integer $id_municipio

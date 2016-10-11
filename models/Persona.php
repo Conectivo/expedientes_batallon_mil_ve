@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "persona".
+ * Esta es la clase de modelo de la tabla "persona".
  *
  * @property integer $cedula
  * @property string $nombres

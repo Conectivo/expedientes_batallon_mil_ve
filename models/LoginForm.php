@@ -33,7 +33,7 @@ class LoginForm extends Model
 
 
     /**
-     * @return array the validation rules.
+     * @return array las reglas de validación.
      */
     public function rules()
     {
@@ -78,7 +78,7 @@ class LoginForm extends Model
     }
 
     /**
-     * Finds user by [[username]]
+     * Encuentra usuario por [[username]]
      *
      * @return User|null
      */

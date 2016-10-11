@@ -80,7 +80,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     }
 
     /**
-     * Finds user by username
+     * Encuentra usuario por username
      *
      * @param string $username
      * @return static|null
