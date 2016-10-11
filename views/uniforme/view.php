@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use yii\widgets\DetailView;
+use webvimark\modules\UserManagement\components\GhostHtml;
 use webvimark\modules\UserManagement\models\User;
 
 /* @var $this yii\web\View */
@@ -18,10 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (User::hasRole('ModificarRegistros')) {
-            echo Html::a('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar', ['update', 'id' => $model->cedula_id], ['class' => 'btn btn-primary']);
-            echo '&nbsp;';
-        }
+        echo GhostHtml::a('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar',
+            ['update', 'id' => $model->cedula_id], ['class' => 'btn btn-primary']
+        ) . '&nbsp;';
 
         if (User::hasRole('EliminarRegistros')) {
             Modal::begin([
