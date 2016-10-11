@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use yii\widgets\DetailView;
+use webvimark\modules\UserManagement\components\GhostHtml;
 use webvimark\modules\UserManagement\models\User;
 
 /* @var $this yii\web\View */
@@ -18,17 +19,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (User::hasRole('ModificarRegistros')) {
-            echo Html::a('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
-            echo '&nbsp;';
-        }
+        echo GhostHtml::a('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar',
+            ['update', 'id' => $model->id], ['class' => 'btn btn-primary']
+        ) . '&nbsp;';
 
         if (User::hasRole('EliminarRegistros')) {
             Modal::begin([
                 'header' => '<b>' . 'Eliminar Datos del Captador' . '</b>',
                 'footer' =>
                     '<button type="button" class="btn btn-success" data-dismiss="modal">' . '<span class="glyphicon glyphicon-remove"></span> ' . 'No' . '</button>'
-                    .Html::a('Eliminar',
+                    .Html::a('<span class="glyphicon glyphicon-trash"></span> ' . 'Eliminar',
+                        // http://127.0.0.1/persona/delete?id=25498875
                         ['delete', 'id' => $model->id],
                         [
                             'class' => 'btn btn-danger',
