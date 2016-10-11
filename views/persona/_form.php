@@ -84,13 +84,19 @@ $('#persona-municipio_id').on('change', function(e) {
 
     <?php // $form->field($model, 'fecha_nacimiento')->textInput() ?>
     <?= $form->field($model,'fecha_nacimiento')->
-        widget(DatePicker::className(),[
+        widget(DatePicker::className(), [
             'dateFormat' => 'yyyy-MM-dd',
             'language' => 'es',
             'clientOptions' => [
+                // 'numberOfMonths' => 2,
+                // 'yearRange' => '2000:2099',
                 'yearRange' => '-115:+0',
-                'changeYear' => true],
-                'options' => ['class' => 'form-control']
+                // 'minDate' => -5,
+                // 'maxDate' => '+1M +5D',
+                'changeMonth' => true,
+                'changeYear' => true
+            ],
+            'options' => ['class' => 'form-control', 'readonly' => 'readonly']
         ])->label('Fecha de nacimiento') ?>
 
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
@@ -136,11 +142,16 @@ $('#persona-municipio_id').on('change', function(e) {
         widget(DatePicker::className(),[
             'dateFormat' => 'yyyy-MM-dd',
             'language' => 'es',
-            // 'readonly' => true,
             'clientOptions' => [
+                // 'numberOfMonths' => 2,
+                // 'yearRange' => '2000:2099',
                 'yearRange' => '-115:+0',
-                'changeYear' => true],
-                'options' => ['class' => 'form-control']
+                // 'minDate' => -5,
+                // 'maxDate' => '+1M +5D',
+                'changeMonth' => true,
+                'changeYear' => true
+            ],
+            'options' => ['class' => 'form-control', 'readonly' => 'readonly']
         ])->label('Fecha de Ingreso') ?>
 
     <?php // $form->field($model, 'unidad_id')->textInput() ?>
