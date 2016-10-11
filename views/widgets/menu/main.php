@@ -28,20 +28,30 @@ use webvimark\modules\UserManagement\models\User;
     $menuItems = [
         // Enlace del Menú Inicio
         // ['label' => 'Inicio', 'url' => ['/site/index']],
-        ['label' => 'Inicio', 'url' => Yii::$app->user->isGuest ? ['/index.html'] : ['/site/index'],],
+        [
+            'label' => '<span class="glyphicon glyphicon-home"></span> ' . 'Inicio',
+            'url' => Yii::$app->user->isGuest ? ['/index.html'] : ['/site/index'],
+        ],
     ];
 
     if (Yii::$app->user->isGuest) {
         // Enlace del Menú Entrar
         // $menuItems[] = ['label' => 'Entrar', 'url' => ['/site/login']];
         // $menuItems[] = ['label' => 'Entrar', 'url' => ['/user-management/auth/login'], 'visible' => Yii::$app->user->isGuest];
-        $menuItems[] = ['label' => 'Entrar', 'url' => ['/user-management/auth/login']];
+        $menuItems[] = [
+            'label' => '<span class="glyphicon glyphicon-log-in"></span> ' . 'Entrar',
+            'url' => ['/user-management/auth/login']
+        ];
 
         // Enlace del Menú Contactos
-        $menuItems[] = ['label' => 'Contactos', 'url' => ['/site/contact']];
+        $menuItems[] = [
+            'label' => '<span class="glyphicon glyphicon-envelope"></span> ' . 'Contactos', 'url' => ['/site/contact']
+        ];
 
         // Enlace del Menú Acerca de
-        $menuItems[] = ['label' => 'Acerca de', 'url' => ['/site/about']];
+        $menuItems[] = [
+            'label' => '<span class="glyphicon glyphicon-sunglasses"></span> ' . 'Acerca de', 'url' => ['/site/about']
+        ];
     } else {
         // Enlace del Menú Registros Comunes
         // $menuItems[] = [
@@ -91,11 +101,11 @@ use webvimark\modules\UserManagement\models\User;
         if (User::hasRole('ConsultarRegistros')) {
             // Enlace del Menú Registros Comunes
             $menuItems[] = [
-                'label' => 'Registros Comunes',
+                'label' => '<span class="glyphicon glyphicon-send"></span> ' . 'Registros Comunes',
                 'items' => [
                     // Enlace del Submenú Unidad de Batallón
                     [
-                        'label' => 'Unidad de Batallón',
+                        'label' => '<span class="glyphicon glyphicon-home"></span> ' . 'Unidad de Batallón',
                         'url' => '#',
                         'items' => [
                             // Listado de Unidad de Batallón
@@ -108,7 +118,7 @@ use webvimark\modules\UserManagement\models\User;
                     '<li class="divider"></li>',
                     // Enlace del Submenú Oficiales
                     [
-                        'label' => 'Oficiales',
+                        'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Oficiales',
                         'url' => '#',
                         'items' => [
                             // Listado de Oficiales
@@ -120,7 +130,7 @@ use webvimark\modules\UserManagement\models\User;
                     '<li class="divider"></li>',
                     // Enlace del Submenú Captadores
                     [
-                        'label' => 'Captadores',
+                        'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Captadores',
                         'url' => '#',
                         'items' => [
                             // Listado de Captadores
@@ -134,11 +144,11 @@ use webvimark\modules\UserManagement\models\User;
 
             // Enlace del Menú Expediente
             $menuItems[] = [
-                'label' => 'Expediente',
+                'label' => '<span class="glyphicon glyphicon-certificate"></span> ' . 'Expediente',
                 'items' => [
                     // Enlace del Submenú Datos Básicos
                     [
-                        'label' => 'Datos Básicos',
+                        'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Datos Básicos',
                         'url' => '#',
                         'items' => [
                             // Listado de Personal
@@ -150,7 +160,7 @@ use webvimark\modules\UserManagement\models\User;
                     '<li class="divider"></li>',
                     // Enlace del Submenú Datos Familiares
                     [
-                        'label' => 'Datos Familiares',
+                        'label' => '<span class="glyphicon glyphicon-info-sign"></span> ' . 'Datos Familiares',
                         'url' => '#',
                         'items' => [
                             ['label' => 'Listado', 'url' => ['/familiares/index'], 'visible' => User::hasRole('ConsultarRegistros')],
@@ -160,7 +170,7 @@ use webvimark\modules\UserManagement\models\User;
                     '<li class="divider"></li>',
                     // Enlace del Submenú Datos Sociológicos
                     [
-                        'label' => 'Datos Sociológicos',
+                        'label' => '<span class="glyphicon glyphicon-education"></span> ' . 'Datos Sociológicos',
                         'url' => '#',
                         'items' => [
                             ['label' => 'Listado', 'url' => ['/sociologico/index'], 'visible' => User::hasRole('ConsultarRegistros')],
@@ -170,7 +180,7 @@ use webvimark\modules\UserManagement\models\User;
                     '<li class="divider"></li>',
                     // Enlace del Submenú Fisionomía del Personal
                     [
-                        'label' => 'Fisionomía del Personal',
+                        'label' => '<span class="glyphicon glyphicon-scale"></span> ' . 'Fisionomía del Personal',
                         'url' => '#',
                         'items' => [
                             ['label' => 'Listado', 'url' => ['/fisionomia/index'], 'visible' => User::hasRole('ConsultarRegistros')],
@@ -180,7 +190,7 @@ use webvimark\modules\UserManagement\models\User;
                     '<li class="divider"></li>',
                     // Enlace del Submenú Uniforme del Personal
                     [
-                        'label' => 'Uniforme del Personal',
+                        'label' => '<span class="glyphicon glyphicon-briefcase"></span> ' . 'Uniforme del Personal',
                         'url' => '#',
                         'items' => [
                             ['label' => 'Listado', 'url' => ['/uniforme/index'], 'visible' => User::hasRole('ConsultarRegistros')],
@@ -254,7 +264,7 @@ use webvimark\modules\UserManagement\models\User;
         if (User::hasRole('Admin')) {
             // Enlace del Menú Seguridad
             $menuItems[] = [
-                'label' => 'Seguridad',
+                'label' => '<span class="glyphicon glyphicon-cog"></span> ' . 'Seguridad',
                 'items' => array_merge(array_map(
                     function($item) {
                             $item['encode'] = false;
@@ -272,26 +282,33 @@ use webvimark\modules\UserManagement\models\User;
             'url' => ['/site/contact'],
             'visible' => Yii::$app->user->isGuest,
         ];
+
         // Enlace del Menú Ayuda
         $menuItems[] = [
-            'label' => 'Ayuda',
+            'label' => '<span class="glyphicon glyphicon-book"></span> ' . 'Ayuda',
             'items' => [
-                ['label' => 'Contactos', 'url' => ['/site/contact']],
+                ['label' => '<span class="glyphicon glyphicon-envelope"></span> ' . 'Contactos', 'url' => ['/site/contact']],
                 // Enlace del Submenú Acerca de sistema
-                ['label' => 'Acerca de', 'url' => ['/site/about']],
+                ['label' => '<span class="glyphicon glyphicon-sunglasses"></span> ' . 'Acerca de', 'url' => ['/site/about']],
             ],
         ];
 
         // Enlace del Menú Usuario
         $menuItems[] = [
-            'label' => 'Usuario' . ' (' . Yii::$app->user->identity->username . ')',
+            'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Usuario' . ' (' . Yii::$app->user->identity->username . ')',
             'items' => [
                 // ['label' => 'Registro', 'url' => ['/user-management/auth/registration']],
-                ['label' => 'Cambiar propia contraseña', 'url' => ['/user-management/auth/change-own-password']],
-                // ['label' => 'Recuperar contraseña', 'url' => ['/user-management/auth/password-recovery']],
-                ['label' => 'Correo de confirmación', 'url' => ['/user-management/auth/confirm-email']],
                 [
-                    'label' => 'Salir',
+                    'label' => '<span class="glyphicon glyphicon-star-empty"></span> ' . 'Cambiar propia contraseña',
+                    'url' => ['/user-management/auth/change-own-password']
+                ],
+                // ['label' => 'Recuperar contraseña', 'url' => ['/user-management/auth/password-recovery']],
+                [
+                    'label' => '<span class="glyphicon glyphicon-envelope"></span> ' . 'Correo de confirmación',
+                    'url' => ['/user-management/auth/confirm-email']
+                ],
+                [
+                    'label' => '<span class="glyphicon glyphicon-off"></span> ' . 'Salir',
                     // 'url' => ['/site/logout'],
                     'url' => ['/user-management/auth/logout'],
                     'linkOptions' => ['data-method' => 'post'],
@@ -301,42 +318,23 @@ use webvimark\modules\UserManagement\models\User;
         ];
     }
 
-    // echo GhostMenu::widget([
-    //     'encodeLabels' => false,
-    //     'activateParents' => true,
-    //     'items' => $menuItems
-    // ]);
-/*
-    echo GhostMenu::widget([
-        'encodeLabels'=>false,
-        'activateParents'=>true,
-        'items' => [
-            [
-                'label' => 'Backend routes',
-                'items' => UserManagementModule::menuItems()
-            ],
-            [
-                'label' => 'Frontend routes',
-                'items' => [
-                    ['label' => 'Login', 'url' => ['/user-management/auth/login']],
-                    ['label' => 'Logout', 'url' => ['/user-management/auth/logout']],
-                    ['label' => 'Registration', 'url' => ['/user-management/auth/registration']],
-                    ['label' => 'Change own password', 'url' => ['/user-management/auth/change-own-password']],
-                    ['label' => 'Password recovery', 'url' => ['/user-management/auth/password-recovery']],
-                    ['label' => 'E-mail confirmation', 'url' => ['/user-management/auth/confirm-email']],
-                ],
-            ],
-        ],
-    ]);
-*/
-
     echo Nav::widget([
+        'encodeLabels' => false,
         'options' => [
             'class' => 'navbar-nav navbar-right'
         ],
         'items' => $menuItems,
     ]);
     NavBar::end();
+
+    // echo GhostMenu::widget([
+    //     'encodeLabels' => false,
+    //     'activateParents' => true,
+    //     'options' => [
+    //         'class' => 'navbar-nav navbar-right'
+    //     ],
+    //     'items' => $menuItems
+    // ]);
 
 /* 
     NavBar::begin([
