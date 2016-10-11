@@ -13,7 +13,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PersonaController implements the CRUD actions for Persona model.
+ * PersonaController implementa las acciones CRUD para el modelo Persona.
  */
 class PersonaController extends Controller
 {
@@ -33,7 +33,7 @@ class PersonaController extends Controller
     }
 
     /**
-     * Lists all Persona models.
+     * Muestra una lista de todos los registros del modelo Persona.
      * @return mixed
      */
     public function actionIndex()
@@ -48,7 +48,7 @@ class PersonaController extends Controller
     }
 
     /**
-     * Displays a single Persona model.
+     * Muestra un único registo detallado del modelo Persona.
      * @param integer $id
      * @return mixed
      */
@@ -60,8 +60,8 @@ class PersonaController extends Controller
     }
 
     /**
-     * Creates a new Persona model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo registro para el modelo Persona.
+     * Si la creación del registro es exitosa, el navegador será redirigido a la página de 'vista'.
      * @return mixed
      */
     public function actionCreate()
@@ -94,8 +94,8 @@ class PersonaController extends Controller
     }
 
     /**
-     * Updates an existing Persona model.
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * Actualiza un registro existente del modelo Persona.
+     * Si la actualización del registro es exitosa, el navegador será redirigido a la página de 'vista'.
      * @param integer $id
      * @return mixed
      */
@@ -113,8 +113,8 @@ class PersonaController extends Controller
     }
 
     /**
-     * Deletes an existing Persona model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * Elimina un registro existente del modelo Persona.
+     * Si la eliminación del registro es exitosa, el navegador será redirigido a la página de 'index'.
      * @param integer $id
      * @return mixed
      */
@@ -188,11 +188,11 @@ class PersonaController extends Controller
     }
 
     /**
-     * Finds the Persona model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Busca el modelo Persona basado en su valor de clave principal.
+     * Si no se encuentra el modelo, se produce una excepción HTTP 404.
      * @param integer $id
-     * @return Persona the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Persona el modelo cargado
+     * @throws NotFoundHttpException si no se encuentra el modelo
      */
     protected function findModel($id)
     {

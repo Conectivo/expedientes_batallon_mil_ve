@@ -63,7 +63,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
+     * Muestra página de 'index'.
      *
      * @return string
      */
@@ -73,7 +73,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Login action.
+     * Acción Login.
      *
      * @return string
      */
@@ -93,7 +93,7 @@ class SiteController extends Controller
     // }
 
     /**
-     * Logout action.
+     * Acción Logout.
      *
      * @return string
      */
@@ -105,7 +105,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
+     * Muestra página de 'contact'.
      *
      * @return string
      */
@@ -123,7 +123,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
+     * Muestra página de 'about'.
      *
      * @return string
      */

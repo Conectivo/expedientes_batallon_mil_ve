@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UniformeController implements the CRUD actions for Uniforme model.
+ * UniformeController implementa las acciones CRUD para el modelo Uniforme.
  */
 class UniformeController extends Controller
 {
@@ -30,7 +30,7 @@ class UniformeController extends Controller
     }
 
     /**
-     * Lists all Uniforme models.
+     * Muestra una lista de todos los registros del modelo Uniforme.
      * @return mixed
      */
     public function actionIndex()
@@ -45,7 +45,7 @@ class UniformeController extends Controller
     }
 
     /**
-     * Displays a single Uniforme model.
+     * Muestra un único registo detallado del modelo Uniforme.
      * @param integer $id
      * @return mixed
      */
@@ -57,8 +57,8 @@ class UniformeController extends Controller
     }
 
     /**
-     * Creates a new Uniforme model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo registro para el modelo Uniforme.
+     * Si la creación del registro es exitosa, el navegador será redirigido a la página de 'vista'.
      * @return mixed
      */
     public function actionCreate()
@@ -75,8 +75,8 @@ class UniformeController extends Controller
     }
 
     /**
-     * Updates an existing Uniforme model.
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * Actualiza un registro existente del modelo Uniforme.
+     * Si la actualización del registro es exitosa, el navegador será redirigido a la página de 'vista'.
      * @param integer $id
      * @return mixed
      */
@@ -94,8 +94,8 @@ class UniformeController extends Controller
     }
 
     /**
-     * Deletes an existing Uniforme model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * Elimina un registro existente del modelo Uniforme.
+     * Si la eliminación del registro es exitosa, el navegador será redirigido a la página de 'index'.
      * @param integer $id
      * @return mixed
      */
@@ -107,11 +107,11 @@ class UniformeController extends Controller
     }
 
     /**
-     * Finds the Uniforme model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Busca el modelo Uniforme basado en su valor de clave principal.
+     * Si no se encuentra el modelo, se produce una excepción HTTP 404.
      * @param integer $id
-     * @return Uniforme the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Uniforme el modelo cargado
+     * @throws NotFoundHttpException si no se encuentra el modelo
      */
     protected function findModel($id)
     {

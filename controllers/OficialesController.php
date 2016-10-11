@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * OficialesController implements the CRUD actions for Oficiales model.
+ * OficialesController implementa las acciones CRUD para el modelo Oficiales.
  */
 class OficialesController extends Controller
 {
@@ -30,7 +30,7 @@ class OficialesController extends Controller
     }
 
     /**
-     * Lists all Oficiales models.
+     * Muestra una lista de todos los registros del modelo Oficiales.
      * @return mixed
      */
     public function actionIndex()
@@ -45,7 +45,7 @@ class OficialesController extends Controller
     }
 
     /**
-     * Displays a single Oficiales model.
+     * Muestra un único registo detallado del modelo Oficiales.
      * @param integer $id
      * @return mixed
      */
@@ -57,8 +57,8 @@ class OficialesController extends Controller
     }
 
     /**
-     * Creates a new Oficiales model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo registro para el modelo Oficiales.
+     * Si la creación del registro es exitosa, el navegador será redirigido a la página de 'vista'.
      * @return mixed
      */
     public function actionCreate()
@@ -75,8 +75,8 @@ class OficialesController extends Controller
     }
 
     /**
-     * Updates an existing Oficiales model.
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * Actualiza un registro existente del modelo Oficiales.
+     * Si la actualización del registro es exitosa, el navegador será redirigido a la página de 'vista'.
      * @param integer $id
      * @return mixed
      */
@@ -94,8 +94,8 @@ class OficialesController extends Controller
     }
 
     /**
-     * Deletes an existing Oficiales model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * Elimina un registro existente del modelo Oficiales.
+     * Si la eliminación del registro es exitosa, el navegador será redirigido a la página de 'index'.
      * @param integer $id
      * @return mixed
      */
@@ -107,11 +107,11 @@ class OficialesController extends Controller
     }
 
     /**
-     * Finds the Oficiales model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Busca el modelo Oficiales basado en su valor de clave principal.
+     * Si no se encuentra el modelo, se produce una excepción HTTP 404.
      * @param integer $id
-     * @return Oficiales the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Oficiales el modelo cargado
+     * @throws NotFoundHttpException si no se encuentra el modelo
      */
     protected function findModel($id)
     {

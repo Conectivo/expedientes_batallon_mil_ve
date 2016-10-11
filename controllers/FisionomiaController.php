@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * FisionomiaController implements the CRUD actions for Fisionomia model.
+ * FisionomiaController implementa las acciones CRUD para el modelo Fisionomia.
  */
 class FisionomiaController extends Controller
 {
@@ -30,7 +30,7 @@ class FisionomiaController extends Controller
     }
 
     /**
-     * Lists all Fisionomia models.
+     * Muestra una lista de todos los registros del modelo Fisionomia.
      * @return mixed
      */
     public function actionIndex()
@@ -45,7 +45,7 @@ class FisionomiaController extends Controller
     }
 
     /**
-     * Displays a single Fisionomia model.
+     * Muestra un único registo detallado del modelo Fisionomia.
      * @param integer $id
      * @return mixed
      */
@@ -57,8 +57,8 @@ class FisionomiaController extends Controller
     }
 
     /**
-     * Creates a new Fisionomia model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo registro para el modelo Fisionomia.
+     * Si la creación del registro es exitosa, el navegador será redirigido a la página de 'vista'.
      * @return mixed
      */
     public function actionCreate()
@@ -75,8 +75,8 @@ class FisionomiaController extends Controller
     }
 
     /**
-     * Updates an existing Fisionomia model.
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * Actualiza un registro existente del modelo Fisionomia.
+     * Si la actualización del registro es exitosa, el navegador será redirigido a la página de 'vista'.
      * @param integer $id
      * @return mixed
      */
@@ -94,8 +94,8 @@ class FisionomiaController extends Controller
     }
 
     /**
-     * Deletes an existing Fisionomia model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * Elimina un registro existente del modelo Fisionomia.
+     * Si la eliminación del registro es exitosa, el navegador será redirigido a la página de 'index'.
      * @param integer $id
      * @return mixed
      */
@@ -107,11 +107,11 @@ class FisionomiaController extends Controller
     }
 
     /**
-     * Finds the Fisionomia model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Busca el modelo Fisionomia basado en su valor de clave principal.
+     * Si no se encuentra el modelo, se produce una excepción HTTP 404.
      * @param integer $id
-     * @return Fisionomia the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Fisionomia el modelo cargado
+     * @throws NotFoundHttpException si no se encuentra el modelo
      */
     protected function findModel($id)
     {
