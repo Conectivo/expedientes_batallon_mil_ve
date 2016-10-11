@@ -152,13 +152,14 @@ $('#persona-municipio_id').on('change', function(e) {
     <div class="form-group">
         <?php
         if ($model->isNewRecord && User::hasRole('LlenarRegistros'))
-            echo Html::submitButton('<span class="glyphicon glyphicon-plus-sign"></span> ' . 'Crear', ['class' => 'btn btn-success']);
-            echo '&nbsp;';
+            echo Html::submitButton('<span class="glyphicon glyphicon-plus-sign"></span> ' . 'Crear',
+                ['class' => 'btn btn-success']
+            ) . '&nbsp;';
 
         if (!$model->isNewRecord && User::hasRole('ModificarRegistros'))
-            echo Html::submitButton('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar', ['class' => 'btn btn-primary']);
+            echo Html::submitButton('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar',
+                ['class' => 'btn btn-primary']);
         ?>
-        <?php // Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
