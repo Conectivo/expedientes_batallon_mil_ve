@@ -14,7 +14,7 @@ use Yii;
  * @property string $contextura
  * @property string $condicion_fisica
  * @property string $condicion_intelectual
- * @property string $estatura
+ * @property double $estatura
  * @property double $peso
  * @property integer $grupo_sanguineo
  * @property string $senales_particulares

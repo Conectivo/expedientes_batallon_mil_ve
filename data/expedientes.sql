@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : expedientes
 -- ===
--- === Build : 138
+-- === Build : 142
 -- ======================================================================
 
 CREATE TABLE unidades
@@ -103,8 +103,8 @@ CREATE TABLE fisionomia
     contextura             varchar(20)    not null,
     condicion_fisica       char(1)        not null,
     condicion_intelectual  char(1)        not null,
-    estatura               decimal(2,2)   not null,
-    peso                   decimal(3,2)   not null,
+    estatura               double         not null,
+    peso                   double         not null,
     grupo_sanguineo        INTEGER        not null,
     senales_particulares   varchar(50)    not null,
 

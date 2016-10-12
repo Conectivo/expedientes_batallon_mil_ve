@@ -87,7 +87,7 @@ use app\models\Persona;
         // 'mask' => '9999-999-9999',
     ]) */ ?>
 
-    <?= $form->field($model, 'peso')->textInput() ?>
+    <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) // ['type' => 'number'] ?>
 
     <?php // $form->field($model, 'grupo_sanguineo')->textInput() ?>
     <?php /* $form->field($model, 'grupo_sanguineo')->dropDownList(
