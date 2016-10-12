@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-10-2016 a las 19:45:24
+-- Tiempo de generación: 11-10-2016 a las 11:43:22
 -- Versión del servidor: 5.5.52-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.19
 
@@ -412,6 +412,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('Admin', 'changeOwnPassword'),
 ('Admin', 'changeUserPassword'),
 ('ConsultarRegistros', 'ConsultarDetalleRegistro'),
+('LlenarRegistros', 'createCaptador'),
 ('LlenarRegistros', 'createDatosFamiliaresPersonal'),
 ('LlenarRegistros', 'createDatosSociologicosPersonal'),
 ('LlenarRegistros', 'createFisionomiaPersonal'),
@@ -420,6 +421,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('LlenarRegistros', 'createUnidadBatallon'),
 ('LlenarRegistros', 'createUniformePersonal'),
 ('Admin', 'createUsers'),
+('EliminarRegistros', 'deleteCaptador'),
 ('EliminarRegistros', 'deleteDatosFamiliaresPersonal'),
 ('EliminarRegistros', 'deleteDatosSociologicosPersonal'),
 ('EliminarRegistros', 'deleteFisionomiaPersonal'),
@@ -428,6 +430,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('EliminarRegistros', 'deleteUnidadBatallon'),
 ('EliminarRegistros', 'deleteUniformePersonal'),
 ('Admin', 'deleteUsers'),
+('ModificarRegistros', 'editCaptador'),
 ('ModificarRegistros', 'editDatosFamiliaresPersonal'),
 ('ModificarRegistros', 'editDatosSociologicosPersonal'),
 ('ModificarRegistros', 'editFisionomiaPersonal'),
@@ -552,7 +555,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(128) DEFAULT NULL,
   `email_confirmed` smallint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -583,7 +586,7 @@ CREATE TABLE IF NOT EXISTS `user_visit_log` (
   `os` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=103 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=135 ;
 
 --
 -- Volcado de datos para la tabla `user_visit_log`
@@ -691,7 +694,39 @@ INSERT INTO `user_visit_log` (`id`, `token`, `ip`, `language`, `user_agent`, `us
 (99, '57fc0d9142426', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476136337, 'Chrome', 'Linux'),
 (100, '57fc0ffa08c35', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476136954, 'Chrome', 'Linux'),
 (101, '57fc12726d953', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476137586, 'Chrome', 'Linux'),
-(102, '57fc27dd547e9', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476143069, 'Chrome', 'Linux');
+(102, '57fc27dd547e9', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476143069, 'Chrome', 'Linux'),
+(103, '57fc322142473', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476145697, 'Chrome', 'Linux'),
+(104, '57fc3306418cb', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476145926, 'Chrome', 'Linux'),
+(105, '57fc56f01065f', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476155120, 'Chrome', 'Linux'),
+(106, '57fc5b31d6758', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476156209, 'Chrome', 'Linux'),
+(107, '57fc663fdaaa3', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476159039, 'Chrome', 'Linux'),
+(108, '57fcbd41520b2', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 3, 1476181313, 'Chrome', 'Linux'),
+(109, '57fcbd6146e99', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 5, 1476181345, 'Chrome', 'Linux'),
+(110, '57fcbd8add14e', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 4, 1476181386, 'Chrome', 'Linux'),
+(111, '57fcbdf726e9b', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 5, 1476181495, 'Chrome', 'Linux'),
+(112, '57fcbe6156ee0', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 2, 1476181601, 'Chrome', 'Linux'),
+(113, '57fcc0258a3a6', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476182053, 'Chrome', 'Linux'),
+(114, '57fcc07fd5280', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', NULL, 1476182143, 'Chrome', 'Linux'),
+(115, '57fcc09fefbfe', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476182175, 'Chrome', 'Linux'),
+(116, '57fcc0f7a4494', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', NULL, 1476182263, 'Chrome', 'Linux'),
+(117, '57fcc106ea6b6', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476182278, 'Chrome', 'Linux'),
+(118, '57fcc163be10d', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', NULL, 1476182371, 'Chrome', 'Linux'),
+(119, '57fcc1f7bd9e1', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476182519, 'Chrome', 'Linux'),
+(120, '57fcfe23c3290', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476197923, 'Chrome', 'Linux'),
+(121, '57fcffd23826e', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 4, 1476198354, 'Chrome', 'Linux'),
+(122, '57fcffdfe0b0a', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 5, 1476198367, 'Chrome', 'Linux'),
+(123, '57fd000cbfda2', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 4, 1476198412, 'Chrome', 'Linux'),
+(124, '57fd00f9a2033', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 3, 1476198649, 'Chrome', 'Linux'),
+(125, '57fd018467429', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 5, 1476198788, 'Chrome', 'Linux'),
+(126, '57fd0279bf1b1', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 4, 1476199033, 'Chrome', 'Linux'),
+(127, '57fd0385cc6c7', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 5, 1476199301, 'Chrome', 'Linux'),
+(128, '57fd039512d0c', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 4, 1476199317, 'Chrome', 'Linux'),
+(129, '57fd03c12b086', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476199361, 'Chrome', 'Linux'),
+(130, '57fd04d893519', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 4, 1476199640, 'Chrome', 'Linux'),
+(131, '57fd07a293513', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476200354, 'Chrome', 'Linux'),
+(132, '57fd084635613', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 4, 1476200518, 'Chrome', 'Linux'),
+(133, '57fd0877d1f66', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 1, 1476200567, 'Chrome', 'Linux'),
+(134, '57fd088d76fe1', '127.0.0.1', 'es', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36', 4, 1476200589, 'Chrome', 'Linux');
 
 --
 -- Restricciones para tablas volcadas
