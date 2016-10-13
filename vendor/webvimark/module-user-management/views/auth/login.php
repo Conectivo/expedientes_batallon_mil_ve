@@ -13,9 +13,14 @@ use yii\helpers\Html;
 <div class="container" id="login-wrapper">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
+			<?php /* yii\helpers\Html::img('@web/images/logo.png', [ // 'id'=>'logo-ejercito', 
+				'id'=>'logo-ejercito', 'class'=>'img-responsive', 'width'=>'100', 'height'=>'148',
+				'title'=>'Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada "Juan Antonio Paredes"'
+			]); */ ?>
+			<h2><span class="glyphicon glyphicon-log-in"></span> Bienvenido a la pagina del Cuartel Negro Primero</h2><br />
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><?= UserManagementModule::t('front', 'Authorization') ?></h3>
+					<h3 class="panel-title"><?php // UserManagementModule::t('front', 'Authorization') ?>Por favor, introduzca su información</h3>
 				</div>
 				<div class="panel-body">
 
@@ -53,6 +58,9 @@ use yii\helpers\Html;
 								UserManagementModule::t('front', "Forgot password ?"),
 								['/user-management/auth/password-recovery']
 							) ?>
+						</div>
+						<div class="col-sm-6 text-right">
+							<?= Html::a("Ir a la pagina Principal", ['/index.html']) ?>
 						</div>
 					</div>
 
