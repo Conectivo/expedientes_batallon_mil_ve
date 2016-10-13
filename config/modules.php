@@ -20,7 +20,7 @@ return [
 
         // Aquí usted puede definir su handler para cambiar el layout para cualquier controlador o acción
         // Consejo: usted puede usar este evento en cualquier modulo
-        'on beforeAction'=>function(yii\base\ActionEvent $event) {
+        'on beforeAction' => function(yii\base\ActionEvent $event) {
                 if ( $event->action->uniqueId == 'user-management/auth/login' )
                 {
                     $event->action->controller->layout = 'loginLayout.php';
