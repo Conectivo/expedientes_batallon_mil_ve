@@ -1,0 +1,25 @@
+{
+    "name": "expedientes-batallon-mil-ve",
+    "description": "Sistema de Expedientes del Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada 'Juan Antonio Paredes'.",
+	"keywords": [
+		"expedientes",
+		"batallon",
+		"ejercito",
+		"venezuela",
+		"mil"
+	],
+    "authors": [
+		{ "name": "Ninoska Corredor", "email": "ninosk.dcr@gmail.com", "homepage": "https://www.instagram.com/ninoskdcr/" },
+		{ "name": "Liz Garcia", "email": "liz_carol_garcia_xo@hotmail.com", "homepage": "https://www.instagram.com/liz_cgd/" },
+		{ "name": "Leonardo J. Caballero G.", "email": "leonardocaballero@gmail.com", "homepage": "http://macagua.github.io/" }
+    ],
+	"homepage": "https://github.com/Conectivo/expedientes_batallon_mil_ve",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Conectivo/expedientes_batallon_mil_ve.git"
+	},
+    "dependencies": {
+        "jquery": "2.2.4",
+        "email-autocomplete": "0.1.1"
+    }
+}

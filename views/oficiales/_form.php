@@ -2,11 +2,25 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\web\View;
 use webvimark\modules\UserManagement\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Oficiales */
 /* @var $form yii\widgets\ActiveForm */
+
+$this->registerJs(
+"
+  (function($){
+    $(function() {
+      $('.email').emailautocomplete({
+	// suggClass: 'custom-classname', // por defecto: 'eac-sugg'. su nombre de clase CSS personalizada (opcional)
+        domains: ['cantv.net', 'mipunto.com'] // agregue sus propios dominios de correo aquí
+      });
+    });
+  }(jQuery));
+", View::POS_READY);
+
 ?>
 
 <div class="oficiales-form">
@@ -42,7 +56,14 @@ use webvimark\modules\UserManagement\models\User;
         ['prompt'=>'Por favor, seleccioné una opción',]
     )->label('Situación'); ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(
+        [
+            'maxlength' => true,
+            'type' => 'email', 'id' => 'email',
+            'class' => 'form-control email',
+            // 'placeholder' => 'Ingrese su correo electrónico'
+        ]
+    ); ?>
 
     <?= $form->field($model, 'arma')->textInput(['maxlength' => true]) ?>
 
