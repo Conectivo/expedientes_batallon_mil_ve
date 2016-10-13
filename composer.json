@@ -1,23 +1,42 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
-    "homepage": "http://www.yiiframework.com/",
+    "name": "conectivo/expedientes_batallon_mil_ve",
+    "description": "Sistema de Expedientes del Cuartel Negro Primero - Batallón de Apoyo Logístico 208 General de Brigada 'Juan Antonio Paredes'.",
+    "keywords": ["expedientes", "batallon", "ejercito", "venezuela", "mil", "yii2", "framework", "basic"],
+    "homepage": "https://github.com/Conectivo/expedientes_batallon_mil_ve",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
+        "issues": "https://github.com/Conectivo/expedientes_batallon_mil_ve/issues?state=open",
+        "wiki": "https://github.com/Conectivo/expedientes_batallon_mil_ve/wiki",
+        "source": "https://github.com/Conectivo/expedientes_batallon_mil_ve",
+        "email": "leonardocaballero@gmail.com"
     },
+    "authors": [
+        {
+            "name": "Ninoska Corredor",
+            "email": "ninosk.dcr@gmail.com",
+            "homepage": "https://www.instagram.com/ninoskdcr/",
+            "role": "Developer"
+        },
+        {
+            "name": "Liz Garcia",
+            "email": "liz_carol_garcia_xo@hotmail.com",
+            "homepage": "https://www.instagram.com/liz_cgd/",
+            "role": "Developer"
+        },
+        {
+            "name": "Leonardo J. Caballero G.",
+            "email": "leonardocaballero@gmail.com",
+            "homepage": "https://dev.vizormobil.com/u/lcaballero",
+            "role": "Developer"
+        }
+    ],
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": ">=2.0.5",
-        "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2": "~2.0.0",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
