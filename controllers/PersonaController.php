@@ -6,6 +6,11 @@ use Yii;
 use app\models\Estados;
 use app\models\Municipios;
 use app\models\Parroquias;
+use app\models\Familiares;
+use app\models\Sociologico;
+use app\models\Fisionomia;
+use app\models\Unidad;
+use app\models\Uniforme;
 use app\models\Persona;
 use app\models\PersonaSearch;
 use yii\web\Controller;
@@ -57,6 +62,62 @@ class PersonaController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    /**
+     * Muestra una vista detallada del expediente del Personal.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDetalles($id)
+    {
+        $modelPersona = $this->findModel($id);
+
+        $modelFamiliares = Familiares::find()
+                            ->where(['cedula_id' => $id])->one();
+
+        $modelSociologico = Sociologico::find()
+                            ->where(['cedula_id' => $id])->one();
+
+        $modelFisionomia = Fisionomia::find()
+                            ->where(['cedula_id' => $id])->one();
+
+        $persona = $modelPersona;
+        $unidad = $persona->getUnidad();
+        $modelUnidad = $unidad;
+
+        $modelUniforme = Uniforme::find()
+                            ->where(['cedula_id' => $id])->one();
+
+        if (!$modelFamiliares) {
+            // throw new NotFoundHttpException('Datos familiares not found');
+          echo "Datos familiares no encontrada";
+        }
+
+        if (!$modelSociologico) {
+            // throw new NotFoundHttpException('Datos familiares not found');
+          echo "Datos sociológicos no encontrada";
+        }
+
+        if (!$modelFisionomia) {
+            // throw new NotFoundHttpException('Datos familiares not found');
+          echo "Fisionomía del Personal no encontrada";
+        }
+
+        if (!$modelUniforme) {
+            // throw new NotFoundHttpException('Datos familiares not found');
+          echo "Unidad de Batallón al cual se asigno el Personal no encontrada";
+        }
+
+        return $this->render('detalles', [
+            'modelPersona' => $modelPersona,
+            'modelFamiliares' => $modelFamiliares,
+            'modelSociologico' => $modelSociologico,
+            'modelFisionomia' => $modelFisionomia,
+            'modelUnidad' => $modelUnidad,
+            'modelUniforme' => $modelUniforme,
+    ]);
+
     }
 
     /**

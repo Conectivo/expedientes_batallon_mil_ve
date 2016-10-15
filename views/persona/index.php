@@ -94,11 +94,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update} {delete}',
+                'template' => '{view} {detalles} {update} {delete}',
                 'buttons' => [
                     'view' => function ($url, $model) {
                         return GhostHtml::a('<span class="glyphicon glyphicon-eye-open"></span>',
                             $url, ['title' => 'Ver',]);
+                    },
+                    'detalles' => function ($url, $model) {
+                        return GhostHtml::a('<span class="glyphicon glyphicon-book"></span>',
+                            $url, ['title' => 'Ficha General del Personal',]);
                     },
                     'update' => function ($url, $model) {
                         return GhostHtml::a('<span class="glyphicon glyphicon-pencil"></span>',
@@ -115,6 +119,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'urlCreator' => function ($action, $model, $key){
                     if ($action === 'view') {
                         return Yii::$app->urlManager->createUrl(['/persona/view', 'id'=>$model->cedula]);
+                    }
+
+                    if ($action === 'detalles') {
+                        return Yii::$app->urlManager->createUrl(['/persona/detalles', 'id'=>$model->cedula]);
                     }
 
                     if ($action === 'update') {
