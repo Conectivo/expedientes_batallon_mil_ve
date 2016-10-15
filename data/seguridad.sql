@@ -45,6 +45,7 @@ INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 ('ConsultarRegistros', 5, 1475621745),
 ('EliminarRegistros', 4, 1475621730),
 ('EliminarRegistros', 5, 1475621745),
+('HistorialInicioSesion', 4, 1476485639),
 ('LlenarRegistros', 4, 1475621730),
 ('ModificarRegistros', 4, 1475621730),
 ('ModificarRegistros', 5, 1475621745);
@@ -309,6 +310,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('editUserEmail', 2, 'Editar correo electrónico de usuario', NULL, NULL, 1475551145, 1475553470, 'userManagement'),
 ('editUsers', 2, 'Editar usuarios', NULL, NULL, 1475551145, 1475553363, 'userManagement'),
 ('EliminarRegistros', 1, 'Eliminar Registros', NULL, NULL, 1475621554, 1475621554, NULL),
+('HistorialInicioSesion', 1, 'Historial de Inicio de Sesión', NULL, NULL, 1476485597, 1476485597, NULL),
 ('ListarRegistros', 1, 'Listar Registros', NULL, NULL, 1476129759, 1476129759, NULL),
 ('listCaptadores', 2, 'Listar Captadores', NULL, NULL, 1476126364, 1476130328, 'administracionCaptador'),
 ('listDatosFamiliaresPersonal', 2, 'Listar Datos Familiares de Personal', NULL, NULL, 1476131057, 1476131057, 'administracionPersonal'),
@@ -401,6 +403,8 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('commonPermission', '/user-management/auth/confirm-email'),
 ('assignRolesToUsers', '/user-management/user-permission/set'),
 ('assignRolesToUsers', '/user-management/user-permission/set-roles'),
+('viewVisitLog', '/user-management/user-visit-log/index'),
+('viewVisitLog', '/user-management/user-visit-log/view'),
 ('editUsers', '/user-management/user/bulk-activate'),
 ('editUsers', '/user-management/user/bulk-deactivate'),
 ('deleteUsers', '/user-management/user/bulk-delete'),
@@ -467,7 +471,8 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('changeUserPassword', 'viewUsers'),
 ('createUsers', 'viewUsers'),
 ('deleteUsers', 'viewUsers'),
-('editUsers', 'viewUsers');
+('editUsers', 'viewUsers'),
+('HistorialInicioSesion', 'viewVisitLog');
 
 -- --------------------------------------------------------
 

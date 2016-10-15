@@ -200,6 +200,40 @@ use webvimark\modules\UserManagement\models\User;
                 ],
             ];
 
+            // Enlace del Menú Centro de Reporte
+            $menuItems[] = [
+                'label' => '<span class="glyphicon glyphicon-edit"></span> ' . 'Reportes',
+                'items' => [
+                    // Enlace del Submenú Reporte de Información de Oficiales
+                    [
+                        'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Reporte de Información de Oficiales',
+                        'url' => '/reporte/oficiales/oficialesreport',
+                        'visible' => User::hasRole('ConsultarRegistros'),
+                    ],
+                    '<li class="divider"></li>',
+                    // Enlace del Submenú Reporte de Información de Captadores
+                    [
+                        'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Reporte de Información de Captadores',
+                        'url' => '#',
+                        'visible' => User::hasRole('ConsultarRegistros'),
+                    ],
+                    '<li class="divider"></li>',
+                    // Enlace del Submenú Reporte de Información de Personal
+                    [
+                        'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Reporte de Información de Personal',
+                        'url' => '#',
+                        'visible' => User::hasRole('ConsultarRegistros'),
+                    ],
+                    '<li class="divider"></li>',
+                    // Enlace del Submenú Historial de Inicio de Sesión
+                    [
+                        'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Historial de Inicio de Sesión',
+                        'url' => '/user-management/user-visit-log/index',
+                        'visible' => User::hasRole('HistorialInicioSesion'),
+                    ],
+                ],
+            ];
+
         }
         // Enlace del Menú Expediente
         // $menuItems[] = [

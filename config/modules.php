@@ -27,4 +27,8 @@ return [
                 };
             },
     ],
+    // Modulo: gestión de reportes
+    'reporte' => [
+        'class' => 'app\modules\reporte\ReporteModule',
+    ],
 ];
