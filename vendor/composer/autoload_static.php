@@ -9,6 +9,7 @@ class ComposerStaticInite7bbc9e18f4d13c4675486b0c8f56260
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '0ae30290040dbc400cb2598309935462' => __DIR__ . '/../..' . '/global.functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
