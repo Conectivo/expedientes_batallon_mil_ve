@@ -1407,32 +1407,6 @@
         "description": "Helpers for yii 2"
     },
     {
-        "name": "webvimark/date-range-picker",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/webvimark/date-range-picker.git",
-            "reference": "4b93d19534ad956c2ae06be0020601ccf8af99fb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/webvimark/date-range-picker/zipball/4b93d19534ad956c2ae06be0020601ccf8af99fb",
-            "reference": "4b93d19534ad956c2ae06be0020601ccf8af99fb",
-            "shasum": ""
-        },
-        "time": "2015-10-06 12:14:43",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "webvimark\\extensions\\DateRangePicker\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "description": "dangrossman daterangepicker yii 2 gridview"
-    },
-    {
         "name": "ikimea/browser",
         "version": "1.12.0",
         "version_normalized": "1.12.0.0",
@@ -1613,18 +1587,44 @@
         ]
     },
     {
-        "name": "webvimark/module-user-management",
-        "version": "1.0.10",
-        "version_normalized": "1.0.10.0",
+        "name": "webvimark/date-range-picker",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/webvimark/user-management.git",
-            "reference": "14b5a5104dfa618b1e09356dcade085b0453ac3a"
+            "url": "https://github.com/webvimark/date-range-picker.git",
+            "reference": "8bf4129db69b3dccd79987693fae87f5c086faef"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/webvimark/user-management/zipball/14b5a5104dfa618b1e09356dcade085b0453ac3a",
-            "reference": "14b5a5104dfa618b1e09356dcade085b0453ac3a",
+            "url": "https://api.github.com/repos/webvimark/date-range-picker/zipball/8bf4129db69b3dccd79987693fae87f5c086faef",
+            "reference": "8bf4129db69b3dccd79987693fae87f5c086faef",
+            "shasum": ""
+        },
+        "time": "2016-10-13 16:08:04",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "webvimark\\extensions\\DateRangePicker\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "dangrossman daterangepicker yii 2 gridview"
+    },
+    {
+        "name": "webvimark/module-user-management",
+        "version": "1.0.13",
+        "version_normalized": "1.0.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/webvimark/user-management.git",
+            "reference": "48adb6cc53fc0a7da34dbf31bba47a0ef8d35cd8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/webvimark/user-management/zipball/48adb6cc53fc0a7da34dbf31bba47a0ef8d35cd8",
+            "reference": "48adb6cc53fc0a7da34dbf31bba47a0ef8d35cd8",
             "shasum": ""
         },
         "require": {
@@ -1636,7 +1636,7 @@
             "webvimark/grid-page-size": "^1.0.0",
             "webvimark/helpers": "^1.0.0"
         },
-        "time": "2016-10-06 06:42:43",
+        "time": "2016-10-14 10:53:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
