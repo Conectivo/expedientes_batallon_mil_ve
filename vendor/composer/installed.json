@@ -1587,6 +1587,50 @@
         ]
     },
     {
+        "name": "bower-asset/email-autocomplete",
+        "version": "0.1.1",
+        "version_normalized": "0.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/10w042/email-autocomplete.git",
+            "reference": "cc7144560bdc42b2f5879a711761ac4bd50ab56a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/10w042/email-autocomplete/zipball/cc7144560bdc42b2f5879a711761ac4bd50ab56a",
+            "reference": "cc7144560bdc42b2f5879a711761ac4bd50ab56a",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/jquery": "*"
+        },
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "dist/jquery.email-autocomplete.js",
+            "bower-asset-ignore": [
+                "**/.*",
+                "node_modules",
+                "bower_components",
+                "test",
+                "tests"
+            ]
+        },
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ],
+        "description": "jQuery plugin that displays in-place autocomplete suggestions for email input fields.",
+        "keywords": [
+            "autocomplete",
+            "domain",
+            "email",
+            "input",
+            "jquery-plugin",
+            "suggestion",
+            "typeahead"
+        ]
+    },
+    {
         "name": "webvimark/date-range-picker",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
