@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Uniforme */
 
-$this->title = 'Actualizar Uniforme del Personal: ' . $model->cedula_id;
+$this->title = 'Actualizar Uniforme de ' . $model->cedula->nombres . " " .$model->cedula->apellidos;
 $this->params['breadcrumbs'][] = ['label' => 'Uniforme del Personal', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->cedula_id, 'url' => ['view', 'id' => $model->cedula_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->cedula->nombres . " " .$model->cedula->apellidos, 'url' => ['view', 'id' => $model->cedula_id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="uniforme-update">
