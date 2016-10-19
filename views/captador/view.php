@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'captado',
                 // 'label' => 'Personal Captado',
-                'value' => Html::a($model->captado,
+                'value' => Html::a($model->captado0->nombres . " " .$model->captado0->apellidos,
                         // http://127.0.0.1/persona/view?id=25498875
                         ['persona/view','id' => $model->captado],
                         ['title' => 'Ver Datos del Personal' ]

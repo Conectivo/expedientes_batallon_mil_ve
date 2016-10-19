@@ -28,7 +28,6 @@ use app\models\Persona;
 
     <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>
 	
-    <?php // $form->field($model, 'captado')->textInput() ?>
     <?php /* $form->field($model, 'captado')->dropDownList(
         ArrayHelper::map(Persona::find()->all(),'cedula','fullName'),
             ['prompt'=>'Por favor, seleccioné una opción']
