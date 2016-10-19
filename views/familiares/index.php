@@ -28,12 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'cedula_id',
             [
                 'attribute'=>'cedula_id',
                 'label'=>'Persona',
                 'value'=>function ($searchModel, $key, $index, $widget) {
-                    return Html::a($searchModel->cedula_id,
+                    return Html::a($searchModel->cedula->nombres . " " .$searchModel->cedula->apellidos,
                         // http://127.0.0.1/persona/view?id=25498875
                         ['persona/view','id'=>$searchModel->cedula_id],
                         ['title'=>'Ver Datos del Personal' ]);
