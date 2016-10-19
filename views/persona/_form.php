@@ -63,21 +63,15 @@ $('#persona-municipio_id').on('change', function(e) {
 
     <?php /* $form->field($model, 'estado_id')->dropDownList(
         ArrayHelper::map($estados, 'id_estado','estado'),
-        [
-            'prompt'=>'--Seleccione--',
-        ]
+        ['prompt'=>'--Seleccione--',]
     ); */ ?>
     <?php /* $form->field($model, 'municipio_id')->dropDownList(
           ArrayHelper::map($municipios, 'id_municipio','municipio'),
-          [
-              'prompt'=>'--Seleccione--',
-          ]
+          ['prompt'=>'--Seleccione--',]
     ); */ ?>
     <?php /* $form->field($model, 'parroquia_id')->dropDownList(
         ArrayHelper::map($parroquias, 'id_parroquia','parroquia'),
-        [
-            'prompt'=>'--Seleccione--',
-        ]
+        ['prompt'=>'--Seleccione--',]
     ); */ ?>
 
     <?= $form->field($model, 'lugar_nacimiento')->textInput() ?>

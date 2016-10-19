@@ -112,11 +112,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'format' => ['date', 'php:l, F d, Y']
                 'format' => ['date', 'php:d-m-Y']
             ],
-            // 'unidad_id',
             [
                 'attribute' => 'unidad_id',
                 'label' => 'Unidad de Batallón',
-                'value' => Html::a($model->unidad_id,
+                'value' => Html::a($model->unidad->unidad,
                         // http://127.0.0.1/unidad/view?id=1
                         ['unidad/view','id' => $model->unidad_id],
                         ['title' => 'Ver Datos del Unidad de Batallón' ]
