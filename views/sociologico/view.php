@@ -9,7 +9,7 @@ use webvimark\modules\UserManagement\models\User;
 /* @var $this yii\web\View */
 /* @var $model app\models\Sociologico */
 
-$this->title = $model->cedula_id;
+$this->title = $model->cedula->nombres . " " .$model->cedula->apellidos;
 $this->params['breadcrumbs'][] = ['label' => 'Datos Sociológicos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -47,11 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            // 'cedula_id',
             [
                 'attribute' => 'cedula_id',
                 'label' => 'Persona',
-                'value' => Html::a($model->cedula_id,
+                'value' => Html::a($model->cedula->nombres . " " .$model->cedula->apellidos,
                         // http://127.0.0.1/persona/view?id=25498875
                         ['persona/view','id'=>$model->cedula_id],
                         ['title'=>'Ver Datos del Personal' ]
