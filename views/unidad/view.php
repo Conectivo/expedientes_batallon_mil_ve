@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\bootstrap\Modal;
+use yii\helpers\Html;
 use yii\widgets\DetailView;
 use webvimark\modules\UserManagement\components\GhostHtml;
 use webvimark\modules\UserManagement\models\User;
@@ -15,7 +15,18 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="unidad-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3 class="box-title"><i class="fa fa-search"></i> <?php echo 'Ver Unidad de Batallón'; ?></h3>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            //'id',
+            [
+                'attribute' => 'unidad',
+                'label'=>'Nombre de Unidad',
+            ],
+        ],
+    ]) ?>
 
     <p>
         <?php
@@ -23,6 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
         //     echo Html::a('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
         //     echo '&nbsp;';
         // }
+
+        echo GhostHtml::a('<span class="glyphicon glyphicon-arrow-left"></span> ' . 'Volver', ['/unidad/index'], ['class' => 'btn btn-primary btn btn-back']) . '&nbsp;';
         echo GhostHtml::a('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar',
             ['update', 'id' => $model->id], ['class' => 'btn btn-primary']
         ) . '&nbsp;';
@@ -39,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'data' => ['method' => 'post',],
                         ]
                     ),
-                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-trash"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
+                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-remove"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
                 'size' => Modal::SIZE_SMALL
             ]);
             echo '¿Está seguro que desea eliminar este elemento?';
@@ -47,17 +60,5 @@ $this->params['breadcrumbs'][] = $this->title;
         }
         ?>
     </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            //'id',
-            // 'unidad',
-            [
-                'attribute' => 'unidad',
-                'label'=>'Nombre de Unidad',
-            ],
-        ],
-    ]) ?>
 
 </div>

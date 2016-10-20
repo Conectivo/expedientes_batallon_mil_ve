@@ -9,12 +9,26 @@ use webvimark\modules\UserManagement\models\User;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="unidad-form">
+<div class="<?php echo $model->isNewRecord ? 'box-success' : 'box-info'; ?> unidad-form">
 
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?php // $form->field($model, 'id')->textInput() ?>
-    <?= $form->field($model, 'unidad')->textInput(['maxlength' => true]) ?>
+    <?php
+    if($this->context->action->id == 'update')
+        $action = ['update', 'id'=>$_REQUEST['id']];
+    else
+        $action = ['create'];
+    ?>
+    <?php $form = ActiveForm::begin([
+            'id' => 'unidad-form',
+            'enableAjaxValidation' => true,
+            'action' => $action,
+            'fieldConfig' => [
+                'template' => "{input}{error}",
+            ],
+    ]); ?>
+    <?= $form->field($model, 'unidad')->textInput([
+        'maxlength' => true,
+        'placeholder' => 'Ingrese el ' . $model->getAttributeLabel('unidad') . ' de Batallón'
+    ]) ?>
 
     <div class="form-group">
         <?php

@@ -5,9 +5,10 @@ namespace app\controllers;
 use Yii;
 use app\models\Unidad;
 use app\models\UnidadSearch;
+use yii\bootstrap\ActiveForm;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * UnidadController implementa las acciones CRUD para el modelo Unidad.
@@ -37,10 +38,12 @@ class UnidadController extends Controller
     {
         $searchModel = new UnidadSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model = new Unidad();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 
@@ -58,39 +61,95 @@ class UnidadController extends Controller
 
     /**
      * Crea un nuevo registro para el modelo Unidad.
-     * Si la creación del registro es exitosa, el navegador será redirigido a la página de 'vista'.
+     * Si la creación del registro es exitosa, el navegador será redirigido a la página de 'index'.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Unidad();
+        // $model = new Unidad();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //     return $this->redirect(['view', 'id' => $model->id]);
+        // } else {
+        //     return $this->render('create', [
+        //         'model' => $model,
+        //     ]);
+        // }
+        
+        $model = new Unidad();
+        $searchModel = new UnidadSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        if ($model->load(Yii::$app->request->post())) {
+
+            if (Yii::$app->request->isAjax) {
+                \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                return ActiveForm::validate($model);
+            }
+
+            $model->attributes = $_POST['Unidad'];
+            
+            if($model->save())
+                return $this->redirect(['index']);
+            else
+                return $this->render('index', [
+                    'model' => $model,'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                ]);
         } else {
-            return $this->render('create', [
-                'model' => $model,
+                return $this->render('index', [
+                    'model' => $model,'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
             ]);
         }
     }
 
     /**
      * Actualiza un registro existente del modelo Unidad.
-     * Si la actualización del registro es exitosa, el navegador será redirigido a la página de 'vista'.
+     * Si la actualización del registro es exitosa, el navegador será redirigido a la página de 'index'.
      * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        // $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //     // return $this->redirect(['view', 'id' => $model->id]);
+        //     return $this->redirect(['index']);
+        // } else {
+        //     return $this->render('update', [
+        //         'model' => $model,
+        //     ]);
+        // }
+
+        $model = $this->findModel($id);
+        $searchModel = new UnidadSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            if (Yii::$app->request->isAjax) {
+                \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                return ActiveForm::validate($model);
+            }
+
+            $model->attributes = $_POST['Unidad'];
+
+            if ($model->save())
+                return $this->redirect(['index']);
+            else
+                return $this->render('index', [
+                    'model' => $model,'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                ]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
+            return $this->render('index', [
+                'model' => $model,'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
             ]);
         }
+
     }
 
     /**
@@ -101,9 +160,18 @@ class UnidadController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // $this->findModel($id)->delete();
+
+        // return $this->redirect(['index']);
+
+        $model = Unidad::findOne($id);
+        // $model->is_status = 2;
+        // $model->updated_by = Yii::$app->getid->getId();
+        // $model->updated_at = new \yii\db\Expression('NOW()');
+        $model->delete();
 
         return $this->redirect(['index']);
+
     }
 
     /**
