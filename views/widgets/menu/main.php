@@ -106,38 +106,53 @@ use webvimark\modules\UserManagement\models\User;
                     // Enlace del Submenú Unidad de Batallón
                     [
                         'label' => '<span class="glyphicon glyphicon-home"></span> ' . 'Unidad de Batallón',
-                        'url' => '#',
-                        'items' => [
+                        'url' => '/unidad/index',
+                        /* 'items' => [
                             // Listado de Unidad de Batallón
                             ['label' => 'Listado', 'url' => ['/unidad/index'], 'visible' => User::hasRole('ConsultarRegistros')],
                             // Crear Unidad de Batallón
                             ['label' => 'Crear', 'url' => ['/unidad/create'], 'visible' => User::hasRole('LlenarRegistros')],
-                        ],
-                        // 'visible' => User::hasRole('ConsultarRegistros'),
+                        ],*/
+                        'visible' => User::hasRole('ConsultarRegistros'),
+                    ],
+                    '<li class="divider"></li>',
+                    // Enlace del Submenú Jerarquía
+                    [
+                        'label' => '<span class="glyphicon glyphicon-certificate"></span> ' . 'Jerarquía',
+                        'url' => '/jerarquia/index',
+                        /* 'items' => [
+                            // Listado de Jerarquía
+                            ['label' => 'Listado', 'url' => ['/jerarquia/list'], 'visible' => User::hasRole('ConsultarRegistros')],
+                            // Crear Jerarquía
+                            ['label' => 'Crear', 'url' => ['/jerarquia/create'], 'visible' => User::hasRole('LlenarRegistros')],
+                        ],*/
+                        'visible' => User::hasRole('ConsultarRegistros'),
                     ],
                     '<li class="divider"></li>',
                     // Enlace del Submenú Oficiales
                     [
                         'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Oficiales',
-                        'url' => '#',
-                        'items' => [
+                        'url' => '/oficiales/index',
+                        /* 'items' => [
                             // Listado de Oficiales
                             ['label' => 'Listado', 'url' => ['/oficiales/index'], 'visible' => User::hasRole('ConsultarRegistros')],
                             // Crear Oficial
                             ['label' => 'Crear', 'url' => ['/oficiales/create'], 'visible' => User::hasRole('LlenarRegistros')],
-                        ],
+                        ], */
+                        'visible' => User::hasRole('ConsultarRegistros'),
                     ],
                     '<li class="divider"></li>',
                     // Enlace del Submenú Captadores
                     [
                         'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Captadores',
-                        'url' => '#',
-                        'items' => [
+                        'url' => '/captador/index',
+                        /* 'items' => [
                             // Listado de Captadores
-                            ['label' => 'Listado', 'url' => ['/captador/index'], 'visible' => User::hasRole('ConsultarRegistros')],
+                            ['label' => 'Listado', 'url' => ['/captador/list'], 'visible' => User::hasRole('ConsultarRegistros')],
                             // Crear Captador
                             ['label' => 'Crear', 'url' => ['/captador/create'], 'visible' => User::hasRole('LlenarRegistros')],
-                        ],
+                        ],*/
+                        'visible' => User::hasRole('ConsultarRegistros'),
                     ],
                 ],
             ];
