@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'data' => ['method' => 'post',],
                         ]
                     ),
-                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-trash"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
+                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-remove"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
                 'size' => Modal::SIZE_SMALL
             ]);
             echo '¿Está seguro que desea eliminar este elemento?';
@@ -48,7 +48,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            // 'cedula',
             [
                 'attribute' => 'cedula',
                 'label' => 'Cédula',
@@ -60,52 +59,43 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Nombre completo',
                 'value' => $model->fullName,
             ],
-            // 'lugar_nacimiento',
             [
                 'attribute' => 'lugar_nacimiento',
                 'label' => 'Lugar de Nacimiento',
             ],
-            // 'fecha_nacimiento',
             [
                 'attribute' => 'fecha_nacimiento',
                 'label' => 'Fecha de Nacimiento',
                 // 'format' => ['date', 'php:l, F d, Y']                
                 'format' => ['date', 'php:d-m-Y']
             ],
-            // 'direccion',
             [
                 'attribute' => 'direccion',
                 'label' => 'Dirección',
             ],
-            // 'sector',
             [
                 'attribute' => 'sector',
                 'label' => 'Sector',
             ],
-            // 'telefono_movil',
             [
                 'attribute' => 'telefono_movil',
                 'label' => 'Teléfono Celular',
             ],
-            // 'religion',
             [
                 'attribute' => 'religion',
                 'label' => 'Religión',
                 'value' => $model->getReligion(),
             ],
-            // 'estado_civil',
             [
                 'attribute' => 'estado_civil',
                 'label' => 'Estado Civil',
                 'value' => $model->getEdoCivil(),
             ],
-            // 'modalidad',
             [
                 'attribute' => 'modalidad',
                 'label' => 'Modalidad',
                 'value' => $model->getModalidad(),
             ],
-            // 'fecha_ingreso',
             [
                 'attribute' => 'fecha_ingreso',
                 'label' => 'Fecha de Ingreso',

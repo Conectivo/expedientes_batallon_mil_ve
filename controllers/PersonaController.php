@@ -7,6 +7,7 @@ use app\models\Estados;
 use app\models\Municipios;
 use app\models\Parroquias;
 use app\models\Familiares;
+use app\models\Captador;
 use app\models\Sociologico;
 use app\models\Fisionomia;
 use app\models\Unidad;
@@ -82,12 +83,14 @@ class PersonaController extends Controller
         $modelFisionomia = Fisionomia::find()
                             ->where(['cedula_id' => $id])->one();
 
-        $persona = $modelPersona;
-        $unidad = $persona->getUnidad();
-        $modelUnidad = $unidad;
+        // $modelUnidad = Unidad::find()
+        //                     ->where(['id' => $id])->one();
 
         $modelUniforme = Uniforme::find()
                             ->where(['cedula_id' => $id])->one();
+
+        $modelCaptador = Captador::find()
+                            ->where(['captado' => $id])->one();
 
         if (!$modelFamiliares) {
             // throw new NotFoundHttpException('Datos familiares not found');
@@ -114,8 +117,9 @@ class PersonaController extends Controller
             'modelFamiliares' => $modelFamiliares,
             'modelSociologico' => $modelSociologico,
             'modelFisionomia' => $modelFisionomia,
-            'modelUnidad' => $modelUnidad,
+            // 'modelUnidad' => $modelUnidad,
             'modelUniforme' => $modelUniforme,
+            'modelCaptador' => $modelCaptador,
     ]);
 
     }

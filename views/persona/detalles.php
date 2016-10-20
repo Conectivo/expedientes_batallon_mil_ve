@@ -10,6 +10,7 @@ use webvimark\modules\UserManagement\components\GhostHtml;
 /* @var $modelSociologico app\models\Sociologico */
 /* @var $modelFisionomia app\models\Fisionomia */
 /* @var $modelUniforme app\models\Uniforme */
+/* @var $modelCaptador app\models\Captador */
 
 $this->title = $modelPersona->fullName;
 $this->params['breadcrumbs'][] = ['label' => 'Personal', 'url' => ['index']];
@@ -85,35 +86,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'format' => ['date', 'php:l, F d, Y']
                 'format' => ['date', 'php:d-m-Y']
             ],
-            // [
-            //     'attribute' => 'unidad_id',
-            //     'label' => 'Unidad de Batallón',
-            //     'value' => Html::a($modelPersona->unidad_id,
-            //             // http://127.0.0.1/unidad/view?id=1
-            //             ['unidad/view','id'=>$modelPersona->unidad_id],
-            //             ['title'=>'Ver Datos del Unidad de Batallón' ]
-            //     ),
-            //     'format'=>'raw',
-            // ],
-        ],
-    ]) ?>
-    </div>
-
-
-    <h2><span class="glyphicon glyphicon-home"></span> Unidad de Batallón asignado</h2>
-
-    <div class="col-md-6">
-
-    <?php /* DetailView::widget([
-        'model' => $modelUnidad,
-        'attributes' => [
-            //'id',
             [
-                'attribute' => 'unidad',
-                'label'=>'Nombre de Unidad',
+                'attribute' => 'unidad_id',
+                'label' => 'Unidad de Batallón',
+                // 'value' => Html::a($modelPersona->unidad->unidad,
+                //         // http://127.0.0.1/unidad/view?id=1
+                //         ['unidad/view','id' => $modelPersona->unidad_id],
+                //         ['title' => 'Ver Datos del Unidad de Batallón' ]
+                // ),
+                'value' => $modelPersona->unidad->unidad,
+                // 'format' => 'raw',
             ],
         ],
-    ]) */ ?>
+    ]) ?>
     </div>
 
     <h2><span class="glyphicon glyphicon-info-sign"></span> Datos Familiares</h2>
@@ -243,6 +228,25 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'gorra',
             'calzado',
+        ],
+    ]) ?>
+    </div>
+
+    <h2><span class="glyphicon glyphicon-briefcase"></span> Captador del Personal</h2>
+
+    <div class="col-md-6">
+    <?= DetailView::widget([
+        'model' => $modelCaptador,
+        'attributes' => [
+            //'id',
+            [
+                'label' => 'Jerarquía',
+                'attribute' => 'jquia_id',
+                'value' => $modelCaptador->jquia->nombre,
+            ],
+            'cedula',
+            'nombre_completo',
+            'telefono',
         ],
     ]) ?>
     </div>
