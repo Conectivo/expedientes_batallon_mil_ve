@@ -1535,6 +1535,51 @@
         ]
     },
     {
+        "name": "beastbytes/yii2-wizard",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/beastbytes/yii2-wizard.git",
+            "reference": "ad776a28a0504ee40e36d1aa179c2e9e3c861992"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/beastbytes/yii2-wizard/zipball/ad776a28a0504ee40e36d1aa179c2e9e3c861992",
+            "reference": "ad776a28a0504ee40e36d1aa179c2e9e3c861992",
+            "shasum": ""
+        },
+        "require": {
+            "yiisoft/yii2": "*"
+        },
+        "time": "2015-07-26 20:46:28",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "beastbytes\\wizard\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Chris Yates",
+                "email": "chris.l.yates@gmail.com"
+            }
+        ],
+        "description": "Yii2 extension to handle multi-form wizards",
+        "keywords": [
+            "Behavior",
+            "Forms",
+            "form",
+            "wizard",
+            "yii2"
+        ]
+    },
+    {
         "name": "bower-asset/email-autocomplete",
         "version": "0.1.1",
         "version_normalized": "0.1.1.0",
