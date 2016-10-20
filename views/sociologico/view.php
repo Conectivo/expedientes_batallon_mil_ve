@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'data' => ['method' => 'post',],
                         ]
                     ),
-                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-trash"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
+                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-remove"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
                 'size' => Modal::SIZE_SMALL
             ]);
             echo '¿Está seguro que desea eliminar este elemento?';

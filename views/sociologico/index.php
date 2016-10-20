@@ -81,11 +81,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
                     'view' => function ($url, $model) {
-                        return GhostHtml::a('<span class="glyphicon glyphicon-eye-open"></span>',
+                        return GhostHtml::a('<span class="glyphicon glyphicon-search"></span>',
                             $url, ['title' => 'Ver',]);
                     },
                     'update' => function ($url, $model) {
-                        return GhostHtml::a('<span class="glyphicon glyphicon-pencil"></span>',
+                        return GhostHtml::a('<span class="glyphicon glyphicon-edit"></span>',
                             $url, ['title' => 'Actualizar',]);
                     },
                     'delete' => function ($url, $model) {
