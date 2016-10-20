@@ -37,7 +37,15 @@
         "yiisoft/yii2": "~2.0.0",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "bower-asset/email-autocomplete": "0.1.1",
-        "yiisoft/yii2-swiftmailer": "~2.0.0"
+        "bower-asset/ionicons": "2.0.1",
+        "bower-asset/admin-lte": "2.3.7",
+        "rmrevin/yii2-fontawesome": "2.8.*",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "kartik-v/yii2-widget-select2": "*",
+        "kartik-v/yii2-detail-view": "*",
+        "beastbytes/yii2-wizard": "*",
+        "webvimark/module-user-management": "^1",
+        "miloschuman/yii2-highcharts-widget": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -45,13 +53,15 @@
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-jui": "~2.0.0",
         "yiisoft/yii2-faker": "*",
-        "insolita/yii2-migration-generator": "*",
-        "kartik-v/yii2-widget-select2": "*",
-        "kartik-v/yii2-detail-view": "*",
-        "webvimark/module-user-management": "^1"
+        "insolita/yii2-migration-generator": "*"
     },
     "config": {
         "process-timeout": 1800
+    },
+    "autoload": {
+        "files": [
+            "global.functions.php"
+        ]
     },
     "scripts": {
         "post-create-project-cmd": [

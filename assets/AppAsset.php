@@ -25,6 +25,10 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapPluginAsset',
         'app\assets\EmailAutocompleteAsset',
+        'app\assets\IonIconsAsset',
+        'app\assets\AdminlteAsset',
+        '\rmrevin\yii\fontawesome\AssetBundle',
     ];
 }

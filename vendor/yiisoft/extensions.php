@@ -130,6 +130,15 @@ return array (
       '@beastbytes/wizard' => $vendorDir . '/beastbytes/yii2-wizard',
     ),
   ),
+  'rmrevin/yii2-fontawesome' => 
+  array (
+    'name' => 'rmrevin/yii2-fontawesome',
+    'version' => '2.8.2.0',
+    'alias' => 
+    array (
+      '@rmrevin/yii/fontawesome' => $vendorDir . '/rmrevin/yii2-fontawesome',
+    ),
+  ),
   'miloschuman/yii2-highcharts-widget' => 
   array (
     'name' => 'miloschuman/yii2-highcharts-widget',

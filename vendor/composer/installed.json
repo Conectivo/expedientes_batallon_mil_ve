@@ -1692,6 +1692,147 @@
         "description": "Grid page size extension for yii 2 gridview"
     },
     {
+        "name": "fortawesome/font-awesome",
+        "version": "v4.3.0",
+        "version_normalized": "4.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/FortAwesome/Font-Awesome.git",
+            "reference": "41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0",
+            "reference": "41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0",
+            "shasum": ""
+        },
+        "require-dev": {
+            "jekyll": "1.0.2",
+            "lessc": "1.4.2"
+        },
+        "time": "2015-01-22 18:09:42",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "OFL-1.1",
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Dave Gandy",
+                "email": "dave@fontawesome.io",
+                "homepage": "http://twitter.com/davegandy",
+                "role": "Developer"
+            }
+        ],
+        "description": "The iconic font and CSS framework",
+        "homepage": "http://fontawesome.io/",
+        "keywords": [
+            "FontAwesome",
+            "awesome",
+            "bootstrap",
+            "font",
+            "icon"
+        ]
+    },
+    {
+        "name": "rmrevin/yii2-fontawesome",
+        "version": "2.8.2",
+        "version_normalized": "2.8.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/rmrevin/yii2-fontawesome.git",
+            "reference": "a1ff85ce3387f033ef60c801f06192e07e52829c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/rmrevin/yii2-fontawesome/zipball/a1ff85ce3387f033ef60c801f06192e07e52829c",
+            "reference": "a1ff85ce3387f033ef60c801f06192e07e52829c",
+            "shasum": ""
+        },
+        "require": {
+            "fortawesome/font-awesome": "4.3.*",
+            "php": ">=5.4.0",
+            "yiisoft/yii2": "2.0.*"
+        },
+        "time": "2015-03-17 19:09:09",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "rmrevin\\yii\\fontawesome\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Revin",
+                "email": "xgismox@gmail.com",
+                "homepage": "http://rmrevin.ru/"
+            }
+        ],
+        "description": "Asset Bundle for Yii2 with Font Awesome",
+        "keywords": [
+            "asset",
+            "awesome",
+            "bundle",
+            "font",
+            "yii"
+        ]
+    },
+    {
+        "name": "bower-asset/ionicons",
+        "version": "v2.0.1",
+        "version_normalized": "2.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/driftyco/ionicons.git",
+            "reference": "ecb4b806831005c25b97ed9089fbb1d7dcc0879c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/driftyco/ionicons/zipball/ecb4b806831005c25b97ed9089fbb1d7dcc0879c",
+            "reference": "ecb4b806831005c25b97ed9089fbb1d7dcc0879c",
+            "shasum": ""
+        },
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": [
+                "css/ionicons.css",
+                "fonts/*"
+            ],
+            "bower-asset-ignore": [
+                "**/.*",
+                "builder",
+                "node_modules",
+                "bower_components",
+                "test",
+                "tests"
+            ]
+        },
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ],
+        "description": "Ionicons - free and beautiful icons from the creators of Ionic Framework",
+        "keywords": [
+            "fonts",
+            "icon font",
+            "icons",
+            "ionic",
+            "web font"
+        ]
+    },
+    {
         "name": "miloschuman/yii2-highcharts-widget",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1741,4 +1882,52 @@
             "yii2"
         ]
     },
+    {
+        "name": "bower-asset/admin-lte",
+        "version": "v2.3.7",
+        "version_normalized": "2.3.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/almasaeed2010/AdminLTE.git",
+            "reference": "797b65b3ca90525a4e048de5b8d02ba6878ea239"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/797b65b3ca90525a4e048de5b8d02ba6878ea239",
+            "reference": "797b65b3ca90525a4e048de5b8d02ba6878ea239",
+            "shasum": ""
+        },
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": [
+                "index2.html",
+                "dist/css/AdminLTE.css",
+                "dist/js/app.js",
+                "build/less/AdminLTE.less"
+            ],
+            "bower-asset-ignore": [
+                "/.*",
+                "node_modules",
+                "bower_components",
+                "composer.json",
+                "documentation"
+            ]
+        },
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ],
+        "description": "Admin dashboard and control panel template",
+        "keywords": [
+            "admin",
+            "backend",
+            "bootstrap",
+            "css",
+            "html",
+            "js",
+            "responsive",
+            "template",
+            "theme"
+        ]
+    }
 ]
