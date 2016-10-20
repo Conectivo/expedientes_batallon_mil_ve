@@ -18,7 +18,7 @@ class CaptadorSearch extends Captador
     public function rules()
     {
         return [
-            [['id', 'jquia', 'cedula', 'captado'], 'integer'],
+            [['id', 'jquia_id', 'cedula', 'captado'], 'integer'],
             [['nombre_completo', 'telefono'], 'safe'],
         ];
     }
@@ -68,7 +68,7 @@ class CaptadorSearch extends Captador
         // condiciones de filtrado del objeto GridView
         $query->andFilterWhere([
             'id' => $this->id,
-            'jquia' => $this->jquia,
+            'jquia_id' => $this->jquia_id,
             'cedula' => $this->cedula,
             'captado' => $this->captado,
         ]);

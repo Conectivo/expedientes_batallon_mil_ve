@@ -36,6 +36,10 @@ class ComposerStaticInite7bbc9e18f4d13c4675486b0c8f56260
             'webvimark\\extensions\\BootstrapSwitch\\' => 37,
             'webvimark\\components\\' => 21,
         ),
+        'm' => 
+        array (
+            'miloschuman\\highcharts\\' => 23,
+        ),
         'k' => 
         array (
             'kartik\\select2\\' => 15,
@@ -130,6 +134,10 @@ class ComposerStaticInite7bbc9e18f4d13c4675486b0c8f56260
         'webvimark\\components\\' => 
         array (
             0 => __DIR__ . '/..' . '/webvimark/components',
+        ),
+        'miloschuman\\highcharts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/miloschuman/yii2-highcharts-widget/src',
         ),
         'kartik\\select2\\' => 
         array (

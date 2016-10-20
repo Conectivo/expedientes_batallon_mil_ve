@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : expedientes
 -- ===
--- === Build : 142
+-- === Build : 152
 -- ======================================================================
 
 CREATE TABLE unidades
@@ -15,23 +15,37 @@ CREATE TABLE unidades
 
 -- ======================================================================
 
+CREATE TABLE jerarquia
+  (
+    id      INTEGER       unique not null auto_increment,
+    nombre  varchar(50)   not null,
+
+    primary key(id)
+  )
+ ENGINE = InnoDB;
+
+-- ======================================================================
+
 CREATE TABLE oficiales
   (
     id                    INTEGER        unique not null auto_increment,
-    jquia                 INTEGER        not null,
+    jquia_id              INTEGER        not null,
     nombres               varchar(20)    not null,
-    apellido              varchar(20)    not null,
+    apellidos             varchar(20)    not null,
     cedula                INTEGER        unique not null,
+    sexo                  INTEGER        not null,
     situacion             INTEGER        not null,
     email                 varchar(50)    unique,
     arma                  varchar(20)    not null,
     cargo                 varchar(50)    not null,
     direccion             varchar(150)   not null,
     telefono              varchar(14)    not null,
-    direccion_emergencia  varchar(50)    not null,
+    direccion_emergencia  varchar(150)   not null,
     telefonos_emergencia  varchar(14)    not null,
 
-    primary key(id)
+    primary key(id),
+
+    foreign key(jquia_id) references jerarquia(id) on update CASCADE
   )
  ENGINE = InnoDB;
 
@@ -119,7 +133,7 @@ CREATE TABLE fisionomia
 CREATE TABLE captador
   (
     id               INTEGER       unique not null auto_increment,
-    jquia            INTEGER       not null,
+    jquia_id         INTEGER       not null,
     cedula           INTEGER       not null,
     nombre_completo  varchar(50)   not null,
     telefono         varchar(14)   not null,
@@ -127,6 +141,7 @@ CREATE TABLE captador
 
     primary key(id),
 
+    foreign key(jquia_id) references jerarquia(id) on update CASCADE,
     foreign key(captado) references persona(cedula) on update CASCADE
   )
  ENGINE = InnoDB;

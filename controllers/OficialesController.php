@@ -5,9 +5,9 @@ namespace app\controllers;
 use Yii;
 use app\models\Oficiales;
 use app\models\OficialesSearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * OficialesController implementa las acciones CRUD para el modelo Oficiales.
@@ -38,7 +38,61 @@ class OficialesController extends Controller
         $searchModel = new OficialesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        // Total de Oficiales por Jerarquía
+        /* SELECT CONCAT(jq.nombre, ' (', COUNT( of.id ), ')') AS '0', COUNT( of.id ) AS '1'
+        FROM oficiales of
+        INNER JOIN jerarquia jq ON jq.id = of.jquia_id
+        GROUP BY of.jquia_id; */
+        $totalOficialesJquia = (new \yii\db\Query())
+                ->select(["CONCAT(jq.nombre, ' (', COUNT( of.id ), ')') AS '0'", 'COUNT(of.id) AS "1"'])
+                ->from(['oficiales of'])
+                ->join('JOIN', 'jerarquia jq', 'jq.id = of.jquia_id')
+                ->groupBy('of.jquia_id')
+                ->all();
+
+        // Total de Oficiales por Sexo
+        /* SELECT CONCAT(of.sexo, ' (', COUNT( of.id ), ')') AS '0', COUNT( of.id ) AS '1'
+        FROM oficiales of
+        GROUP BY of.sexo; */
+        $totalOficialesSexo = (new \yii\db\Query())
+                ->select(["CONCAT(of.sexo, ' (', COUNT( of.id ), ')') AS '0'", 'COUNT(of.id) AS "1"'])
+                ->from(['oficiales of'])
+                ->join('JOIN', 'jerarquia jq', 'jq.id = of.jquia_id')
+                ->groupBy('of.jquia_id')
+                ->all();
+
+        // Listado del Oficiales recientemente captado
+        /* SELECT of.id, jq.nombre AS jquia, of.nombres, of.apellidos, of.situacion, of.cedula, of.sexo, of.email, of.arma, of.cargo, of.direccion, of.telefono, of.direccion_emergencia, of.telefonos_emergencia
+        FROM oficiales of
+        JOIN jerarquia jq ON jq.id = of.jquia_id
+        ORDER BY of.id DESC
+        LIMIT 10; */
+        $ultimosOficiales = (new \yii\db\Query())
+                ->select(['of.id', 'jq.nombre AS jquia', 'of.nombres', 'of.apellidos', 'of.situacion', 'of.cedula', 'of.sexo', 'of.email', 'of.arma', 'of.cargo', 'of.direccion', 'of.telefono', 'of.direccion_emergencia', 'of.telefonos_emergencia'])
+                ->from(['oficiales of'])
+                ->join('JOIN', 'jerarquia jq', 'jq.id = of.jquia_id')
+                ->orderBy('of.id DESC')
+                ->limit(10)
+                ->all();
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'totalOficialesJquia' => $totalOficialesJquia,
+            'totalOficialesSexo' => $totalOficialesSexo,
+            'ultimosOficiales' => $ultimosOficiales,
+        ]);
+    }
+
+    /**
+     * Muestra una lista de todos los registros del modelo Oficiales.
+     * @return mixed
+     */
+    public function actionList()
+    {
+        $searchModel = new OficialesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('list', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

@@ -1,8 +1,10 @@
 <?php
 
+use kartik\select2\Select2;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 use yii\web\View;
+use yii\widgets\ActiveForm;
 use webvimark\modules\UserManagement\models\User;
 
 /* @var $this yii\web\View */
@@ -27,41 +29,48 @@ $this->registerJs(
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php // $form->field($model, 'jquia')->textInput(['maxlength' => true]) ?>
-
-    <?php /* $form->field($model, 'jquia')->dropDownList(
-        ['A'=>'Tcnel', 'B'=>'My', 'C'=>'Cap', 'D'=>'1Tte', 'E'=>'Tte', 'F'=>'S/Sup'
-        , 'G'=>'SM/1ra', 'H'=>'SM/2da', 'I'=>'SM/3ra', 'J'=>'S/1ro', 'K'=>'S/2do'],
-        ['prompt'=>'Por favor, seleccioné una opción',]
-    )->label('Jerarquía'); */ ?>
-
-    <?= $form->field($model, 'jquia')->dropDownList(
-        $model->getOpcionesJquia(),
-        ['prompt'=>'Por favor, seleccioné una opción',]
-    )->label('Jerarquía'); ?>
+    <?= $form->field($model, 'jquia_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(app\models\Jerarquia::find()->all(),'id','nombre'),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])->label('Jerarquía'); ?>
 
     <?= $form->field($model, 'nombres')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'apellido')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'apellidos')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'cedula')->textInput() ?>
 
-    <?php // $form->field($model, 'situacion')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'sexo')->widget(Select2::classname(), [
+        'data' => $model->getOpcionesSexo(),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])->label('Sexo'); ?>
+
     <?php /* $form->field($model, 'situacion')->dropDownList(
         ['1'=>'Disponible', '2'=>'Comisión', '3'=>'Operación Centinela', '4'=>'Permiso', '5'=>'Otra'],
         ['prompt'=>'Por favor, seleccioné una opción',]
     )->label('Situación'); */ ?>
-    <?= $form->field($model, 'situacion')->dropDownList(
-        $model->getOpcionesSituacion(),
-        ['prompt'=>'Por favor, seleccioné una opción',]
-    )->label('Situación'); ?>
+    <?= $form->field($model, 'situacion')->widget(Select2::classname(), [
+        'data' => $model->getOpcionesSituacion(),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])->label('Situación'); ?>
 
     <?= $form->field($model, 'email')->textInput(
         [
             'maxlength' => true,
             'type' => 'email', 'id' => 'email',
             'class' => 'form-control email',
-            // 'placeholder' => 'Ingrese su correo electrónico'
         ]
     ); ?>
 
@@ -71,11 +80,11 @@ $this->registerJs(
 
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telefono')->textInput() ?>
+    <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'direccion_emergencia')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telefonos_emergencia')->textInput() ?>
+    <?= $form->field($model, 'telefonos_emergencia')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?php

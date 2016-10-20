@@ -18,8 +18,8 @@ class OficialesSearch extends Oficiales
     public function rules()
     {
         return [
-            [['id', 'cedula', 'telefono', 'telefonos_emergencia'], 'integer'],
-            [['jquia', 'nombres', 'apellido', 'situacion', 'email', 'arma', 'cargo', 'direccion', 'direccion_emergencia'], 'safe'],
+            [['id', 'jquia_id', 'cedula', 'situacion'], 'integer'],
+            [['nombres', 'apellidos', 'sexo', 'email', 'arma', 'cargo', 'direccion', 'telefono', 'direccion_emergencia', 'telefonos_emergencia'], 'safe'],
         ];
     }
 
@@ -49,7 +49,8 @@ class OficialesSearch extends Oficiales
             'query' => $query,
             'sort' => [
                 'defaultOrder' => [
-                    'cedula' => SORT_ASC
+                    'cedula' => SORT_ASC,
+                    //'jquia_id' => SORT_ASC
                 ],
             ],
             'pagination' => [
@@ -68,20 +69,23 @@ class OficialesSearch extends Oficiales
         // condiciones de filtrado del objeto GridView
         $query->andFilterWhere([
             'id' => $this->id,
+            'jquia_id' => $this->jquia_id,
             'cedula' => $this->cedula,
-            'telefono' => $this->telefono,
-            'telefonos_emergencia' => $this->telefonos_emergencia,
+            'sexo' => $this->sexo,
+            'situacion' => $this->situacion,
         ]);
 
-        $query->andFilterWhere(['like', 'jquia', $this->jquia])
+        $query->andFilterWhere(['like', 'jquia_id', $this->jquia_id])
             ->andFilterWhere(['like', 'nombres', $this->nombres])
-            ->andFilterWhere(['like', 'apellido', $this->apellido])
-            ->andFilterWhere(['like', 'situacion', $this->situacion])
+            ->andFilterWhere(['like', 'apellidos', $this->apellidos])
+            ->andFilterWhere(['like', 'sexo', $this->sexo])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'arma', $this->arma])
             ->andFilterWhere(['like', 'cargo', $this->cargo])
             ->andFilterWhere(['like', 'direccion', $this->direccion])
-            ->andFilterWhere(['like', 'direccion_emergencia', $this->direccion_emergencia]);
+            ->andFilterWhere(['like', 'telefono', $this->telefono])
+            ->andFilterWhere(['like', 'direccion_emergencia', $this->direccion_emergencia])
+            ->andFilterWhere(['like', 'telefonos_emergencia', $this->telefonos_emergencia]);
 
         return $dataProvider;
     }

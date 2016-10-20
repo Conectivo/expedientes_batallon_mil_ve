@@ -9,7 +9,7 @@ use webvimark\modules\UserManagement\models\User;
 /* @var $this yii\web\View */
 /* @var $model app\models\Captador */
 
-$this->title = $model->getJerarquia() . " ". $model->nombre_completo;
+$this->title = $model->jquia->nombre . " ". $model->nombre_completo;
 $this->params['breadcrumbs'][] = ['label' => 'Captadores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'data' => ['method' => 'post',],
                         ]
                     ),
-                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-trash"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
+                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-remove"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
                 'size' => Modal::SIZE_SMALL
             ]);
             echo '¿Está seguro que desea eliminar este elemento?';
@@ -49,11 +49,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             //'id',
-            //'jquia',
+            //'jquia_id',
             [
                 'label' => 'Jerarquía',
-                'attribute' => 'jquia',
-                'value' => $model->getJerarquia(),
+                'attribute' => 'jquia_id',
+                'value' => $model->jquia->nombre,
             ],
             'cedula',
             'nombre_completo',

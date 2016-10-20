@@ -23,6 +23,7 @@ return array(
     'webvimark\\extensions\\DateRangePicker\\' => array($vendorDir . '/webvimark/date-range-picker'),
     'webvimark\\extensions\\BootstrapSwitch\\' => array($vendorDir . '/webvimark/bootstrap-switch'),
     'webvimark\\components\\' => array($vendorDir . '/webvimark/components'),
+    'miloschuman\\highcharts\\' => array($vendorDir . '/miloschuman/yii2-highcharts-widget/src'),
     'kartik\\select2\\' => array($vendorDir . '/kartik-v/yii2-widget-select2'),
     'kartik\\helpers\\' => array($vendorDir . '/kartik-v/yii2-helpers'),
     'kartik\\dialog\\' => array($vendorDir . '/kartik-v/yii2-dialog'),

@@ -16,11 +16,14 @@ use app\models\Persona;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php // $form->field($model, 'jquia')->textInput() ?>
-    <?= $form->field($model, 'jquia')->dropDownList(
-        $model->getOpcionesJquia(),
-        ['prompt'=>'Por favor, seleccioné una opción',]
-    )->label('Jerarquía'); ?>
+    <?= $form->field($model, 'jquia_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(app\models\Jerarquia::find()->all(),'id','nombre'),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])->label('Jerarquía'); ?>
 
     <?= $form->field($model, 'cedula')->textInput() ?>
 

@@ -8,32 +8,17 @@ use Yii;
  * Esta es la clase de modelo de la tabla "captador".
  *
  * @property integer $id
- * @property integer $jquia
+ * @property integer $jquia_id
  * @property integer $cedula
  * @property string $nombre_completo
  * @property string $telefono
  * @property integer $captado
  *
+ * @property Jerarquia $jquia
  * @property Persona $captado0
  */
 class Captador extends \yii\db\ActiveRecord
 {
-    /* 
-    * Definir los campos 'clave', como constante para siguiente arreglo dado 
-    * ['1'=>'Tcnel', '2'=>'My', '3'=>'Cap', '4'=>'1Tte', '5'=>'Tte', '6'=>'S/Sup',
-    *  '7'=>'SM/1ra', '8'=>'SM/2da', '9'=>'SM/3ra', '10'=>'S/1ro', '11'=>'S/2do'],
-    */
-    const JQUIA_TCNEL = 1;
-    const JQUIA_MY = 2;
-    const JQUIA_CAP = 3;
-    const JQUIA_1TTE = 4;
-    const JQUIA_TTE = 5;
-    const JQUIA_SSUP = 6;
-    const JQUIA_SM1RA = 7;
-    const JQUIA_SM2DA = 8;
-    const JQUIA_SM3RA = 9;
-    const JQUIA_S1RO = 10;
-    const JQUIA_S2DO = 11;
 
     /**
      * @inheritdoc
@@ -54,7 +39,7 @@ class Captador extends \yii\db\ActiveRecord
                 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'
             ],
             [
-                ['jquia', 'captado'], 'required',
+                ['jquia_id', 'captado'], 'required',
                 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'
             ],
             [
@@ -69,10 +54,11 @@ class Captador extends \yii\db\ActiveRecord
                 ['cedula'], 'match', 'pattern' => '/^(\0)?[0-9]{8,8}$/',
                 'message' => 'Este campo es requerido. Por favor, ingrese un número de cédula de identidad, ej. 14522590.'
             ],
-            [['jquia', 'cedula', 'captado'], 'integer'],
+            [['jquia_id', 'cedula', 'captado'], 'integer'],
             [['nombre_completo'], 'string', 'max' => 50],
             [['telefono'], 'string', 'max' => 14],
-            [['captado'], 'unique'],
+            [['captado'], 'unique', 'message' => 'Personal ya fue registrado por otro Captador. Por favor, seleccioné otro Personal.'],
+            [['jquia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Jerarquia::className(), 'targetAttribute' => ['jquia_id' => 'id']],
             [
                 ['captado'], 'exist', 'skipOnError' => true,
                 'targetClass' => Persona::className(),
@@ -88,7 +74,7 @@ class Captador extends \yii\db\ActiveRecord
     {
         return [
             //'id' => 'ID',
-            'jquia' => 'Jerarquía',
+            'jquia_id' => 'Jerarquía',
             'cedula' => 'Cédula',
             'nombre_completo' => 'Nombre Completo',
             'telefono' => 'Teléfono',
@@ -97,98 +83,28 @@ class Captador extends \yii\db\ActiveRecord
     }
 
     /**
-     * Retorna la descripcion del campo [[jquia]] para ser mostrado en las vistas
-     *
-     * @return array
+     * @return \yii\db\ActiveQuery
      */
-    public function getJerarquia()
+    public function getJquia()
     {
-        if ($this->jquia==1) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==2) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==3) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==4) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==5) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==6) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==7) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==8) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==9) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==10) {
-            return $this->getTextoJquia();
-        }
-        
-        if ($this->jquia==11) {
-            return $this->getTextoJquia();
-        }
+        return $this->hasOne(Jerarquia::className(), ['id' => 'jquia_id']);
     }
- 
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getCaptado0()
     {
-       return $this->hasOne(Persona::className(), ['cedula' => 'captado']);
+        return $this->hasOne(Persona::className(), ['cedula' => 'captado']);
     }
 
     /**
-     * Retorna un arreglo usado en la lista desplegable para el campo [[jquia]]
-     *
-     * @return array
+     * @inheritdoc
+     * @return CaptadorQuery el objeto Active Query usado por esta clase ActiveRecord.
      */
-    public function getOpcionesJquia()
+    public static function find()
     {
-        return [
-            /* 
-            * Definir campos 'valor', de las constantes definidias previamente al inicio de la clase.
-            */
-            self::JQUIA_TCNEL => 'Tcnel',
-            self::JQUIA_MY => 'My',
-            self::JQUIA_CAP => 'Cap',
-            self::JQUIA_1TTE => '1Tte',
-            self::JQUIA_TTE => 'Tte',
-            self::JQUIA_SSUP => 'S/Sup',
-            self::JQUIA_SM1RA => 'SM/1ra',
-            self::JQUIA_SM2DA => 'SM/2da',
-            self::JQUIA_SM3RA => 'SM/3ra',
-            self::JQUIA_S1RO => 'S/1ro',
-            self::JQUIA_S2DO => 'S/2do',
-        ];
+        return new CaptadorQuery(get_called_class());
     }
 
-    /**
-     * Retorna el valor de texto de la propiedad [[jquia]].
-     * 
-     * @return string la propiedad [[jquia]] como una cadena de texto para su visualizacion.
-     */
-    public function getTextoJquia()
-    {
-        $options = $this->getOpcionesJquia();
-        return isset($options[$this->jquia]) ? $options[$this->jquia] : '';
-    }
 }

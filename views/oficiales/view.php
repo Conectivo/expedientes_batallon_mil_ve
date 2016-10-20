@@ -9,7 +9,7 @@ use webvimark\modules\UserManagement\models\User;
 /* @var $this yii\web\View */
 /* @var $model app\models\Oficiales */
 
-$this->title = $model->getJerarquia() . " ". $model->apellido;
+$this->title = $model->jquia->nombre . " ". $model->apellidos;
 $this->params['breadcrumbs'][] = ['label' => 'Oficiales', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'data' => ['method' => 'post',],
                         ]
                     ),
-                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-trash"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
+                'toggleButton' => ['label' => '<span class="glyphicon glyphicon-remove"></span> ' . 'Eliminar', 'class' => 'btn btn-danger'],
                 'size' => Modal::SIZE_SMALL
             ]);
             echo '¿Está seguro que desea eliminar este elemento?';
@@ -48,22 +48,24 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             // 'id',
-            // 'jquia',
             [
                 'label' => 'Jerarquía',
-                'attribute' => 'jquia',
-                'value' => $model->getJerarquia(),
+                'attribute' => 'jquia_id',
+                'value' => $model->jquia->nombre,
             ],
             'nombres',
-            'apellido',
+            'apellidos',
             'cedula',
-            // 'situacion',
+            [
+                'label' => 'Sexo',
+                'attribute' => 'sexo',
+                'value' => $model->getSexo(),
+            ],
             [
                 'label' => 'Situación',
                 'attribute' => 'situacion',
                 'value' => $model->getSituacion(),
             ],
-            // 'email:email',
             [
                 'attribute' => 'email',
                 'label' => 'Correo electrónico',
