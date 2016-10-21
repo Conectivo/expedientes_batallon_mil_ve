@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-10-2016 a las 20:15:28
+-- Tiempo de generación: 21-10-2016 a las 09:28:15
 -- Versión del servidor: 5.5.52-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.19
 
@@ -159,6 +159,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/oficiales/create', 3, NULL, NULL, NULL, 1475555240, 1475555240, NULL),
 ('/oficiales/delete', 3, NULL, NULL, NULL, 1475555240, 1475555240, NULL),
 ('/oficiales/index', 3, NULL, NULL, NULL, 1475555241, 1475555241, NULL),
+('/oficiales/list', 3, NULL, NULL, NULL, 1477055954, 1477055954, NULL),
 ('/oficiales/update', 3, NULL, NULL, NULL, 1475555240, 1475555240, NULL),
 ('/oficiales/view', 3, NULL, NULL, NULL, 1475555241, 1475555241, NULL),
 ('/persona/*', 3, NULL, NULL, NULL, 1475555240, 1475555240, NULL),
@@ -369,6 +370,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('createCaptador', '/captador/create'),
 ('deleteCaptador', '/captador/delete'),
 ('listCaptadores', '/captador/index'),
+('listCaptadores', '/captador/list'),
 ('editCaptador', '/captador/update'),
 ('viewCaptador', '/captador/view'),
 ('createDatosFamiliaresPersonal', '/familiares/create'),
@@ -390,6 +392,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('createOficial', '/oficiales/create'),
 ('deleteOficial', '/oficiales/delete'),
 ('listOficial', '/oficiales/index'),
+('listOficial', '/oficiales/list'),
 ('editOficial', '/oficiales/update'),
 ('viewOficial', '/oficiales/view'),
 ('createPersonal', '/persona/create'),
