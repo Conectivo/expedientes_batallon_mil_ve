@@ -17,6 +17,23 @@ $this->title = 'Sistema de expedientes';
         <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>
+                            <?php echo $totalUnidades = app\models\Unidad::find()->count(); ?>
+                        </h3>
+                        <p>
+                            <?php if($totalUnidades <= 1) echo 'Unidad de Batallón'; else echo 'Unidades de Batallón'; ?>
+                        </p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-sitemap"></i>
+                    </div>
+                    <?= GhostHtml::a('Más información'.' <i class="fa fa-arrow-circle-right"></i>', ['/unidad/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
                         <h3>
@@ -64,23 +81,6 @@ $this->title = 'Sistema de expedientes';
                         <i class="fa fa-street-view"></i>
                     </div>
                     <?= GhostHtml::a('Más información'.' <i class="fa fa-arrow-circle-right"></i>', ['/captador/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
-                </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>
-                            <?php echo $totalUnidades = app\models\Unidad::find()->count(); ?>
-                        </h3>
-                        <p>
-                            <?php if($totalUnidades <= 1) echo 'Unidad de Batallón'; else echo 'Unidades de Batallón'; ?>
-                        </p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-sitemap"></i>
-                    </div>
-                    <?= GhostHtml::a('Más información'.' <i class="fa fa-arrow-circle-right"></i>', ['/unidad/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
                 </div>
             </div><!-- ./col -->
         </div><!-- /.row -->
