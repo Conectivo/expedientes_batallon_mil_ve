@@ -21,9 +21,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'apellidos') ?>
 
-    <?= $form->field($model, 'lugar_nacimiento') ?>
+    <?= $form->field($model, 'estado_id') ?>
 
-    <?= $form->field($model, 'fecha_nacimiento') ?>
+    <?= $form->field($model, 'municipio_id') ?>
+
+    <?php // echo $form->field($model, 'parroquia_id') ?>
+
+    <?php // echo $form->field($model, 'lugar_nacimiento') ?>
+
+    <?php // echo $form->field($model, 'fecha_nacimiento') ?>
 
     <?php // echo $form->field($model, 'direccion') ?>
 
@@ -34,6 +40,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'religion') ?>
 
     <?php // echo $form->field($model, 'estado_civil') ?>
+
+    <?php // echo $form->field($model, 'modalidad') ?>
 
     <?php // echo $form->field($model, 'fecha_ingreso') ?>
 

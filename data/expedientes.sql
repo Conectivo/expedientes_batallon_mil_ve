@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : expedientes
 -- ===
--- === Build : 152
+-- === Build : 161
 -- ======================================================================
 
 CREATE TABLE unidades
@@ -56,6 +56,9 @@ CREATE TABLE persona
     cedula            INTEGER        unique not null,
     nombres           varchar(20)    not null,
     apellidos         varchar(20)    not null,
+    estado_id         INTEGER        not null,
+    municipio_id      INTEGER        not null,
+    parroquia_id      INTEGER        not null,
     lugar_nacimiento  INTEGER        not null,
     fecha_nacimiento  date           not null,
     direccion         varchar(150)   not null,
@@ -69,7 +72,10 @@ CREATE TABLE persona
 
     primary key(cedula),
 
-    foreign key(lugar_nacimiento) references parroquias(id_parroquia) on update CASCADE,
+    foreign key(estado_id) references estados(id_estado) on update CASCADE,
+    foreign key(municipio_id) references municipios(id_municipio) on update CASCADE,
+    foreign key(parroquia_id) references parroquias(id_parroquia) on update CASCADE,
+    foreign key(lugar_nacimiento) references ciudades(id_ciudad) on update CASCADE,
     foreign key(unidad_id) references unidades(id) on update CASCADE
   )
  ENGINE = InnoDB;

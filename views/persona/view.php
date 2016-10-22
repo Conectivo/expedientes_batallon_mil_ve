@@ -60,8 +60,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->fullName,
             ],
             [
+                'attribute' => 'estado_id',
+                // 'label' => 'Estado',
+                'value' => $model->estado->estado,
+            ],
+            [
+                'attribute' => 'municipio_id',
+                // 'label' => 'Municipio',
+                'value' => $model->municipio->municipio,
+            ],
+            [
+                'attribute' => 'parroquia_id',
+                // 'label' => 'Parroquia',
+                'value' => $model->parroquia->parroquia,
+            ],
+            [
                 'attribute' => 'lugar_nacimiento',
-                'label' => 'Lugar de Nacimiento',
+                'label' => 'Ciudad (Lugar de nacimiento)',
+                'value' => $model->lugarNacimiento->ciudad,
             ],
             [
                 'attribute' => 'fecha_nacimiento',

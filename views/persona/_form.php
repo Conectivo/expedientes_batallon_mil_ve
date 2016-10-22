@@ -14,19 +14,31 @@ use app\models\Unidad;
 /* @var $form yii\widgets\ActiveForm */
 
 $url = Url::to(['ajax-municipio']);
+$url_ciudad = Url::to(['ajax-ciudad']);
 $this->registerJs(
 "
 $('#persona-estado_id').on('change', function(e) {
     $.ajax({
-       url: '".$url."',
-       data: {estado_id: $('#persona-estado_id').val()},
-       success: function(html) {
-           console.log(html);
-          $('#".Html::getInputId($model, 'municipio_id')."').html(html);
-       },
-       error: function(result) {
-                    alert('Estado no encontrado');
-                }
+        url: '".$url."',
+        data: {id_estado: $('#persona-estado_id').val()},
+        success: function(html) {
+            console.log(html);
+            $('#".Html::getInputId($model, 'municipio_id')."').html(html);
+        },
+        error: function(result) {
+            alert('Estado no encontrado');
+        }
+    });
+    $.ajax({
+        url: '".$url_ciudad."',
+        data: {id_estado: $('#persona-estado_id').val()},
+        success: function(html) {
+            console.log(html);
+            $('#".Html::getInputId($model, 'lugar_nacimiento')."').html(html);
+        },
+        error: function(result) {
+            alert('Ciudad no encontrado');
+        }
     });
 });
 ", View::POS_READY);
@@ -36,15 +48,15 @@ $this->registerJs(
 "
 $('#persona-municipio_id').on('change', function(e) {
     $.ajax({
-       url: '".$url."',
-       data: {municipio_id: $('#persona-municipio_id').val()},
-       success: function(html) {
-           console.log(html);
-          $('#".Html::getInputId($model, 'parroquia_id')."').html(html);
-       },
-       error: function(result) {
-                    alert('Municipio no encontrado');
-                }
+        url: '".$url."',
+        data: {id_municipio: $('#persona-municipio_id').val()},
+        success: function(html) {
+            console.log(html);
+            $('#".Html::getInputId($model, 'parroquia_id')."').html(html);
+        },
+        error: function(result) {
+            alert('Municipio no encontrado');
+        }
     });
 });
 ", View::POS_READY);
@@ -61,20 +73,25 @@ $('#persona-municipio_id').on('change', function(e) {
 
     <?= $form->field($model, 'apellidos')->textInput(['maxlength' => true]) ?>
 
-    <?php /* $form->field($model, 'estado_id')->dropDownList(
+    <?= $form->field($model, 'estado_id')->dropDownList(
         ArrayHelper::map($estados, 'id_estado','estado'),
         ['prompt'=>'--Seleccione--',]
-    ); */ ?>
-    <?php /* $form->field($model, 'municipio_id')->dropDownList(
+    ); ?>
+
+    <?= $form->field($model, 'municipio_id')->dropDownList(
           ArrayHelper::map($municipios, 'id_municipio','municipio'),
           ['prompt'=>'--Seleccione--',]
-    ); */ ?>
-    <?php /* $form->field($model, 'parroquia_id')->dropDownList(
+    ); ?>
+
+    <?= $form->field($model, 'parroquia_id')->dropDownList(
         ArrayHelper::map($parroquias, 'id_parroquia','parroquia'),
         ['prompt'=>'--Seleccione--',]
-    ); */ ?>
+    ); ?>
 
-    <?= $form->field($model, 'lugar_nacimiento')->textInput() ?>
+    <?= $form->field($model, 'lugar_nacimiento')->dropDownList(
+        ArrayHelper::map($parroquias, 'id_parroquia','parroquia'),
+        ['prompt'=>'--Seleccione--',]
+    )->label('Ciudad (Lugar de nacimiento)'); ?>
 
     <?php // $form->field($model, 'fecha_nacimiento')->textInput() ?>
     <?= $form->field($model,'fecha_nacimiento')->
@@ -106,10 +123,18 @@ $('#persona-municipio_id').on('change', function(e) {
          '9'=>'Ateísmo','10'=>'Otra creencia',],
         ['prompt'=>'Por favor, seleccioné una opción',]
     )->label('Religión'); */ ?>
-    <?= $form->field($model, 'religion')->dropDownList(
+    <?php /* $form->field($model, 'religion')->dropDownList(
         $model->getOpcionesReligion(),
         ['prompt'=>'Por favor, seleccioné una opción',]
-    )->label('Religión'); ?>
+    )->label('Religión'); */ ?>
+    <?= $form->field($model, 'religion')->widget(Select2::classname(), [
+        'data' => $model->getOpcionesReligion(),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])->label('Religión'); ?>
 
     <?php // $form->field($model, 'estado_civil')->textInput(['maxlength' => true]) ?>
     <?php /* $form->field($model, 'estado_civil')->dropDownList(
@@ -148,7 +173,6 @@ $('#persona-municipio_id').on('change', function(e) {
             'options' => ['class' => 'form-control', 'readonly' => 'readonly']
         ])->label('Fecha de Ingreso') ?>
 
-    <?php // $form->field($model, 'unidad_id')->textInput() ?>
     <?= $form->field($model, 'unidad_id')->dropDownList(
         ArrayHelper::map(Unidad::find()->all(),'id','unidad'),
             ['prompt'=>'Por favor, seleccioné una opción']

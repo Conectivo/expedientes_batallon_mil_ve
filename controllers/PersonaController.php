@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Estados;
+use app\models\Ciudades;
 use app\models\Municipios;
 use app\models\Parroquias;
 use app\models\Familiares;
@@ -83,9 +84,6 @@ class PersonaController extends Controller
         $modelFisionomia = Fisionomia::find()
                             ->where(['cedula_id' => $id])->one();
 
-        // $modelUnidad = Unidad::find()
-        //                     ->where(['id' => $id])->one();
-
         $modelUniforme = Uniforme::find()
                             ->where(['cedula_id' => $id])->one();
 
@@ -117,7 +115,6 @@ class PersonaController extends Controller
             'modelFamiliares' => $modelFamiliares,
             'modelSociologico' => $modelSociologico,
             'modelFisionomia' => $modelFisionomia,
-            // 'modelUnidad' => $modelUnidad,
             'modelUniforme' => $modelUniforme,
             'modelCaptador' => $modelCaptador,
     ]);
@@ -136,6 +133,7 @@ class PersonaController extends Controller
         $estados = Estados::find()->all();
         $municipios = [];
         $parroquias = [];
+        $ciudades = [];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             // return $this->redirect(['estatus/create', 'consejo_comunal_id' => $model->id]);
@@ -146,6 +144,7 @@ class PersonaController extends Controller
                 'estados' => $estados,
                 'municipios' => $municipios,
                 'parroquias' => $parroquias,
+                'ciudades' => $ciudades,
             ]);
         }
 
@@ -168,11 +167,23 @@ class PersonaController extends Controller
     {
         $model = $this->findModel($id);
 
+        $estados = Estados::find()->orderBy('estado')->all();
+        // $municipios = Municipios::find()->orderBy('municipio')->all();
+        // $parroquias = Parroquias::find()->orderBy('parroquia')->all();
+        // $ciudades = Ciudades::find()->orderBy('ciudad')->all();
+        $municipios = [];
+        $parroquias = [];
+        $ciudades = [];
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cedula]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'estados' => $estados,
+                'municipios' => $municipios,
+                'parroquias' => $parroquias,
+                'ciudades' => $ciudades,
             ]);
         }
     }
@@ -190,30 +201,35 @@ class PersonaController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-      * LJAH
-      * Finds the Municipios model based on id_estado value.
-      * @param integer $id
-      * @return Json Municipios data if success
+    /*
+    SELECT *
+    FROM ciudades ciu
+    JOIN estados edo ON edo.id_estado = ciu.id_estado
+    WHERE edo.id_estado = ciu.id_estado
+    ORDER BY `edo`.`id_estado` ASC
     */
-    public function actionAjaxMunicipio($id_estado)
+
+    /**
+      * LJCG
+      * Buscar los registros de Ciudades basado en el valor id_estado.
+      * @param integer $id
+      * @return Data en formato JSON de los Ciudades si es exitosa
+    */
+    public function actionAjaxCiudad($id_estado)
     {
         if (Yii::$app->request->isAjax)
         {
-              if (($model = Municipios::find()
+            if (($model = Ciudades::find() // SELECT * FROM ciudades WHERE id_estado = 19
                             ->where(['id_estado' => $id_estado])->all()) !== null) {
-                    if (count($model) > 0)
+                if (count($model) > 0) {
+                    foreach($model as $ciudad)
                     {
-                        foreach($model as $municipio)
-                        {
-                            echo '<option value="'.$municipio->id_municipio.'">'.$municipio->municipio.'</option>';
-                        }
+                        echo '<option value="'.$ciudad->id_ciudad.'">'.$ciudad->ciudad.'</option>';
                     }
-                    else
-                    {
+                } else {
                         echo '<option>No hay resultados</option>';
-                    }
-              } else {
+                }
+            } else {
                 throw new NotFoundHttpException('The requested page does not exist.');
             }
         } else {
@@ -223,27 +239,52 @@ class PersonaController extends Controller
 
     /**
       * LJAH
-      * Finds the Parroquias model based on id_municipio value.
+      * Buscar los registros de Municipios basado en el valor id_estado.
       * @param integer $id
-      * @return Json Municipios data if success
+      * @return Data en formato JSON de los Municipios si es exitosa
+    */
+    public function actionAjaxMunicipio($id_estado)
+    {
+        if (Yii::$app->request->isAjax)
+        {
+            if (($model = Municipios::find()
+                            ->where(['id_estado' => $id_estado])->all()) !== null) {
+                if (count($model) > 0)
+                {
+                    foreach($model as $municipio) {
+                        echo '<option value="'.$municipio->id_municipio.'">'.$municipio->municipio.'</option>';
+                    }
+                } else {
+                        echo '<option>No hay resultados</option>';
+                }
+            } else {
+                throw new NotFoundHttpException('The requested page does not exist.');
+            }
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    /**
+      * LJAH
+      * Buscar los registros de Parroquias basado en el valor id_municipio.
+      * @param integer $id
+      * @return Data en formato JSON de los Parroquias si es exitosa
     */
     public function actionAjaxParroquia($id_municipio)
     {
         if (Yii::$app->request->isAjax)
         {
-              if (($model = Parroquias::find()
+            if (($model = Parroquias::find()
                             ->where(['id_municipio' => $id_municipio])->all()) !== null) {
-                    if (count($model) > 0)
+                if (count($model) > 0) {
+                    foreach($model as $parroquia)
                     {
-                        foreach($model as $parroquia)
-                        {
-                            echo '<option value="'.$parroquia->id_parroquia.'">'.$parroquia->parroquia.'</option>';
-                        }
+                        echo '<option value="'.$parroquia->id_parroquia.'">'.$parroquia->parroquia.'</option>';
                     }
-                    else
-                    {
+                } else {
                         echo '<option>No hay resultados</option>';
-                    }
+                }
             } else {
                 throw new NotFoundHttpException('The requested page does not exist.');
             }

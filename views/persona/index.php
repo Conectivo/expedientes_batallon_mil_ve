@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use webvimark\modules\UserManagement\components\GhostHtml;
@@ -29,48 +30,87 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'cedula',
-            'nombres',
+            // 'nombres',
             'apellidos',
-            'lugar_nacimiento',
-            // 'fecha_nacimiento',
             [
-                'attribute' => 'fecha_nacimiento',
-                'label'=>'Fecha de Nacimiento',
-                // 'format' => ['date', 'php:l, F d, Y']
-                'format' => ['date', 'php:d-m-Y']
+                'attribute' => 'estado_id',
+                'header'=>'Estado',
+                'value' => function ($model) {
+                                return $model->estado->estado;
+                            },
+                'filter' => Html::activeDropDownList($searchModel, 'estado_id',
+                                    ArrayHelper::map(app\models\Estados::find()->orderBy('estado')->all(), 'id_estado', 'estado'),
+                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
+                            ),
             ],
+            [
+                'attribute' => 'municipio_id',
+                'header'=>'Municipio',
+                'value' => function ($model) {
+                                return $model->municipio->municipio;
+                            },
+                'filter' => Html::activeDropDownList($searchModel, 'municipio_id',
+                                    ArrayHelper::map(app\models\Municipios::find()->orderBy('municipio')->all(), 'id_municipio', 'municipio'),
+                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
+                            ),
+            ],
+            [
+                'attribute' => 'parroquia_id',
+                'header'=>'Parroquia',
+                'value' => function ($model) {
+                                return $model->parroquia->parroquia;
+                            },
+                'filter' => Html::activeDropDownList($searchModel, 'parroquia_id',
+                                    ArrayHelper::map(app\models\Parroquias::find()->orderBy('parroquia')->all(), 'id_parroquia', 'parroquia'),
+                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
+                            ),
+            ],
+            [
+                'attribute' => 'lugar_nacimiento',
+                'header'=>'Ciudad de nacimiento',
+                'value' => function ($model) {
+                                return $model->lugarNacimiento->ciudad;
+                            },
+                'filter' => Html::activeDropDownList($searchModel, 'lugar_nacimiento',
+                                    ArrayHelper::map(app\models\Ciudades::find()->orderBy('ciudad')->all(), 'id_ciudad', 'ciudad'),
+                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
+                            ),
+            ],
+            // [
+            //     'attribute' => 'fecha_nacimiento',
+            //     'label'=>'Fecha de Nacimiento',
+            //     // 'format' => ['date', 'php:l, F d, Y']
+            //     'format' => ['date', 'php:d-m-Y']
+            // ],
             // 'direccion',
             // 'sector',
             // 'telefono_movil',
-            // 'religion',
             [
                 'header' => 'Religión',
                 'attribute' => 'religion',
-                'value' => function ($model){
+                'value' => function ($model) {
                                 return $model->getReligion();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'religion',
                                     $searchModel->getOpcionesReligion(),
-                                    ['class'=>'form-control', 'prompt' => 'Seleccioné una opción']
+                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
                             ),
             ],
-            // 'estado_civil',
             [
                 'header' => 'Estado Civil',
                 'attribute' => 'estado_civil',
-                'value' => function ($model){
+                'value' => function ($model) {
                                 return $model->getEdoCivil();
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'estado_civil',
                                     $searchModel->getOpcionesEdoCivil(),
-                                    ['class'=>'form-control', 'prompt' => 'Seleccioné una opción']
+                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
                             ),
             ],
-            // 'modalidad',
             [
                 'header' => 'Modalidad',
                 'attribute' => 'modalidad',
-                'value' => function ($model){
+                'value' => function ($model) {
                                 return $model->getModalidad();
                                 // if ($model->modalidad == 'C') {
                                 //     return $model->getTextoModalidad();
@@ -80,16 +120,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'modalidad',
                                     $searchModel->getOpcionesModalidad(),
-                                    ['class'=>'form-control', 'prompt' => 'Seleccioné una opción']
+                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
                             ),
             ],
-            // 'fecha_ingreso',
-            [
-                'attribute' => 'fecha_ingreso',
-                'label'=>'Fecha de Ingreso',
-                // 'format' => ['date', 'php:l, F d, Y']
-                'format' => ['date', 'php:d-m-Y']
-            ],
+            // [
+            //     'attribute' => 'fecha_ingreso',
+            //     'label'=>'Fecha de Ingreso',
+            //     'format' => ['date', 'php:d-m-Y']
+            // ],
             // 'unidad_id',
 
             [

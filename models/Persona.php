@@ -10,6 +10,9 @@ use Yii;
  * @property integer $cedula
  * @property string $nombres
  * @property string $apellidos
+ * @property integer $estado_id
+ * @property integer $municipio_id
+ * @property integer $parroquia_id
  * @property integer $lugar_nacimiento
  * @property string $fecha_nacimiento
  * @property string $direccion
@@ -24,7 +27,10 @@ use Yii;
  * @property Captador $captador
  * @property Familiares $familiares
  * @property Fisionomia $fisionomia
- * @property Parroquias $lugarNacimiento
+ * @property Estados $estado
+ * @property Municipios $municipio
+ * @property Parroquias $parroquia
+ * @property Ciudades $lugarNacimiento
  * @property Unidad $unidad
  * @property Sociologicos $sociologicos
  * @property Tallas $tallas
@@ -77,14 +83,14 @@ class Persona extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cedula', 'nombres', 'apellidos', 'lugar_nacimiento', 'fecha_nacimiento', 'direccion', 'sector', 'telefono_movil', 'fecha_ingreso'], 'required', 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'],
-            [['religion', 'estado_civil', 'modalidad', 'unidad_id'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
+            [['cedula', 'nombres', 'apellidos', 'fecha_nacimiento', 'direccion', 'sector', 'telefono_movil', 'fecha_ingreso'], 'required', 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'],
+            [['estado_id', 'municipio_id', 'parroquia_id', 'lugar_nacimiento', 'religion', 'estado_civil', 'modalidad', 'unidad_id'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
+            [['cedula', 'estado_id', 'municipio_id', 'parroquia_id', 'lugar_nacimiento', 'religion', 'unidad_id'], 'integer'],
             [['fecha_nacimiento', 'fecha_ingreso'], 'safe'],
-            [['religion'], 'integer'],
             [['nombres', 'apellidos'], 'string', 'max' => 20],
             [['direccion', 'sector'], 'string', 'max' => 150],
-            [['estado_civil'], 'string', 'max' => 1],
             [['telefono_movil'], 'string', 'max' => 14],
+            [['estado_civil', 'modalidad'], 'string', 'max' => 1],
             [['cedula'], 'unique'],
             [
                 ['cedula'], 'match', 'pattern' => '/^(\0)?[0-9]{8,8}$/',
@@ -110,13 +116,13 @@ class Persona extends \yii\db\ActiveRecord
                 ['sector'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
                 'message' => 'Este campo es requerido. Por favor, ingrese solo letras en minúsculas o en capitales.'
             ],
-            // [['modalidad'], 'string', 'max' => 1],
             // ['modalidad', 'default', 'value' => self::TIEMPO_COMPLETO],
             ['modalidad', 'in', 'range' => array_keys($this->getOpcionesModalidad())],
-            [
-                ['unidad_id'], 'exist', 'skipOnError' => true,
-                'targetClass' => Unidad::className(), 'targetAttribute' => ['unidad_id' => 'id']
-            ],
+            [['estado_id'], 'exist', 'skipOnError' => true, 'targetClass' => Estados::className(), 'targetAttribute' => ['estado_id' => 'id_estado']],
+            [['municipio_id'], 'exist', 'skipOnError' => true, 'targetClass' => Municipios::className(), 'targetAttribute' => ['municipio_id' => 'id_municipio']],
+            [['parroquia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Parroquias::className(), 'targetAttribute' => ['parroquia_id' => 'id_parroquia']],
+            [['lugar_nacimiento'], 'exist', 'skipOnError' => true, 'targetClass' => Ciudades::className(), 'targetAttribute' => ['lugar_nacimiento' => 'id_ciudad']],
+            [['unidad_id'], 'exist', 'skipOnError' => true, 'targetClass' => Unidad::className(), 'targetAttribute' => ['unidad_id' => 'id']],
         ];
     }
 
@@ -129,6 +135,9 @@ class Persona extends \yii\db\ActiveRecord
             'cedula' => 'Cédula',
             'nombres' => 'Nombres',
             'apellidos' => 'Apellidos',
+            'estado_id' => 'Estado de nacimiento',
+            'municipio_id' => 'Municipio de nacimiento',
+            'parroquia_id' => 'Parroquia de nacimiento',
             'lugar_nacimiento' => 'Lugar de nacimiento',
             'fecha_nacimiento' => 'Fecha de nacimiento',
             'direccion' => 'Dirección',
@@ -169,9 +178,33 @@ class Persona extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getEstado()
+    {
+        return $this->hasOne(Estados::className(), ['id_estado' => 'estado_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMunicipio()
+    {
+        return $this->hasOne(Municipios::className(), ['id_municipio' => 'municipio_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParroquia()
+    {
+        return $this->hasOne(Parroquias::className(), ['id_parroquia' => 'parroquia_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getLugarNacimiento()
     {
-        return $this->hasOne(Parroquias::className(), ['id_parroquia' => 'lugar_nacimiento']);
+        return $this->hasOne(Ciudades::className(), ['id_ciudad' => 'lugar_nacimiento']);
     }
 
     /**
@@ -196,6 +229,15 @@ class Persona extends \yii\db\ActiveRecord
     public function getTallas()
     {
         return $this->hasOne(Tallas::className(), ['cedula_id' => 'cedula']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return PersonaQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new PersonaQuery(get_called_class());
     }
 
     /**
@@ -382,4 +424,5 @@ class Persona extends \yii\db\ActiveRecord
         $options = $this->getOpcionesModalidad();
         return isset($options[$this->modalidad]) ? $options[$this->modalidad] : '';
     }
+
 }
