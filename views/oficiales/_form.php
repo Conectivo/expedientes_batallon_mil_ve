@@ -44,8 +44,8 @@ $this->registerJs(
 
     <?= $form->field($model, 'cedula')->textInput() ?>
 
-    <?= $form->field($model, 'sexo')->widget(Select2::classname(), [
-        'data' => $model->getOpcionesSexo(),
+    <?= $form->field($model, 'sexo_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(app\models\Genero::find()->all(),'id','nombre'),
         'language' => 'es',
         'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
         'pluginOptions' => [
@@ -85,6 +85,8 @@ $this->registerJs(
     <?= $form->field($model, 'direccion_emergencia')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'telefonos_emergencia')->textInput(['maxlength' => true]) ?>
+
+    <?php // $form->field($model, 'status')->textInput() ?>
 
     <div class="form-group">
         <?php

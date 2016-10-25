@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-10-2016 a las 09:28:15
+-- Tiempo de generación: 24-10-2016 a las 02:10:58
 -- Versión del servidor: 5.5.52-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.19
 
@@ -125,6 +125,12 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/fixture/*', 3, NULL, NULL, NULL, 1475551145, 1475551145, NULL),
 ('/fixture/load', 3, NULL, NULL, NULL, 1475551145, 1475551145, NULL),
 ('/fixture/unload', 3, NULL, NULL, NULL, 1475551145, 1475551145, NULL),
+('/genero/*', 3, NULL, NULL, NULL, 1477288915, 1477288915, NULL),
+('/genero/create', 3, NULL, NULL, NULL, 1477288915, 1477288915, NULL),
+('/genero/delete', 3, NULL, NULL, NULL, 1477288915, 1477288915, NULL),
+('/genero/index', 3, NULL, NULL, NULL, 1477288915, 1477288915, NULL),
+('/genero/update', 3, NULL, NULL, NULL, 1477288915, 1477288915, NULL),
+('/genero/view', 3, NULL, NULL, NULL, 1477288915, 1477288915, NULL),
 ('/gii/*', 3, NULL, NULL, NULL, 1475551145, 1475551145, NULL),
 ('/gii/default/*', 3, NULL, NULL, NULL, 1475551145, 1475551145, NULL),
 ('/gii/default/action', 3, NULL, NULL, NULL, 1475551145, 1475551145, NULL),
@@ -292,6 +298,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('createDatosFamiliaresPersonal', 2, 'Crear Datos Familiares de Personal', NULL, NULL, 1475620006, 1475620035, 'administracionPersonal'),
 ('createDatosSociologicosPersonal', 2, 'Crear Datos Sociológicos de Personal', NULL, NULL, 1475620303, 1475620303, 'administracionPersonal'),
 ('createFisionomiaPersonal', 2, 'Crear Fisionomía del Personal', NULL, NULL, 1475620525, 1475620525, 'administracionPersonal'),
+('createGenero', 2, 'Crear Género del Personal / Oficial', NULL, NULL, 1477288888, 1477288888, 'administracionGenero'),
 ('createJerarquia', 2, 'Crear Jerarquía', NULL, NULL, 1476906202, 1476906202, 'administracionJerarquias'),
 ('createOficial', 2, 'Crear Oficial', NULL, NULL, 1475581569, 1475581569, 'administracionOficiales'),
 ('createPersonal', 2, 'Crear Personal', NULL, NULL, 1475555410, 1475555410, 'administracionPersonal'),
@@ -302,6 +309,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('deleteDatosFamiliaresPersonal', 2, 'Eliminar Datos Familiares de Personal', NULL, NULL, 1475620200, 1475620200, 'administracionPersonal'),
 ('deleteDatosSociologicosPersonal', 2, 'Eliminar Datos Sociológicos de Personal', NULL, NULL, 1475620441, 1475620441, 'administracionPersonal'),
 ('deleteFisionomiaPersonal', 2, 'Eliminar Fisionomía del Personal', NULL, NULL, 1475620666, 1475620666, 'administracionPersonal'),
+('deleteGenero', 2, 'Eliminar Género del Personal / Oficial', NULL, NULL, 1477288972, 1477288972, 'administracionGenero'),
 ('deleteJerarquia', 2, 'Eliminar Jerarquía', NULL, NULL, 1476906251, 1476906251, 'administracionJerarquias'),
 ('deleteOficial', 2, 'Eliminar Oficial', NULL, NULL, 1475581627, 1475581627, 'administracionOficiales'),
 ('deletePersonal', 2, 'Eliminar Personal', NULL, NULL, 1475555336, 1475555336, 'administracionPersonal'),
@@ -313,6 +321,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('editDatosFamiliaresPersonal', 2, 'Editar Datos Familiares de Personal', NULL, NULL, 1475620072, 1475620165, 'administracionPersonal'),
 ('editDatosSociologicosPersonal', 2, 'Editar Datos Sociológicos de Personal', NULL, NULL, 1475620362, 1475620362, 'administracionPersonal'),
 ('editFisionomiaPersonal', 2, 'Editar Fisionomía del Personal', NULL, NULL, 1475620593, 1475620593, 'administracionPersonal'),
+('editGenero', 2, 'Editar Género del Personal / Oficial', NULL, NULL, 1477288961, 1477288961, 'administracionGenero'),
 ('editJerarquia', 2, 'Editar Jerarquía', NULL, NULL, 1476906242, 1476906242, 'administracionJerarquias'),
 ('editOficial', 2, 'Editar Oficial', NULL, NULL, 1475581590, 1475581590, 'administracionOficiales'),
 ('editPersonal', 2, 'Editar Personal', NULL, NULL, 1475555366, 1475555366, 'administracionPersonal'),
@@ -327,6 +336,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('listDatosFamiliaresPersonal', 2, 'Listar Datos Familiares de Personal', NULL, NULL, 1476131057, 1476131057, 'administracionPersonal'),
 ('listDatosSociologicosPersonal', 2, 'Listar Datos Sociológicos de Personal', NULL, NULL, 1476130932, 1476130932, 'administracionPersonal'),
 ('listFisionomiaPersonal', 2, 'Listar Fisionomía del Personal', NULL, NULL, 1476130809, 1476130809, 'administracionPersonal'),
+('listGenero', 2, 'Listar Género del Personal / Oficial', NULL, NULL, 1477288981, 1477288981, 'administracionGenero'),
 ('listJerarquia', 2, 'Listar Jerarquías', NULL, NULL, 1476906260, 1476906260, 'administracionJerarquias'),
 ('listOficial', 2, 'Listar Oficial', NULL, NULL, 1476129946, 1476129946, 'administracionOficiales'),
 ('listPersonal', 2, 'Listar Personal', NULL, NULL, 1476131146, 1476131146, 'administracionPersonal'),
@@ -338,6 +348,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('viewDatosFamiliaresPersonal', 2, 'Ver Datos Familiares de Personal', NULL, NULL, 1475620144, 1475620144, 'administracionPersonal'),
 ('viewDatosSociologicosPersonal', 2, 'Ver Datos Sociológicos de Personal', NULL, NULL, 1475620406, 1475620406, 'administracionPersonal'),
 ('viewFisionomiaPersonal', 2, 'Ver Fisionomía del Personal', NULL, NULL, 1475620628, 1475620628, 'administracionPersonal'),
+('viewGenero', 2, 'Ver Género del Personal / Oficial', NULL, NULL, 1477288938, 1477288938, 'administracionGenero'),
 ('viewJerarquia', 2, 'Ver Jerarquía', NULL, NULL, 1476906233, 1476906233, 'administracionJerarquias'),
 ('viewOficial', 2, 'Ver Oficial', NULL, NULL, 1475581608, 1475581608, 'administracionOficiales'),
 ('viewPersonal', 2, 'Ver Personal', NULL, NULL, 1475555285, 1475555285, 'administracionPersonal'),
@@ -383,6 +394,11 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('listFisionomiaPersonal', '/fisionomia/index'),
 ('editFisionomiaPersonal', '/fisionomia/update'),
 ('viewFisionomiaPersonal', '/fisionomia/view'),
+('createGenero', '/genero/create'),
+('deleteGenero', '/genero/delete'),
+('listGenero', '/genero/index'),
+('editGenero', '/genero/update'),
+('viewGenero', '/genero/view'),
 ('createJerarquia', '/jerarquia/create'),
 ('deleteJerarquia', '/jerarquia/delete'),
 ('listJerarquia', '/jerarquia/index'),
@@ -444,6 +460,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('LlenarRegistros', 'createDatosFamiliaresPersonal'),
 ('LlenarRegistros', 'createDatosSociologicosPersonal'),
 ('LlenarRegistros', 'createFisionomiaPersonal'),
+('LlenarRegistros', 'createGenero'),
 ('LlenarRegistros', 'createJerarquia'),
 ('LlenarRegistros', 'createOficial'),
 ('LlenarRegistros', 'createPersonal'),
@@ -454,6 +471,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('EliminarRegistros', 'deleteDatosFamiliaresPersonal'),
 ('EliminarRegistros', 'deleteDatosSociologicosPersonal'),
 ('EliminarRegistros', 'deleteFisionomiaPersonal'),
+('EliminarRegistros', 'deleteGenero'),
 ('EliminarRegistros', 'deleteJerarquia'),
 ('EliminarRegistros', 'deleteOficial'),
 ('EliminarRegistros', 'deletePersonal'),
@@ -465,6 +483,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('ModificarRegistros', 'editDatosFamiliaresPersonal'),
 ('ModificarRegistros', 'editDatosSociologicosPersonal'),
 ('ModificarRegistros', 'editFisionomiaPersonal'),
+('ModificarRegistros', 'editGenero'),
 ('ModificarRegistros', 'editJerarquia'),
 ('ModificarRegistros', 'editOficial'),
 ('ModificarRegistros', 'editPersonal'),
@@ -476,6 +495,8 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('ListarRegistros', 'listDatosFamiliaresPersonal'),
 ('ListarRegistros', 'listDatosSociologicosPersonal'),
 ('ListarRegistros', 'listFisionomiaPersonal'),
+('ConsultarRegistros', 'listGenero'),
+('ListarRegistros', 'listGenero'),
 ('ConsultarRegistros', 'listJerarquia'),
 ('ListarRegistros', 'listJerarquia'),
 ('ListarRegistros', 'listOficial'),
@@ -486,6 +507,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('ConsultarDetalleRegistro', 'viewDatosFamiliaresPersonal'),
 ('ConsultarDetalleRegistro', 'viewDatosSociologicosPersonal'),
 ('ConsultarDetalleRegistro', 'viewFisionomiaPersonal'),
+('ConsultarDetalleRegistro', 'viewGenero'),
 ('ConsultarDetalleRegistro', 'viewJerarquia'),
 ('ConsultarRegistros', 'viewJerarquia'),
 ('ConsultarDetalleRegistro', 'viewOficial'),
@@ -522,6 +544,7 @@ CREATE TABLE IF NOT EXISTS `auth_item_group` (
 
 INSERT INTO `auth_item_group` (`code`, `name`, `created_at`, `updated_at`) VALUES
 ('administracionCaptador', 'Captador', 1475554358, 1475554358),
+('administracionGenero', 'Género del Personal / Oficial', 1477288677, 1477288677),
 ('administracionJerarquias', 'Jerarquías del Personal', 1476905905, 1476905919),
 ('administracionOficiales', 'Oficiales', 1475554296, 1475554296),
 ('administracionPersonal', 'Personal', 1475554308, 1475554308),

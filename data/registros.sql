@@ -11,3 +11,8 @@ INSERT INTO `jerarquia`(`id`, `nombre`) VALUES
 (9, "SM/3ra"),
 (10,"S/1ro"),
 (11,"S/2do");
+
+-- Registros de la tabla "genero"
+INSERT INTO `genero`(`id`, `nombre`) VALUES
+(1, "Masculino"),
+(2, "Femenino");

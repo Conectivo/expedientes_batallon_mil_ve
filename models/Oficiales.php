@@ -12,7 +12,7 @@ use Yii;
  * @property string $nombres
  * @property string $apellidos
  * @property integer $cedula
- * @property string $sexo
+ * @property integer $sexo_id
  * @property integer $situacion
  * @property string $email
  * @property string $arma
@@ -21,17 +21,13 @@ use Yii;
  * @property string $telefono
  * @property string $direccion_emergencia
  * @property string $telefonos_emergencia
+ * @property integer $status
  *
  * @property Jerarquia $jquia
+ * @property Genero $sexo
  */
 class Oficiales extends \yii\db\ActiveRecord
 {
-    /* 
-    * Definir los campos 'clave', como constante para siguiente arreglo dado 
-    * ['Masculino'=>'Masculino', 'Femenino'=>'Femenino'],
-    */
-    const SEXO_M = 'Masculino';
-    const SEXO_F = 'Femenino';
 
     /* 
     * Definir los campos 'clave', como constante para siguiente arreglo dado 
@@ -57,7 +53,7 @@ class Oficiales extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['jquia_id', 'sexo', 'situacion'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
+            [['jquia_id', 'sexo_id', 'situacion'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
             [['nombres', 'apellidos', 'cedula', 'arma', 'cargo', 'direccion', 'telefono', 'direccion_emergencia', 'telefonos_emergencia'], 'required', 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'],
             [
                 ['nombres'], 'match', 'pattern' => '/\b([A-Z][a-z.]+[ ]*)+/',
@@ -75,7 +71,7 @@ class Oficiales extends \yii\db\ActiveRecord
                 ['telefono', 'telefonos_emergencia'], 'match', 'pattern' => '/^(\0)?[0-9]{11,11}$/',
                 'message' => 'Este campo es requerido. Por favor, ingrese un número teléfonico, ej. 04267713573 o 02767626182.'
             ],
-            [['jquia_id', 'cedula', 'situacion'], 'integer'],
+            [['jquia_id', 'cedula', 'sexo_id', 'situacion', 'status'], 'integer'],
             [
                 ['cedula'], 'match', 'pattern' => '/^(\0)?[0-9]{8,8}$/', // /^[0-9]{8}$/ 'message' => 'Debe ser numérico y tamano 8'
                 'message' => 'Este campo es requerido. Por favor, ingrese un formato numérico para la cédula de identidad, ej. 14522590.'
@@ -85,13 +81,13 @@ class Oficiales extends \yii\db\ActiveRecord
                 'message' => 'Este campo no es una dirección de correo valida.'
             ],
             [['nombres', 'apellidos', 'arma'], 'string', 'max' => 20],
-            [['sexo'], 'string', 'max' => 10],
             [['email', 'cargo'], 'string', 'max' => 50],
             [['direccion', 'direccion_emergencia'], 'string', 'max' => 150],
             [['telefono', 'telefonos_emergencia'], 'string', 'max' => 14],
             [['cedula'], 'unique'],
             [['email'], 'unique'],
             [['jquia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Jerarquia::className(), 'targetAttribute' => ['jquia_id' => 'id']],
+            [['sexo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Genero::className(), 'targetAttribute' => ['sexo_id' => 'id']],
         ];
     }
 
@@ -106,7 +102,7 @@ class Oficiales extends \yii\db\ActiveRecord
             'nombres' => 'Nombres',
             'apellidos' => 'Apellidos',
             'cedula' => 'Cédula',
-            'sexo' => 'Sexo',
+            'sexo_id' => 'Sexo',
             'situacion' => 'Situación',
             'email' => 'Correo electrónico',
             'arma' => 'Arma',
@@ -115,6 +111,7 @@ class Oficiales extends \yii\db\ActiveRecord
             'telefono' => 'Teléfono',
             'direccion_emergencia' => 'Dirección de Emergencia',
             'telefonos_emergencia' => 'Teléfonos de Emergencia',
+            'status' => 'Estatus del oficial',
         ];
     }
 
@@ -127,28 +124,20 @@ class Oficiales extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSexo()
+    {
+        return $this->hasOne(Genero::className(), ['id' => 'sexo_id']);
+    }
+
+    /**
      * @inheritdoc
      * @return OficialesQuery the active query used by this AR class.
      */
     public static function find()
     {
         return new OficialesQuery(get_called_class());
-    }
-
-    /**
-     * Retorna la descripcion del campo [[sexo]] para ser mostrado en las vistas
-     *
-     * @return array
-     */
-    public function getSexo()
-    {
-        if ($this->sexo=='Masculino') {
-            return $this->getTextoSexo();
-        }
-        
-        if ($this->sexo=='Femenino') {
-            return $this->getTextoSexo();
-        }
     }
 
     /**
@@ -180,22 +169,6 @@ class Oficiales extends \yii\db\ActiveRecord
     }
 
     /**
-     * Retorna un arreglo usado en la lista desplegable para el campo [[sexo]]
-     *
-     * @return array
-     */
-    public function getOpcionesSexo()
-    {
-        return [
-            /* 
-            * Definir campos 'valor', de las constantes definidias previamente al inicio de la clase.
-            */
-            self::SEXO_M => 'Masculino',
-            self::SEXO_F => 'Femenino',
-        ];
-    }
-
-    /**
      * Retorna un arreglo usado en la lista desplegable para el campo [[situacion]]
      *
      * @return array
@@ -212,17 +185,6 @@ class Oficiales extends \yii\db\ActiveRecord
             self::SITUAC_PER => 'Permiso',
             self::SITUAC_OTR => 'Otra',
         ];
-    }
-
-    /**
-     * Retorna el valor de texto de la propiedad [[sexo]].
-     * 
-     * @return string la propiedad [[sexo]] como una cadena de texto para su visualizacion.
-     */
-    public function getTextoSexo()
-    {
-        $options = $this->getOpcionesSexo();
-        return isset($options[$this->sexo]) ? $options[$this->sexo] : '';
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\bootstrap\Modal;
+use yii\helpers\Html;
 use yii\widgets\DetailView;
 use webvimark\modules\UserManagement\components\GhostHtml;
 use webvimark\modules\UserManagement\models\User;
@@ -19,8 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
+        echo GhostHtml::a('<span class="glyphicon glyphicon-arrow-left"></span> ' . 'Volver', ['/oficiales/index'], ['class' => 'btn btn-primary btn btn-back']) . '&nbsp;';
         echo GhostHtml::a('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar',
-            ['update', 'id' => $model->id], ['class' => 'btn btn-primary']
+            ['/oficiales/update', 'id' => $model->id], ['class' => 'btn btn-primary']
         ) . '&nbsp;';
 
         if (User::hasRole('EliminarRegistros')) {
@@ -29,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'footer' =>
                     '<button type="button" class="btn btn-success" data-dismiss="modal">' . '<span class="glyphicon glyphicon-remove"></span> ' . 'No' . '</button>'
                     .Html::a('<span class="glyphicon glyphicon-trash"></span> ' . 'Eliminar',
-                        ['delete', 'id' => $model->id],
+                        ['/oficiales/delete', 'id' => $model->id],
                         [
                             'class' => 'btn btn-danger',
                             'data' => ['method' => 'post',],
@@ -58,8 +59,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'cedula',
             [
                 'label' => 'Sexo',
-                'attribute' => 'sexo',
-                'value' => $model->getSexo(),
+                'attribute' => 'sexo_id',
+                'value' => $model->sexo->nombre,
             ],
             [
                 'label' => 'Situación',
@@ -77,6 +78,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'telefono',
             'direccion_emergencia',
             'telefonos_emergencia',
+            [
+                'attribute' => 'status',
+                'value' => ($model->status == 1) ? '<span class="label label-success">Activo</span>' : '<span class="label label-danger">Inactivo</span>',
+                'format' => 'html',
+            ],
         ],
     ]) ?>
 

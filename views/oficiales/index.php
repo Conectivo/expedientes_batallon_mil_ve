@@ -194,7 +194,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $value['nombres'];?></td>
                         <td><?= $value['apellidos'];?></td>
                         <td><?= $value['cedula'];?></td>
-                        <!--- <td><?php // $value['sexo'];?></td> --->
+                        <!--- <td><?php // $value['sexo_id'];?></td> --->
                         <!--- <td><?php // $value['situacion'];?></td> --->
                         <td><?= Html::mailto($value['email'], $value['email'], ['title' => 'Escribir un correo electrónico']);?></td>
                         <!--- <td><?php // $value['arma'];?></td> --->

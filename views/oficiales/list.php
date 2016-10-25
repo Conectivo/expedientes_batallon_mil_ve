@@ -1,8 +1,9 @@
 <?php
 
+use yii\bootstrap\Modal;
+use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\grid\GridView;
 use webvimark\modules\UserManagement\components\GhostHtml;
 use webvimark\modules\UserManagement\models\User;
 
@@ -21,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= GhostHtml::a('<span class="glyphicon glyphicon-plus-sign"></span> ' . 'Crear Oficiales',
-            ['create'], ['class' => 'btn btn-success']
+            ['/oficiales/create'], ['class' => 'btn btn-success']
         ); ?>
     </p>
     <?= GridView::widget([
@@ -39,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'jquia_id',
                                     ArrayHelper::map(app\models\Jerarquia::find()->all(),'id','nombre'),
-                                        ['class'=>'form-control','prompt' => '--- Seleccioné ---']
+                                    ['class' => 'form-control','prompt' => '--- Seleccioné ---']
                             ),
             ],
             'nombres',
@@ -53,18 +54,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'situacion',
                                     $searchModel->getOpcionesSituacion(),
-                                    ['class'=>'form-control', 'prompt' => '--- Seleccioné ---']
+                                    ['class' => 'form-control', 'prompt' => '--- Seleccioné ---']
                             ),
             ],
             [
                 'header' => 'Sexo',
-                'attribute' => 'sexo',
+                'attribute' => 'sexo_id',
                 'value' => function ($model){
-                                return $model->getSexo();
+                                return $model->sexo->nombre;
                             },
                 'filter' => Html::activeDropDownList($searchModel, 'sexo',
-                                    $searchModel->getOpcionesSexo(),
-                                    ['class'=>'form-control', 'prompt' => '--- Seleccioné ---']
+                                    ArrayHelper::map(app\models\Genero::find()->all(),'id','nombre'),
+                                    ['class' => 'form-control', 'prompt' => '--- Seleccioné ---']
                             ),
             ],
             // 'email:email',
@@ -77,7 +78,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update} {delete}',
+                // 'template' => '{view} {update} {delete}',
+                'template' => '{view} {update}',
                 'buttons' => [
                     'view' => function ($url, $model) {
                         return GhostHtml::a('<span class="glyphicon glyphicon-search"></span>',
@@ -87,13 +89,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         return GhostHtml::a('<span class="glyphicon glyphicon-edit"></span>',
                             $url, ['title' => 'Actualizar',]);
                     },
-                    'delete' => function ($url, $model) {
+                    /* 'delete' => function ($url, $model) {
                         return GhostHtml::a('<span class="glyphicon glyphicon-remove"></span>', $url, [
                             'title' => 'Eliminar',
                             'data-confirm' => '¿Está seguro que desea eliminar este elemento?',
                             'toggleButton' => ['label' => 'Eliminar', 'class' => 'btn btn-danger'],
                         ]);
-                    },
+                        // return Html::a('<i class="glyphicon glyphicon-remove"></i>', $url,
+                        //     // ['update', 'id'=>$model->id],
+                        //     [
+                        //         'title' => 'Eliminar', 'class' => 'my-eliminar-icon',
+                        //         'data-toggle'=>"modal", 'data-target'=>"#basicModal",
+                        //         // 'data-confirm' => '¿Está seguro que desea eliminar este elemento?',
+                        //         // 'toggleButton' => ['label' => 'Eliminar', 'class' => 'btn btn-danger'],
+                        //     ]
+                        // );
+                    }, */
                 ],
                 'urlCreator' => function ($action, $model, $key){
                     if ($action === 'view') {
@@ -104,9 +115,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Yii::$app->urlManager->createUrl(['/oficiales/update', 'id'=>$model->id]);
                     }
 
-                    if ($action === 'delete') {
+                    /* if ($action === 'delete') {
                         return Yii::$app->urlManager->createUrl(['/oficiales/delete', 'id'=>$model->id]);
-                    }
+                    } */
                 }
             ],
         ],

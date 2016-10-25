@@ -18,8 +18,8 @@ class OficialesSearch extends Oficiales
     public function rules()
     {
         return [
-            [['id', 'jquia_id', 'cedula', 'situacion'], 'integer'],
-            [['nombres', 'apellidos', 'sexo', 'email', 'arma', 'cargo', 'direccion', 'telefono', 'direccion_emergencia', 'telefonos_emergencia'], 'safe'],
+            [['id', 'jquia_id', 'cedula', 'sexo_id', 'situacion', 'status'], 'integer'],
+            [['nombres', 'apellidos', 'email', 'arma', 'cargo', 'direccion', 'telefono', 'direccion_emergencia', 'telefonos_emergencia'], 'safe'],
         ];
     }
 
@@ -71,14 +71,15 @@ class OficialesSearch extends Oficiales
             'id' => $this->id,
             'jquia_id' => $this->jquia_id,
             'cedula' => $this->cedula,
-            'sexo' => $this->sexo,
+            'sexo_id' => $this->sexo_id,
             'situacion' => $this->situacion,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'jquia_id', $this->jquia_id])
             ->andFilterWhere(['like', 'nombres', $this->nombres])
             ->andFilterWhere(['like', 'apellidos', $this->apellidos])
-            ->andFilterWhere(['like', 'sexo', $this->sexo])
+            ->andFilterWhere(['like', 'sexo_id', $this->sexo_id])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'arma', $this->arma])
             ->andFilterWhere(['like', 'cargo', $this->cargo])

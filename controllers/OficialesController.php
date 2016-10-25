@@ -41,36 +41,45 @@ class OficialesController extends Controller
         // Total de Oficiales por Jerarquía
         /* SELECT CONCAT(jq.nombre, ' (', COUNT( of.id ), ')') AS '0', COUNT( of.id ) AS '1'
         FROM oficiales of
-        INNER JOIN jerarquia jq ON jq.id = of.jquia_id
+        JOIN jerarquia jq ON jq.id = of.jquia_id
+        WHERE of.status = 1
         GROUP BY of.jquia_id; */
         $totalOficialesJquia = (new \yii\db\Query())
                 ->select(["CONCAT(jq.nombre, ' (', COUNT( of.id ), ')') AS '0'", 'COUNT(of.id) AS "1"'])
                 ->from(['oficiales of'])
                 ->join('JOIN', 'jerarquia jq', 'jq.id = of.jquia_id')
+                ->where(['of.status' => 1])
                 ->groupBy('of.jquia_id')
                 ->all();
 
         // Total de Oficiales por Sexo
-        /* SELECT CONCAT(of.sexo, ' (', COUNT( of.id ), ')') AS '0', COUNT( of.id ) AS '1'
+        /* SELECT CONCAT(ge.nombre, ' (', COUNT( of.id ), ')') AS '0', COUNT( of.id ) AS '1'
         FROM oficiales of
-        GROUP BY of.sexo; */
+        JOIN jerarquia jq ON jq.id = of.jquia_id
+        JOIN genero ge ON ge.id = of.sexo_id
+        WHERE of.status = 1
+        GROUP BY ge.id; */
         $totalOficialesSexo = (new \yii\db\Query())
-                ->select(["CONCAT(of.sexo, ' (', COUNT( of.id ), ')') AS '0'", 'COUNT(of.id) AS "1"'])
+                ->select(['CONCAT(ge.nombre, " (", COUNT( of.id ), ")") AS "0"', 'COUNT( of.id ) AS "1"'])
                 ->from(['oficiales of'])
                 ->join('JOIN', 'jerarquia jq', 'jq.id = of.jquia_id')
-                ->groupBy('of.jquia_id')
+                ->join('JOIN', 'genero ge', 'ge.id = of.sexo_id')
+                ->where(['of.status' => 1])
+                ->groupBy('ge.id')
                 ->all();
 
         // Listado del Oficiales recientemente captado
-        /* SELECT of.id, jq.nombre AS jquia, of.nombres, of.apellidos, of.situacion, of.cedula, of.sexo, of.email, of.arma, of.cargo, of.direccion, of.telefono, of.direccion_emergencia, of.telefonos_emergencia
+        /* SELECT of.id, jq.nombre AS jquia, of.nombres, of.apellidos, of.situacion, of.cedula, of.sexo_id, of.email, of.arma, of.cargo, of.direccion, of.telefono, of.direccion_emergencia, of.telefonos_emergencia
         FROM oficiales of
         JOIN jerarquia jq ON jq.id = of.jquia_id
+        WHERE of.status = 1
         ORDER BY of.id DESC
         LIMIT 10; */
         $ultimosOficiales = (new \yii\db\Query())
-                ->select(['of.id', 'jq.nombre AS jquia', 'of.nombres', 'of.apellidos', 'of.situacion', 'of.cedula', 'of.sexo', 'of.email', 'of.arma', 'of.cargo', 'of.direccion', 'of.telefono', 'of.direccion_emergencia', 'of.telefonos_emergencia'])
+                ->select(['of.id', 'jq.nombre AS jquia', 'of.nombres', 'of.apellidos', 'of.situacion', 'of.cedula', 'of.sexo_id', 'of.email', 'of.arma', 'of.cargo', 'of.direccion', 'of.telefono', 'of.direccion_emergencia', 'of.telefonos_emergencia'])
                 ->from(['oficiales of'])
                 ->join('JOIN', 'jerarquia jq', 'jq.id = of.jquia_id')
+                ->where(['of.status' => 1])
                 ->orderBy('of.id DESC')
                 ->limit(10)
                 ->all();
@@ -155,7 +164,10 @@ class OficialesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->status = 0;
+        $model->update();
 
         return $this->redirect(['index']);
     }

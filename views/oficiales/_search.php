@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cedula') ?>
 
-    <?php // echo $form->field($model, 'sexo') ?>
+    <?php // echo $form->field($model, 'sexo_id') ?>
 
     <?php // echo $form->field($model, 'situacion') ?>
 
@@ -42,6 +42,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'direccion_emergencia') ?>
 
     <?php // echo $form->field($model, 'telefonos_emergencia') ?>
+
+    <?php // echo $form->field($model, 'status') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
