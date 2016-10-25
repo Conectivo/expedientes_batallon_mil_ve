@@ -160,18 +160,11 @@ class UnidadController extends Controller
      */
     public function actionDelete($id)
     {
-        // $this->findModel($id)->delete();
-
-        // return $this->redirect(['index']);
-
-        $model = Unidad::findOne($id);
-        // $model->is_status = 2;
-        // $model->updated_by = Yii::$app->getid->getId();
-        // $model->updated_at = new \yii\db\Expression('NOW()');
-        $model->delete();
+        // $model = Unidad::findOne($id);
+        // $model->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-
     }
 
     /**
