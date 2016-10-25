@@ -1,13 +1,14 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-use yii\jui\DatePicker;
-use yii\helpers\Url;
-use yii\web\View;
-use webvimark\modules\UserManagement\models\User;
 use app\models\Unidad;
+use kartik\select2\Select2;
+use webvimark\modules\UserManagement\models\User;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\jui\DatePicker;
+use yii\web\View;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Persona */
@@ -73,27 +74,59 @@ $('#persona-municipio_id').on('change', function(e) {
 
     <?= $form->field($model, 'apellidos')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'estado_id')->dropDownList(
+    <?= $form->field($model, 'sexo_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(app\models\Genero::find()->all(),'id','nombre'),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])->label('Sexo'); ?>
+
+    <?php /* $form->field($model, 'estado_id')->dropDownList(
         ArrayHelper::map($estados, 'id_estado','estado'),
         ['prompt'=>'--Seleccione--',]
-    ); ?>
+    ); */ ?>
+    <?= $form->field($model, 'estado_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map($estados, 'id_estado','estado'),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => ['allowClear' => true, ],
+    ]); ?>
 
     <?= $form->field($model, 'municipio_id')->dropDownList(
           ArrayHelper::map($municipios, 'id_municipio','municipio'),
           ['prompt'=>'--Seleccione--',]
     ); ?>
+    <?php /* $form->field($model, 'municipio_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map($municipios, 'id_municipio','municipio'),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => ['allowClear' => true, ],
+    ]); */ ?>
 
     <?= $form->field($model, 'parroquia_id')->dropDownList(
         ArrayHelper::map($parroquias, 'id_parroquia','parroquia'),
         ['prompt'=>'--Seleccione--',]
     ); ?>
+    <?php /* $form->field($model, 'parroquia_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map($parroquias, 'id_parroquia','parroquia'),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => ['allowClear' => true, ],
+    ]); */ ?>
 
     <?= $form->field($model, 'lugar_nacimiento')->dropDownList(
-        ArrayHelper::map($parroquias, 'id_parroquia','parroquia'),
+        ArrayHelper::map($ciudades, 'id_ciudad','ciudad'),
         ['prompt'=>'--Seleccione--',]
     )->label('Ciudad (Lugar de nacimiento)'); ?>
+    <?php /* $form->field($model, 'lugar_nacimiento')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map($ciudades, 'id_ciudad','ciudad'),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => ['allowClear' => true, ],
+    ])->label('Ciudad (Lugar de nacimiento)'); */ ?>
 
-    <?php // $form->field($model, 'fecha_nacimiento')->textInput() ?>
     <?= $form->field($model,'fecha_nacimiento')->
         widget(DatePicker::className(), [
             'dateFormat' => 'yyyy-MM-dd',
@@ -116,13 +149,6 @@ $('#persona-municipio_id').on('change', function(e) {
 
     <?= $form->field($model, 'telefono_movil')->textInput(['maxlength' => true]) ?>
 
-    <?php // $form->field($model, 'religion')->textInput() ?>
-    <?php /* $form->field($model, 'religion')->dropDownList(
-        ['1'=>'Catolicismo','2'=>'Protestante','3'=>'Movimiento de los Santos de los Últimos Días',
-         '4'=>'Judaísmo','5'=>'Islam','6'=>'Budismo','7'=>'Santería Caribeña','8'=>'Espiritismo',
-         '9'=>'Ateísmo','10'=>'Otra creencia',],
-        ['prompt'=>'Por favor, seleccioné una opción',]
-    )->label('Religión'); */ ?>
     <?php /* $form->field($model, 'religion')->dropDownList(
         $model->getOpcionesReligion(),
         ['prompt'=>'Por favor, seleccioné una opción',]
@@ -131,22 +157,20 @@ $('#persona-municipio_id').on('change', function(e) {
         'data' => $model->getOpcionesReligion(),
         'language' => 'es',
         'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
+        'pluginOptions' => ['allowClear' => true, ],
     ])->label('Religión'); ?>
 
-    <?php // $form->field($model, 'estado_civil')->textInput(['maxlength' => true]) ?>
     <?php /* $form->field($model, 'estado_civil')->dropDownList(
-        ['S'=>'Soltero', 'C'=>'Casado', 'V'=>'Viudo'],
-        ['prompt'=>'Por favor, seleccioné una opción',]
-    )->label('Estado civil'); */ ?>
-    <?= $form->field($model, 'estado_civil')->dropDownList(
         $model->getOpcionesEdoCivil(),
         ['prompt'=>'Por favor, seleccioné una opción',]
-    )->label('Estado civil'); ?>
+    )->label('Estado civil'); */ ?>
+    <?= $form->field($model, 'estado_civil')->widget(Select2::classname(), [
+        'data' => $model->getOpcionesEdoCivil(),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => ['allowClear' => true, ],
+    ])->label('Estado civil'); ?>
 
-    <?php // $form->field($model, 'modalidad')->textInput(['maxlength' => true]) ?>
     <?php /* $form->field($model, 'modalidad')->dropDownList(
         ['C'=>'Tiempo completo', 'P'=>'Tiempo parcial'],
         ['prompt'=>'Por favor, seleccioné una opción',]
@@ -156,27 +180,32 @@ $('#persona-municipio_id').on('change', function(e) {
         ['prompt'=>'Por favor, seleccioné una opción',]
     )->label('Modalidad'); ?>
 
-    <?php // $form->field($model, 'fecha_ingreso')->textInput() ?>
     <?= $form->field($model,'fecha_ingreso')->
         widget(DatePicker::className(),[
             'dateFormat' => 'yyyy-MM-dd',
             'language' => 'es',
             'clientOptions' => [
-                // 'numberOfMonths' => 2,
-                // 'yearRange' => '2000:2099',
                 'yearRange' => '-115:+0',
-                // 'minDate' => -5,
-                // 'maxDate' => '+1M +5D',
                 'changeMonth' => true,
                 'changeYear' => true
             ],
             'options' => ['class' => 'form-control', 'readonly' => 'readonly']
         ])->label('Fecha de Ingreso') ?>
 
-    <?= $form->field($model, 'unidad_id')->dropDownList(
-        ArrayHelper::map(Unidad::find()->all(),'id','unidad'),
-            ['prompt'=>'Por favor, seleccioné una opción']
-    )->label('Unidad asignada') ?> 
+    <?php /* $form->field($model, 'unidad_id')->dropDownList(
+        ArrayHelper::map(Unidad::find()->all(),'id','nombre'),
+        ['prompt'=>'Por favor, seleccioné una opción',]
+    )->label('Unidad asignada'); */ ?>
+    <?= $form->field($model, 'unidad_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(Unidad::find()->all(),'id','nombre'),
+        'language' => 'es',
+        'options' => ['placeholder' => 'Por favor, seleccioné una opción'],
+        'pluginOptions' => ['allowClear' => true, ],
+    ])->label('Unidad asignada'); ?>
+
+    <?php // $form->field($model, 'foto')->textInput(['maxlength' => true]) ?>
+
+    <?php // $form->field($model, 'status')->textInput() ?>
 
     <div class="form-group">
         <?php

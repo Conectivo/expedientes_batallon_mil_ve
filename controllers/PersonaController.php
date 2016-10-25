@@ -123,7 +123,7 @@ class PersonaController extends Controller
 
     /**
      * Crea un nuevo registro para el modelo Persona.
-     * Si la creación del registro es exitosa, el navegador será redirigido a la página de 'vista'.
+     * Si la creación del registro es exitosa, el navegador será redirigido a la página de 'view'.
      * @return mixed
      */
     public function actionCreate()
@@ -136,7 +136,6 @@ class PersonaController extends Controller
         $ciudades = [];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            // return $this->redirect(['estatus/create', 'consejo_comunal_id' => $model->id]);
             return $this->redirect(['view', 'id' => $model->cedula]);
         } else {
             return $this->render('create', [
@@ -159,7 +158,7 @@ class PersonaController extends Controller
 
     /**
      * Actualiza un registro existente del modelo Persona.
-     * Si la actualización del registro es exitosa, el navegador será redirigido a la página de 'vista'.
+     * Si la actualización del registro es exitosa, el navegador será redirigido a la página de 'view'.
      * @param integer $id
      * @return mixed
      */
@@ -196,7 +195,10 @@ class PersonaController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->status = 0;
+        $model->update();
 
         return $this->redirect(['index']);
     }

@@ -1,10 +1,10 @@
 <?php
 
+use webvimark\modules\UserManagement\components\GhostHtml;
+use webvimark\modules\UserManagement\models\User;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use yii\widgets\DetailView;
-use webvimark\modules\UserManagement\components\GhostHtml;
-use webvimark\modules\UserManagement\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Persona */
@@ -19,8 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
+        echo GhostHtml::a('<span class="glyphicon glyphicon-arrow-left"></span> ' . 'Volver', ['/persona/index'], ['class' => 'btn btn-primary btn btn-back']) . '&nbsp;';
         echo GhostHtml::a('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar',
-            ['update', 'id' => $model->cedula], ['class' => 'btn btn-primary']
+            ['/persona/update', 'id' => $model->cedula], ['class' => 'btn btn-primary']
         ) . '&nbsp;';
 
         if (User::hasRole('EliminarRegistros')) {
@@ -30,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'footer' =>
                     '<button type="button" class="btn btn-success" data-dismiss="modal">' . '<span class="glyphicon glyphicon-remove"></span> ' . 'No' . '</button>'
                     .Html::a('<span class="glyphicon glyphicon-trash"></span> ' . 'Eliminar',
-                        ['delete', 'id' => $model->cedula],
+                        ['/persona/delete', 'id' => $model->cedula],
                         [
                             'class' => 'btn btn-danger',
                             'data' => ['method' => 'post',],
@@ -60,18 +61,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->fullName,
             ],
             [
+                'label' => 'Sexo',
+                'attribute' => 'sexo_id',
+                'value' => $model->sexo->nombre,
+            ],
+            [
                 'attribute' => 'estado_id',
-                // 'label' => 'Estado',
                 'value' => $model->estado->estado,
             ],
             [
                 'attribute' => 'municipio_id',
-                // 'label' => 'Municipio',
                 'value' => $model->municipio->municipio,
             ],
             [
                 'attribute' => 'parroquia_id',
-                // 'label' => 'Parroquia',
                 'value' => $model->parroquia->parroquia,
             ],
             [
@@ -115,15 +118,14 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'fecha_ingreso',
                 'label' => 'Fecha de Ingreso',
-                // 'format' => ['date', 'php:l, F d, Y']
                 'format' => ['date', 'php:d-m-Y']
             ],
             [
                 'attribute' => 'unidad_id',
                 'label' => 'Unidad de Batallón',
-                'value' => Html::a($model->unidad->unidad,
+                'value' => Html::a($model->unidad->nombre,
                         // http://127.0.0.1/unidad/view?id=1
-                        ['unidad/view','id' => $model->unidad_id],
+                        ['/unidad/view','id' => $model->unidad_id],
                         ['title' => 'Ver Datos del Unidad de Batallón' ]
                 ),
                 'format' => 'raw',

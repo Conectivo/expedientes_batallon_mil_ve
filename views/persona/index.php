@@ -1,10 +1,10 @@
 <?php
 
-use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
-use yii\grid\GridView;
 use webvimark\modules\UserManagement\components\GhostHtml;
 use webvimark\modules\UserManagement\models\User;
+use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PersonaSearch */
@@ -33,6 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'nombres',
             'apellidos',
             [
+                'header' => 'Sexo',
+                'attribute' => 'sexo_id',
+                'value' => function ($model){
+                                return $model->sexo->nombre;
+                            },
+                'filter' => Html::activeDropDownList($searchModel, 'sexo_id',
+                                    ArrayHelper::map(app\models\Genero::find()->all(),'id','nombre'),
+                                    ['class' => 'form-control', 'prompt' => '--- Seleccioné ---']
+                            ),
+            ],
+            [
                 'attribute' => 'estado_id',
                 'header'=>'Estado',
                 'value' => function ($model) {
@@ -43,39 +54,39 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ['class'=>'form-control', 'prompt' => '--Seleccione--']
                             ),
             ],
-            [
-                'attribute' => 'municipio_id',
-                'header'=>'Municipio',
-                'value' => function ($model) {
-                                return $model->municipio->municipio;
-                            },
-                'filter' => Html::activeDropDownList($searchModel, 'municipio_id',
-                                    ArrayHelper::map(app\models\Municipios::find()->orderBy('municipio')->all(), 'id_municipio', 'municipio'),
-                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
-                            ),
-            ],
-            [
-                'attribute' => 'parroquia_id',
-                'header'=>'Parroquia',
-                'value' => function ($model) {
-                                return $model->parroquia->parroquia;
-                            },
-                'filter' => Html::activeDropDownList($searchModel, 'parroquia_id',
-                                    ArrayHelper::map(app\models\Parroquias::find()->orderBy('parroquia')->all(), 'id_parroquia', 'parroquia'),
-                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
-                            ),
-            ],
-            [
-                'attribute' => 'lugar_nacimiento',
-                'header'=>'Ciudad de nacimiento',
-                'value' => function ($model) {
-                                return $model->lugarNacimiento->ciudad;
-                            },
-                'filter' => Html::activeDropDownList($searchModel, 'lugar_nacimiento',
-                                    ArrayHelper::map(app\models\Ciudades::find()->orderBy('ciudad')->all(), 'id_ciudad', 'ciudad'),
-                                    ['class'=>'form-control', 'prompt' => '--Seleccione--']
-                            ),
-            ],
+            // [
+            //     'attribute' => 'municipio_id',
+            //     'header'=>'Municipio',
+            //     'value' => function ($model) {
+            //                     return $model->municipio->municipio;
+            //                 },
+            //     'filter' => Html::activeDropDownList($searchModel, 'municipio_id',
+            //                         ArrayHelper::map(app\models\Municipios::find()->orderBy('municipio')->all(), 'id_municipio', 'municipio'),
+            //                         ['class'=>'form-control', 'prompt' => '--Seleccione--']
+            //                 ),
+            // ],
+            // [
+            //     'attribute' => 'parroquia_id',
+            //     'header'=>'Parroquia',
+            //     'value' => function ($model) {
+            //                     return $model->parroquia->parroquia;
+            //                 },
+            //     'filter' => Html::activeDropDownList($searchModel, 'parroquia_id',
+            //                         ArrayHelper::map(app\models\Parroquias::find()->orderBy('parroquia')->all(), 'id_parroquia', 'parroquia'),
+            //                         ['class'=>'form-control', 'prompt' => '--Seleccione--']
+            //                 ),
+            // ],
+            // [
+            //     'attribute' => 'lugar_nacimiento',
+            //     'header'=>'Ciudad de nacimiento',
+            //     'value' => function ($model) {
+            //                     return $model->lugarNacimiento->ciudad;
+            //                 },
+            //     'filter' => Html::activeDropDownList($searchModel, 'lugar_nacimiento',
+            //                         ArrayHelper::map(app\models\Ciudades::find()->orderBy('ciudad')->all(), 'id_ciudad', 'ciudad'),
+            //                         ['class'=>'form-control', 'prompt' => '--Seleccione--']
+            //                 ),
+            // ],
             // [
             //     'attribute' => 'fecha_nacimiento',
             //     'label'=>'Fecha de Nacimiento',
@@ -129,6 +140,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //     'format' => ['date', 'php:d-m-Y']
             // ],
             // 'unidad_id',
+            // 'status',
 
             [
                 'class' => 'yii\grid\ActionColumn',

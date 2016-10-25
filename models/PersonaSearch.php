@@ -18,7 +18,7 @@ class PersonaSearch extends Persona
     public function rules()
     {
         return [
-            [['cedula', 'estado_id', 'municipio_id', 'parroquia_id', 'lugar_nacimiento', 'religion', 'unidad_id'], 'integer'],
+            [['cedula', 'sexo_id', 'estado_id', 'municipio_id', 'parroquia_id', 'lugar_nacimiento', 'religion', 'unidad_id', 'status'], 'integer'],
             [['nombres', 'apellidos', 'fecha_nacimiento', 'direccion', 'sector', 'telefono_movil', 'estado_civil', 'modalidad', 'fecha_ingreso'], 'safe'],
         ];
     }
@@ -70,10 +70,11 @@ class PersonaSearch extends Persona
         // condiciones de filtrado del objeto GridView
         $query->andFilterWhere([
             'cedula' => $this->cedula,
+            'sexo_id' => $this->sexo_id,
             'estado_id' => $this->estado_id,
-            'municipio_id' => $this->municipio_id,
-            'parroquia_id' => $this->parroquia_id,
-            'lugar_nacimiento' => $this->lugar_nacimiento,
+            // 'municipio_id' => $this->municipio_id,
+            // 'parroquia_id' => $this->parroquia_id,
+            // 'lugar_nacimiento' => $this->lugar_nacimiento,
             'fecha_nacimiento' => $this->fecha_nacimiento,
             'direccion' => $this->direccion,
             'telefono_movil' => $this->telefono_movil,
@@ -82,6 +83,7 @@ class PersonaSearch extends Persona
             'modalidad' => $this->modalidad,
             'fecha_ingreso' => $this->fecha_ingreso,
             'unidad_id' => $this->unidad_id,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'nombres', $this->nombres])

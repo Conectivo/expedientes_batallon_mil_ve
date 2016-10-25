@@ -1,8 +1,8 @@
 <?php
 
+use webvimark\modules\UserManagement\components\GhostHtml;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use webvimark\modules\UserManagement\components\GhostHtml;
 
 /* @var $this yii\web\View */
 /* @var $modelPersona app\models\Persona */
@@ -42,6 +42,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'fullName',
                 'label' => 'Nombre completo',
                 'value' => $modelPersona->fullName,
+            ],
+            [
+                'label' => 'Sexo',
+                'attribute' => 'sexo_id',
+                'value' => $modelPersona->sexo->nombre,
             ],
             [
                 'attribute' => 'lugar_nacimiento',
@@ -94,8 +99,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 //         ['unidad/view','id' => $modelPersona->unidad_id],
                 //         ['title' => 'Ver Datos del Unidad de Batallón' ]
                 // ),
-                'value' => $modelPersona->unidad->unidad,
                 // 'format' => 'raw',
+                'value' => $modelPersona->unidad->nombre,
             ],
         ],
     ]) ?>

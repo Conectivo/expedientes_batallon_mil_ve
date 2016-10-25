@@ -10,6 +10,7 @@ use Yii;
  * @property integer $cedula
  * @property string $nombres
  * @property string $apellidos
+ * @property integer $sexo_id
  * @property integer $estado_id
  * @property integer $municipio_id
  * @property integer $parroquia_id
@@ -23,17 +24,19 @@ use Yii;
  * @property string $modalidad
  * @property string $fecha_ingreso
  * @property integer $unidad_id
+ * @property integer $status
  *
  * @property Captador $captador
  * @property Familiares $familiares
  * @property Fisionomia $fisionomia
+ * @property Genero $sexo
  * @property Estados $estado
  * @property Municipios $municipio
  * @property Parroquias $parroquia
  * @property Ciudades $lugarNacimiento
  * @property Unidad $unidad
- * @property Sociologicos $sociologicos
- * @property Tallas $tallas
+ * @property Sociologico $sociologico
+ * @property Uniforme $uniforme
  */
 class Persona extends \yii\db\ActiveRecord
 {
@@ -84,8 +87,8 @@ class Persona extends \yii\db\ActiveRecord
     {
         return [
             [['cedula', 'nombres', 'apellidos', 'fecha_nacimiento', 'direccion', 'sector', 'telefono_movil', 'fecha_ingreso'], 'required', 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'],
-            [['estado_id', 'municipio_id', 'parroquia_id', 'lugar_nacimiento', 'religion', 'estado_civil', 'modalidad', 'unidad_id'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
-            [['cedula', 'estado_id', 'municipio_id', 'parroquia_id', 'lugar_nacimiento', 'religion', 'unidad_id'], 'integer'],
+            [['sexo_id', 'estado_id', 'municipio_id', 'parroquia_id', 'lugar_nacimiento', 'religion', 'estado_civil', 'modalidad', 'unidad_id'], 'required', 'message' => 'Este campo es requerido. Por favor, seleccioné una opción.'],
+            [['cedula', 'sexo_id', 'estado_id', 'municipio_id', 'parroquia_id', 'lugar_nacimiento', 'religion', 'unidad_id', 'status'], 'integer'],
             [['fecha_nacimiento', 'fecha_ingreso'], 'safe'],
             [['nombres', 'apellidos'], 'string', 'max' => 20],
             [['direccion', 'sector'], 'string', 'max' => 150],
@@ -118,6 +121,7 @@ class Persona extends \yii\db\ActiveRecord
             ],
             // ['modalidad', 'default', 'value' => self::TIEMPO_COMPLETO],
             ['modalidad', 'in', 'range' => array_keys($this->getOpcionesModalidad())],
+            [['sexo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Genero::className(), 'targetAttribute' => ['sexo_id' => 'id']],
             [['estado_id'], 'exist', 'skipOnError' => true, 'targetClass' => Estados::className(), 'targetAttribute' => ['estado_id' => 'id_estado']],
             [['municipio_id'], 'exist', 'skipOnError' => true, 'targetClass' => Municipios::className(), 'targetAttribute' => ['municipio_id' => 'id_municipio']],
             [['parroquia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Parroquias::className(), 'targetAttribute' => ['parroquia_id' => 'id_parroquia']],
@@ -135,6 +139,7 @@ class Persona extends \yii\db\ActiveRecord
             'cedula' => 'Cédula',
             'nombres' => 'Nombres',
             'apellidos' => 'Apellidos',
+            'sexo_id' => 'Sexo',
             'estado_id' => 'Estado de nacimiento',
             'municipio_id' => 'Municipio de nacimiento',
             'parroquia_id' => 'Parroquia de nacimiento',
@@ -142,12 +147,13 @@ class Persona extends \yii\db\ActiveRecord
             'fecha_nacimiento' => 'Fecha de nacimiento',
             'direccion' => 'Dirección',
             'sector' => 'Sector',
-            'telefono_movil' => 'Teléfono Celular',
+            'telefono_movil' => 'Teléfono celular',
             'religion' => 'Religión',
-            'estado_civil' => 'Estado Civil',
+            'estado_civil' => 'Estado civil',
             'modalidad' => 'Modalidad',
             'fecha_ingreso' => 'Fecha de ingreso',
-            'unidad_id' => 'Unidad de Batallón',
+            'unidad_id' => 'Unidad del batallón',
+            'status' => 'Estatus del personal',
         ];
     }
 
@@ -173,6 +179,14 @@ class Persona extends \yii\db\ActiveRecord
     public function getFisionomia()
     {
         return $this->hasOne(Fisionomia::className(), ['cedula_id' => 'cedula']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSexo()
+    {
+        return $this->hasOne(Genero::className(), ['id' => 'sexo_id']);
     }
 
     /**
@@ -218,17 +232,17 @@ class Persona extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSociologicos()
+    public function getSociologico()
     {
-        return $this->hasOne(Sociologicos::className(), ['cedula_id' => 'cedula']);
+        return $this->hasOne(Sociologico::className(), ['cedula_id' => 'cedula']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTallas()
+    public function getUniforme()
     {
-        return $this->hasOne(Tallas::className(), ['cedula_id' => 'cedula']);
+        return $this->hasOne(Uniforme::className(), ['cedula_id' => 'cedula']);
     }
 
     /**

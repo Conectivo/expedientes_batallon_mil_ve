@@ -69,6 +69,7 @@ CREATE TABLE persona
     cedula            INTEGER        unique not null,
     nombres           varchar(20)    not null,
     apellidos         varchar(20)    not null,
+    sexo_id           INTEGER        not null,
     estado_id         INTEGER        not null,
     municipio_id      INTEGER        not null,
     parroquia_id      INTEGER        not null,
@@ -82,9 +83,11 @@ CREATE TABLE persona
     modalidad         char(1)        not null,
     fecha_ingreso     date           not null,
     unidad_id         INTEGER        not null,
+    status            INTEGER        not null default 1,
 
     primary key(cedula),
 
+    foreign key(sexo_id) references genero(id) on update CASCADE,
     foreign key(estado_id) references estados(id_estado) on update CASCADE,
     foreign key(municipio_id) references municipios(id_municipio) on update CASCADE,
     foreign key(parroquia_id) references parroquias(id_parroquia) on update CASCADE,

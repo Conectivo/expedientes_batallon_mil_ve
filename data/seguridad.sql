@@ -169,6 +169,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/oficiales/update', 3, NULL, NULL, NULL, 1475555240, 1475555240, NULL),
 ('/oficiales/view', 3, NULL, NULL, NULL, 1475555241, 1475555241, NULL),
 ('/persona/*', 3, NULL, NULL, NULL, 1475555240, 1475555240, NULL),
+('/persona/ajax-ciudad', 3, NULL, NULL, NULL, 1477288915, 1477288915, NULL),
 ('/persona/ajax-municipio', 3, NULL, NULL, NULL, 1475555240, 1475555240, NULL),
 ('/persona/ajax-parroquia', 3, NULL, NULL, NULL, 1475555240, 1475555240, NULL),
 ('/persona/create', 3, NULL, NULL, NULL, 1475555240, 1475555240, NULL),

@@ -21,9 +21,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'apellidos') ?>
 
+    <?= $form->field($model, 'sexo_id') ?>
+
     <?= $form->field($model, 'estado_id') ?>
 
-    <?= $form->field($model, 'municipio_id') ?>
+    <?php // echo $form->field($model, 'municipio_id') ?>
 
     <?php // echo $form->field($model, 'parroquia_id') ?>
 
@@ -46,6 +48,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'fecha_ingreso') ?>
 
     <?php // echo $form->field($model, 'unidad_id') ?>
+
+    <?php // echo $form->field($model, 'status') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
