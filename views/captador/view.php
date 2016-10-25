@@ -19,8 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
+        echo GhostHtml::a('<span class="glyphicon glyphicon-arrow-left"></span> ' . 'Volver', ['/captador/index'], ['class' => 'btn btn-primary btn btn-back']) . '&nbsp;';
         echo GhostHtml::a('<span class="glyphicon glyphicon-edit"></span> ' . 'Actualizar',
-            ['update', 'id' => $model->id], ['class' => 'btn btn-primary']
+            ['/captador/update', 'id' => $model->id], ['class' => 'btn btn-primary']
         ) . '&nbsp;';
 
         if (User::hasRole('EliminarRegistros')) {
@@ -29,8 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'footer' =>
                     '<button type="button" class="btn btn-success" data-dismiss="modal">' . '<span class="glyphicon glyphicon-remove"></span> ' . 'No' . '</button>'
                     .Html::a('<span class="glyphicon glyphicon-trash"></span> ' . 'Eliminar',
-                        // http://127.0.0.1/persona/delete?id=25498875
-                        ['delete', 'id' => $model->id],
+                        // http://127.0.0.1/captador/delete?id=25498875
+                        ['/captador/delete', 'id' => $model->id],
                         [
                             'class' => 'btn btn-danger',
                             'data' => ['method' => 'post',],
