@@ -57,19 +57,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 ),
                 'format'=>'raw',
             ],
-            // 'grado',
             [
                 'attribute' => 'grado',
                 'label' => 'Grado de instrucción',
                 'value' => $model->getGrado(),
             ],
-            // 'profesion',
             [
                 'attribute' => 'profesion',
                 'label' => 'Profesión',
                 'value' => $model->getProfesion(),
             ],
-            // 'vivienda',
             [
                 'attribute' => 'vivienda',
                 'label' => '¿Posee Vivienda?',
