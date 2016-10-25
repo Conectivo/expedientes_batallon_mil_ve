@@ -2,12 +2,12 @@
 
 /* @var $this \yii\web\View */
 
+use webvimark\modules\UserManagement\UserManagementModule;
+use webvimark\modules\UserManagement\components\GhostMenu;
+use webvimark\modules\UserManagement\models\User;
 // use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use webvimark\modules\UserManagement\components\GhostMenu;
-use webvimark\modules\UserManagement\UserManagementModule;
-use webvimark\modules\UserManagement\models\User;
 
     NavBar::begin([
         // 'brandLabel' => 'Sistema de expedientes',
@@ -50,51 +50,8 @@ use webvimark\modules\UserManagement\models\User;
         $menuItems[] = [
             'label' => '<span class="glyphicon glyphicon-sunglasses"></span> ' . 'Acerca de', 'url' => ['/site/about']
         ];
+
     } else {
-        // Enlace del Menú Registros Comunes
-        // $menuItems[] = [
-        //     'label' => 'Registros Comunes',
-        //     'items' => [
-        //         // Enlace del Submenú Unidad de Batallón
-        //         [
-        //             'label' => 'Unidad de Batallón',
-        //             'url' => '#',
-        //             'items' => [
-        //                 // Listado de Unidad de Batallón
-        //                 ['label' => 'Listado', 'url' => ['/unidad/index'], 'visible' => User::hasRole('ConsultarRegistros')],
-        //                 // Crear Unidad de Batallón
-        //                 ['label' => 'Crear', 'url' => ['/unidad/create'], 'visible' => User::hasRole('LlenarRegistros')],
-        //             ],
-        //             'visible' => User::hasRole('ConsultarRegistros'),
-        //         ],
-        //         '<li class="divider"></li>',
-        //         // Enlace del Submenú Oficiales
-        //         [
-        //             'label' => 'Oficiales',
-        //             'url' => '#',
-        //             'items' => [
-        //                 // Listado de Oficiales
-        //                 ['label' => 'Listado', 'url' => ['/oficiales/index'], 'visible' => User::hasRole('ConsultarRegistros')],
-        //                 // Crear Oficial
-        //                 ['label' => 'Crear', 'url' => ['/oficiales/create'], 'visible' => User::hasRole('LlenarRegistros')],
-        //             ],
-        //             'visible' => User::hasRole('ConsultarRegistros'),
-        //         ],
-        //         '<li class="divider"></li>',
-        //         // Enlace del Submenú Captadores
-        //         [
-        //             'label' => 'Captadores',
-        //             'url' => '#',
-        //             'items' => [
-        //                 // Listado de Captadores
-        //                 ['label' => 'Listado', 'url' => ['/captador/index'], 'visible' => User::hasRole('ConsultarRegistros')],
-        //                 // Crear Captador
-        //                 ['label' => 'Crear', 'url' => ['/captador/create'], 'visible' => User::hasRole('LlenarRegistros')],
-        //             ],
-        //             'visible' => User::hasRole('ConsultarRegistros'),
-        //         ],
-        //     ],
-        // ];
 
         if (User::hasRole('ConsultarRegistros')) {
 
@@ -195,24 +152,25 @@ use webvimark\modules\UserManagement\models\User;
                     // Enlace del Submenú Reporte de Información de Oficiales
                     [
                         'label' => '<span class="fa fa-area-chart"></span> ' . 'Reporte de Información de Oficiales',
-                        'url' => '/reporte/oficiales/oficialesreport',
+                        // 'url' => '/reporte/oficiales/oficialesreport',
+                        'url' => '/oficiales/index',
                         'visible' => User::hasRole('ConsultarRegistros'),
                     ],
                     '<li class="divider"></li>',
                     // Enlace del Submenú Reporte de Información de Captadores
                     [
                         'label' => '<span class="fa fa-bar-chart"></span> ' . 'Reporte de Información de Captadores',
-                        'url' => '#',
+                        'url' => '/captador/index',
                         'visible' => User::hasRole('ConsultarRegistros'),
                     ],
                     '<li class="divider"></li>',
-                    // Enlace del Submenú Reporte de Información de Personal
-                    [
-                        'label' => '<span class="fa fa-line-chart"></span> ' . 'Reporte de Información de Personal',
-                        'url' => '#',
-                        'visible' => User::hasRole('ConsultarRegistros'),
-                    ],
-                    '<li class="divider"></li>',
+                    // // Enlace del Submenú Reporte de Información de Personal
+                    // [
+                    //     'label' => '<span class="fa fa-line-chart"></span> ' . 'Reporte de Información de Personal',
+                    //     'url' => '#',
+                    //     'visible' => User::hasRole('ConsultarRegistros'),
+                    // ],
+                    // '<li class="divider"></li>',
                     // Enlace del Submenú Historial de Inicio de Sesión
                     [
                         'label' => '<span class="glyphicon glyphicon-user"></span> ' . 'Historial de Inicio de Sesión',
@@ -230,12 +188,6 @@ use webvimark\modules\UserManagement\models\User;
                     [
                         'label' => '<span class="glyphicon glyphicon-home"></span> ' . 'Unidad de Batallón',
                         'url' => '/unidad/index',
-                        /* 'items' => [
-                            // Listado de Unidad de Batallón
-                            ['label' => 'Listado', 'url' => ['/unidad/index'], 'visible' => User::hasRole('ConsultarRegistros')],
-                            // Crear Unidad de Batallón
-                            ['label' => 'Crear', 'url' => ['/unidad/create'], 'visible' => User::hasRole('LlenarRegistros')],
-                        ],*/
                         'visible' => User::hasRole('ConsultarRegistros'),
                     ],
                     '<li class="divider"></li>',
@@ -243,12 +195,6 @@ use webvimark\modules\UserManagement\models\User;
                     [
                         'label' => '<span class="glyphicon glyphicon-certificate"></span> ' . 'Jerarquía',
                         'url' => '/jerarquia/index',
-                        /* 'items' => [
-                            // Listado de Jerarquía
-                            ['label' => 'Listado', 'url' => ['/jerarquia/list'], 'visible' => User::hasRole('ConsultarRegistros')],
-                            // Crear Jerarquía
-                            ['label' => 'Crear', 'url' => ['/jerarquia/create'], 'visible' => User::hasRole('LlenarRegistros')],
-                        ],*/
                         'visible' => User::hasRole('ConsultarRegistros'),
                     ],
                     '<li class="divider"></li>',
@@ -304,6 +250,7 @@ use webvimark\modules\UserManagement\models\User;
         $menuItems[] = [
             'label' => '<span class="glyphicon glyphicon-book"></span> ' . 'Ayuda',
             'items' => [
+                // Enlace del Submenú Contactos
                 ['label' => '<span class="glyphicon glyphicon-envelope"></span> ' . 'Contactos', 'url' => ['/site/contact']],
                 // Enlace del Submenú Acerca de sistema
                 ['label' => '<span class="glyphicon glyphicon-sunglasses"></span> ' . 'Acerca de', 'url' => ['/site/about']],
