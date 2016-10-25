@@ -1,9 +1,9 @@
 <?php
 
-use yii\helpers\Html;
 use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
 use webvimark\modules\UserManagement\components\GhostHtml;
+use yii\helpers\Html;
 use yii\web\JsExpression;
 
 $this->title = 'Módulo de Oficiales';
@@ -30,8 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'highcharts-3d',
             ],
             'options' => [
+                'lang' => [
+                    'printChart' => 'Imprimir gráfica',
+                    'downloadPNG' => 'Descargar imagen PNG',
+                    'downloadJPEG' => 'Descargar imagen JPEG',
+                    'downloadPDF' => 'Descargar documento PDF',
+                    'downloadSVG' => 'Descargar imagen vectorial SVG vector',
+                    'contextButtonTitle' => 'Menú contextual de gráfica',
+                ],
                 'exporting' => [
-                    'enabled' => false
+                    'enabled' => true
                 ],
                 'legend' => [
                     'align' => 'center',
@@ -96,9 +104,21 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
     if($totalOficialesSexo) {
         echo Highcharts::widget([
+            'scripts' => [
+                'modules/exporting',
+                'highcharts-3d',
+            ],
             'options' => [
+                'lang' => [
+                    'printChart' => 'Imprimir gráfica',
+                    'downloadPNG' => 'Descargar imagen PNG',
+                    'downloadJPEG' => 'Descargar imagen JPEG',
+                    'downloadPDF' => 'Descargar documento PDF',
+                    'downloadSVG' => 'Descargar imagen vectorial SVG vector',
+                    'contextButtonTitle' => 'Menú contextual de gráfica',
+                ],
                 'exporting' => [
-                    'enabled' => false
+                    'enabled' => true
                 ],
                 'colors' => ['#F45B5B', '#F7A35C', '#2B908F'],
                 'legend' => [

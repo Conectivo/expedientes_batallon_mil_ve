@@ -1,9 +1,9 @@
 <?php
 
-use yii\helpers\Html;
 use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
 use webvimark\modules\UserManagement\components\GhostHtml;
+use yii\helpers\Html;
 use yii\web\JsExpression;
 
 $this->title = 'Módulo de Captador';
@@ -30,8 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'highcharts-3d',
             ],
             'options' => [
+                'lang' => [
+                    'printChart' => 'Imprimir gráfica',
+                    'downloadPNG' => 'Descargar imagen PNG',
+                    'downloadJPEG' => 'Descargar imagen JPEG',
+                    'downloadPDF' => 'Descargar documento PDF',
+                    'downloadSVG' => 'Descargar imagen vectorial SVG vector',
+                    'contextButtonTitle' => 'Menú contextual de gráfica',
+                ],
                 'exporting' => [
-                    'enabled' => false
+                    'enabled' => true
                 ],
                 'legend' => [
                     'align' => 'center',
@@ -98,12 +106,23 @@ $this->params['breadcrumbs'][] = $this->title;
         // $dataProvider = new \yii\data\ArrayDataProvider(['allModels' => $captacionPersonalAnual]);
         // hh($dataProvider);
         echo Highcharts::widget([
+        'scripts' => [
+            'modules/exporting',
+        ],
         'options' => [
+            'lang' => [
+                'printChart' => 'Imprimir gráfica',
+                'downloadPNG' => 'Descargar imagen PNG',
+                'downloadJPEG' => 'Descargar imagen JPEG',
+                'downloadPDF' => 'Descargar documento PDF',
+                'downloadSVG' => 'Descargar imagen vectorial SVG vector',
+                'contextButtonTitle' => 'Menú contextual de gráfica',
+            ],
             'chart' => [
                 'type' => 'column',
             ],
             'exporting' => [
-                'enabled' => false,
+                'enabled' => true,
             ],
             'credits' => [
                     'enabled' => false,
