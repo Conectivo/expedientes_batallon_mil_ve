@@ -6,9 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Jerarquia */
 
 $this->title = 'Jerarquías del Personal';
-// $this->params['breadcrumbs'][] = ['label' => 'Jerarquias', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->nombre, 'url' => ['view', 'id' => $model->id]];
-// $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 
 <div class="col-xs-12">

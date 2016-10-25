@@ -23,6 +23,10 @@ if (!$searchModel->isNewRecord  && !User::hasRole('LlenarRegistros') && User::ha
 }
 ?>
 
+<div class="col-xs-12">
+  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> <?= $this->title ?></h3></div>
+</div>
+
 <div class="col-xs-12" style="padding-top: 10px;">
    <div class="box">
       <div class="box-body table-responsive">

@@ -10,7 +10,7 @@ use yii\helpers\Html;
     <div class="col-lg-12 col-sm-12 col-xs-12 no-padding">
 	    <h3 class="box-title">
 	        <i class="fa fa-plus"></i> <?php echo 'Crear Jerarquía del Personal'; ?>
-	        </h3>
+	    </h3>
     </div>
 </div>
 

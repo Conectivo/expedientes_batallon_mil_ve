@@ -9,7 +9,7 @@ use webvimark\modules\UserManagement\models\User;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="<?php echo $model->isNewRecord ? 'box-success' : 'box-info'; ?> unidad-form">
+<div class="<?php echo $model->isNewRecord ? 'box-success' : 'box-info'; ?> jerarquia-form">
 
     <?php
     if($this->context->action->id == 'update')
