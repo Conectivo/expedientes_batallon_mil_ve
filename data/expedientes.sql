@@ -1,13 +1,13 @@
 -- ======================================================================
 -- ===   Sql Script for Database : expedientes
 -- ===
--- === Build : 161
+-- === Build : 177
 -- ======================================================================
 
 CREATE TABLE unidades
   (
     id      INTEGER       unique not null auto_increment,
-    unidad  varchar(50)   not null,
+    nombre  varchar(50)   not null,
 
     primary key(id)
   )

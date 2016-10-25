@@ -41,7 +41,7 @@ if (!$searchModel->isNewRecord  && !User::hasRole('LlenarRegistros') && User::ha
 
             // 'id',
             [
-                'attribute' => 'unidad',
+                'attribute' => 'nombre',
                 'label'=>'Nombre de Unidad',
             ],
 

@@ -19,7 +19,7 @@ class UnidadSearch extends Unidad
     {
         return [
             [['id'], 'integer'],
-            [['unidad'], 'safe'],
+            [['nombre'], 'safe'],
         ];
     }
 
@@ -49,7 +49,7 @@ class UnidadSearch extends Unidad
             'query' => $query,
             'sort' => [
                 'defaultOrder' => [
-                    'unidad' => SORT_ASC
+                    'nombre' => SORT_ASC
                 ],
             ],
             'pagination' => [
@@ -68,10 +68,10 @@ class UnidadSearch extends Unidad
         // condiciones de filtrado del objeto GridView
         $query->andFilterWhere([
             'id' => $this->id,
-            // 'unidad' => $this->unidad,
+            // 'nombre' => $this->nombre,
         ]);
 
-        $query->andFilterWhere(['like', 'unidad', $this->unidad]);
+        $query->andFilterWhere(['like', 'nombre', $this->nombre]);
 
         return $dataProvider;
     }

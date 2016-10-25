@@ -25,9 +25,9 @@ use webvimark\modules\UserManagement\models\User;
                 'template' => "{input}{error}",
             ],
     ]); ?>
-    <?= $form->field($model, 'unidad')->textInput([
+    <?= $form->field($model, 'nombre')->textInput([
         'maxlength' => true,
-        'placeholder' => 'Ingrese el ' . $model->getAttributeLabel('unidad') . ' de Batallón'
+        'placeholder' => 'Ingrese el ' . $model->getAttributeLabel('nombre') . ' de Batallón'
     ]) ?>
 
     <div class="form-group">

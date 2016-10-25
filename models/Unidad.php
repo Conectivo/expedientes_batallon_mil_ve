@@ -8,8 +8,7 @@ use Yii;
  * Esta es la clase de modelo de la tabla "unidades".
  *
  * @property integer $id
- * @property string $unidad
- * @property string $fecha_ingreso
+ * @property string $nombre
  *
  * @property Persona[] $personas
  */
@@ -30,10 +29,10 @@ class Unidad extends \yii\db\ActiveRecord
     {
         return [
             [
-                ['unidad'], 'required',
+                ['nombre'], 'required',
                 'message' => 'Este campo es requerido. Por favor, ingrese un valor.'
             ],
-            [['unidad'], 'string', 'max' => 50],
+            [['nombre'], 'string', 'max' => 50],
         ];
     }
 
@@ -44,8 +43,7 @@ class Unidad extends \yii\db\ActiveRecord
     {
         return [
             // 'id' => 'ID',
-            'unidad' => 'Nombre de Unidad',
-            'fecha_ingreso' => 'Fecha de Ingreso',
+            'nombre' => 'Nombre de Unidad',
         ];
     }
 
@@ -55,6 +53,15 @@ class Unidad extends \yii\db\ActiveRecord
     public function getPersonas()
     {
         return $this->hasMany(Persona::className(), ['unidad_id' => 'id']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return UnidadesQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new UnidadesQuery(get_called_class());
     }
 
 }

@@ -9,7 +9,7 @@ use webvimark\modules\UserManagement\models\User;
 /* @var $this yii\web\View */
 /* @var $model app\models\Unidad */
 
-$this->title = $model->unidad;
+$this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Unidad de Batallón', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             //'id',
             [
-                'attribute' => 'unidad',
+                'attribute' => 'nombre',
                 'label'=>'Nombre de Unidad',
             ],
         ],
