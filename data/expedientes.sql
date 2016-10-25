@@ -26,6 +26,17 @@ CREATE TABLE jerarquia
 
 -- ======================================================================
 
+CREATE TABLE genero
+  (
+    id      INTEGER       unique not null auto_increment,
+    nombre  varchar(11)   not null,
+
+    primary key(id)
+  )
+ ENGINE = InnoDB;
+
+-- ======================================================================
+
 CREATE TABLE oficiales
   (
     id                    INTEGER        unique not null auto_increment,
@@ -33,7 +44,7 @@ CREATE TABLE oficiales
     nombres               varchar(20)    not null,
     apellidos             varchar(20)    not null,
     cedula                INTEGER        unique not null,
-    sexo                  INTEGER        not null,
+    sexo_id               INTEGER        not null,
     situacion             INTEGER        not null,
     email                 varchar(50)    unique,
     arma                  varchar(20)    not null,
@@ -42,10 +53,12 @@ CREATE TABLE oficiales
     telefono              varchar(14)    not null,
     direccion_emergencia  varchar(150)   not null,
     telefonos_emergencia  varchar(14)    not null,
+    status                INTEGER        not null default 1,
 
     primary key(id),
 
-    foreign key(jquia_id) references jerarquia(id) on update CASCADE
+    foreign key(jquia_id) references jerarquia(id) on update CASCADE,
+    foreign key(sexo_id) references genero(id) on update CASCADE
   )
  ENGINE = InnoDB;
 
