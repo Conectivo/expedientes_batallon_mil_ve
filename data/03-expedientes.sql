@@ -83,6 +83,7 @@ CREATE TABLE persona
     modalidad         char(1)        not null,
     fecha_ingreso     date           not null,
     unidad_id         INTEGER        not null,
+    foto              varchar(150),
     status            INTEGER        not null default 1,
 
     primary key(cedula),
